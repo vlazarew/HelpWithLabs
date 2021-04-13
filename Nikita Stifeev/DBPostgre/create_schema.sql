@@ -36,12 +36,6 @@ create table test_schema.operation
     CONSTRAINT operation_unique UNIQUE (name, address, reserve, price)
 );
 
-create table test_schema.day
-(
-    id   smallint    NOT NULL PRIMARY KEY,
-    name varchar(20) NOT NULL
-);
-
 -- NOT NULL используем, т.к. данные в полях должны храниться обязательно (они может и не ключи, но имеют важную роль)
 -- CONSTRAINT UNIQUE делаем, чтоб у нас зафиксировалось уникальный кортеж атрибутов
 -- Check для проверки значения в колонке на лету (во время добавления)
