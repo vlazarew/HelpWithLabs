@@ -51,10 +51,11 @@ order by total_price;
 
 -- task #7
 select distinct e.surname, e.address
-from test_schema.work_activity
-         join test_schema.employee e on e.id = work_activity.employee_id and count_of_operation > 1;
+from test_schema.work_activity wa
+         join test_schema.employee e on e.id = wa.employee_id and wa.count_of_operation > 1
+         join test_schema.operation o on o.id = wa.operation_id and o.name = 'Наложение гипса';
 
-select o.name
+select distinct o.name
 from test_schema.work_activity
          join test_schema.workplace w on w.id = work_activity.workplace_id and lower(w.company) LIKE '%больница'
          join test_schema.operation o on o.id = work_activity.operation_id
@@ -67,9 +68,20 @@ from test_schema.work_activity
 order by w.tax desc, e.tax desc;
 
 select distinct day, o.id, e.surname
-from test_schema.work_activity
-         join test_schema.employee e on e.id = work_activity.employee_id
-         join test_schema.operation o on o.id = work_activity.operation_id and o.price >= 7000;
+from test_schema.work_activity wa
+         join test_schema.employee e on e.id = wa.employee_id
+         join test_schema.operation o on o.id = wa.operation_id and o.price >= 7000;
+
+select distinct day, o.id, e.surname
+from test_schema.work_activity wa
+         join test_schema.employee e on e.id = wa.employee_id and e.id in (select e.id
+                                                                           from test_schema.work_activity wa
+                                                                                    join test_schema.employee e
+                                                                                         on e.id = wa.employee_id and
+                                                                                            (wa.total_price / wa.count_of_operation) >= 7000
+                                                                           group by e.id
+                                                                           having sum(wa.count_of_operation) > 1)
+         join test_schema.operation o on o.id = wa.operation_id and o.price >= 7000;
 
 -- task #8
 update test_schema.work_activity wa
@@ -169,14 +181,23 @@ where wa1.day = ANY (ARRAY ['Четверг', 'Пятница']);
 select distinct e.surname, e.address
 from test_schema.work_activity
          join test_schema.employee e on e.id = work_activity.employee_id
+         join test_schema.operation o on o.id = work_activity.operation_id and o.name = 'Наложение гипса'
 where NOT count_of_operation = ANY (ARRAY [1]);
 
 -- task #12
+-- Работники + места работы
 select employee.address
 from test_schema.employee
 UNION
 select workplace.address
 from test_schema.workplace;
+
+-- Работники + места проведения операция
+select employee.address
+from test_schema.employee
+UNION
+select operation.address
+from test_schema.operation;
 
 -- task #13
 select *
