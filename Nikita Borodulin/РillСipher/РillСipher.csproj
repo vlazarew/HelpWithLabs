@@ -92,7 +92,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="daos\MySQLDAO.cs" />
     <Compile Include="daos\UserDAO.cs" />
+    <Compile Include="daos\WordDAO.cs" />
+    <Compile Include="forms\ChooseFromDBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ChooseFromDBForm.Designer.cs">
+      <DependentUpon>ChooseFromDBForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +123,9 @@
     <Compile Include="model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\ChooseFromDBForm.resx">
+      <DependentUpon>ChooseFromDBForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

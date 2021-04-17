@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using РillСipher.daos;
 using РillСipher.model;
 
 namespace РillСipher.forms
@@ -26,8 +27,11 @@ namespace РillСipher.forms
             buttonSaveToFile.Visible = true;
             buttonRun.Enabled = false;
             textBoxAlphabet.Text = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя., ?";
-            textBoxMainText.Text = "шифр";
-            textBoxKey.Text = "альпинизм";
+            buttonSaveToFile.Enabled = false;
+            buttonChooseFromDB.Visible = false;
+            //textBoxMainText.Text = "шифр";
+            //textBoxMainText.Text = "аюнчхя";
+            //textBoxKey.Text = "альпинизм";
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -48,17 +52,6 @@ namespace РillСipher.forms
             textBoxMainText.Text = fileText;
         }
 
-        private void radioButtonFile_CheckedChanged(object sender, EventArgs e)
-        {
-            buttonSaveToFile.Visible = radioButtonEncrypt.Checked && radioButtonFile.Checked;
-            buttonChooseFile.Visible = radioButtonDecrypt.Checked && radioButtonFile.Checked;
-        }
-
-        private void radioButtonEncrypt_CheckedChanged(object sender, EventArgs e)
-        {
-            buttonSaveToFile.Visible = radioButtonEncrypt.Checked && radioButtonFile.Checked;
-        }
-
         private void buttonSaveToFile_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -69,23 +62,8 @@ namespace РillСipher.forms
             // получаем выбранный файл
             string filename = saveFileDialog1.FileName;
             // сохраняем текст в файл
-            System.IO.File.WriteAllText(filename, textBoxMainText.Text.Trim());
+            System.IO.File.WriteAllText(filename, labelResult.Text.Trim());
             MessageBox.Show("Файл сохранен");
-        }
-
-        private void radioButtonDecrypt_CheckedChanged(object sender, EventArgs e)
-        {
-            buttonChooseFile.Visible = radioButtonDecrypt.Checked && radioButtonFile.Checked;
-        }
-
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void textBoxMainText_TextChanged(object sender, EventArgs e)
-        {
-            buttonRun.Enabled = textBoxMainText.Text.Length > 0;
         }
 
         private void buttonRun_Click(object sender, EventArgs e)
@@ -98,7 +76,7 @@ namespace РillСipher.forms
                 return;
             }
 
-            foreach(char c in textBoxKey.Text)
+            foreach (char c in textBoxKey.Text)
             {
                 if (!textBoxAlphabet.Text.Contains(c))
                 {
@@ -116,7 +94,65 @@ namespace РillСipher.forms
                 }
             }
 
-            MessageBox.Show(PillCipherSolver.Solve(textBoxAlphabet.Text, textBoxKey.Text, textBoxMainText.Text));
+
+            if (radioButtonEncrypt.Checked)
+            {
+                string encoded = PillCipherSolver.Encrypt(textBoxAlphabet.Text, textBoxKey.Text, textBoxMainText.Text);
+                labelResult.Text = encoded;
+                WordDAO.saveWordToDB(encoded, currentUser);
+            }
+            else
+            {
+                string decoded = PillCipherSolver.Decrypt(textBoxAlphabet.Text, textBoxKey.Text, textBoxMainText.Text);
+                labelResult.Text = decoded;
+            }
         }
+
+        private void buttonChooseFromDB_Click(object sender, EventArgs e)
+        {
+            List<string> values = WordDAO.getAllWordByUser(currentUser);
+            ChooseFromDBForm chooseFromDBForm = new ChooseFromDBForm(values);
+            var result = chooseFromDBForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                textBoxMainText.Text = chooseFromDBForm.SelectedValue;
+            }
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void radioButtonFile_CheckedChanged(object sender, EventArgs e)
+        {
+            buttonSaveToFile.Visible = radioButtonEncrypt.Checked && radioButtonFile.Checked;
+            buttonChooseFile.Visible = radioButtonDecrypt.Checked && radioButtonFile.Checked;
+            buttonChooseFromDB.Visible = radioButtonDecrypt.Checked && radioButtonDB.Checked;
+        }
+
+        private void radioButtonEncrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            buttonSaveToFile.Visible = radioButtonEncrypt.Checked && radioButtonFile.Checked;
+            buttonChooseFromDB.Visible = radioButtonDecrypt.Checked && radioButtonDB.Checked;
+        }
+
+        private void radioButtonDecrypt_CheckedChanged(object sender, EventArgs e)
+        {
+            buttonChooseFile.Visible = radioButtonDecrypt.Checked && radioButtonFile.Checked;
+            buttonChooseFromDB.Visible = radioButtonDecrypt.Checked && radioButtonDB.Checked;
+        }
+
+        private void textBoxMainText_TextChanged(object sender, EventArgs e)
+        {
+            buttonRun.Enabled = textBoxMainText.Text.Length > 0;
+        }
+
+        private void labelResult_TextChanged(object sender, EventArgs e)
+        {
+            buttonSaveToFile.Enabled = labelResult.Text.Length > 0;
+        }
+
+
     }
 }

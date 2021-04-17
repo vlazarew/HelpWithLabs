@@ -8,8 +8,16 @@ namespace РillСipher.model
 {
     public class User
     {
+        public int id { get; set; }
         public string login { get; set; }
         public string password { get; set; }
+
+        public User(int id, string login, string password)
+        {
+            this.id = id;
+            this.login = login;
+            this.password = password;
+        }
 
         public User(string login, string password)
         {

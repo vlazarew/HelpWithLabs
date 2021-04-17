@@ -11,34 +11,9 @@ namespace РillСipher.daos
 {
     static class UserDAO
     {
-        //private static string connectionString = "database=pill_cipher;characterset=utf8;port=" + 3306 + ";";
-        //private static string ip = "localhost";
-        //private static string username = "admin";
-        //private static string password = "admin";
-        //string connString = connectionString + "Server=" + ip
-        //                + ";user id=" + username + ";password=" + password;
-        private static string connString = "database=pill_cipher;characterset=utf8;port=" + 3306 + ";" + "Server=localhost"
-                        + ";user id= admin;password=admin";
-
-        private static MySqlConnection createConnect()
-        {
-            MySqlConnection connection = new MySqlConnection(connString);
-            try
-            {
-                connection.Open();
-            }
-            catch
-            {
-                throw new Exception("Не удалось установить соединение с базой");
-            }
-
-            return connection;
-
-        }
-
         public static bool createUser(User user)
         {
-            MySqlConnection connection = createConnect();
+            MySqlConnection connection = MySQLDAO.createConnect();
             MySqlTransaction transaction = connection.BeginTransaction();
 
             string query = "INSERT INTO user (user.login, user.password) VALUES (@login, @password)";
@@ -62,7 +37,7 @@ namespace РillСipher.daos
 
         public static User getUserByLogin(string login)
         {
-            MySqlConnection connection = createConnect();
+            MySqlConnection connection = MySQLDAO.createConnect();
 
             string query = "select * from user where user.login = @login";
             MySqlCommand command = new MySqlCommand(query, connection);
@@ -81,9 +56,9 @@ namespace РillСipher.daos
 
         public static User getUserByLoginAndPassword(string login, string password)
         {
-            MySqlConnection connection = createConnect();
+            MySqlConnection connection = MySQLDAO.createConnect();
 
-            string query = "select * from user where user.login = @login and user.password = @password";
+            string query = "select id, login, password from user where user.login = @login and user.password = @password";
             MySqlCommand command = new MySqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@login", login);
@@ -92,8 +67,9 @@ namespace РillСipher.daos
             using (DbDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
-
-                    return new User(reader.GetString(1), reader.GetString(2));
+                {
+                    return new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                }
             }
 
             return null;

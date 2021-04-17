@@ -21,35 +21,6 @@ namespace РillСipher.forms
             InitializeComponent();
         }
 
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void textBoxLogin_TextChanged(object sender, EventArgs e)
-        {
-            User potentialUser = UserDAO.getUserByLogin(textBoxLogin.Text.Trim());
-            loginAlreadyExists = potentialUser != null;
-            labelLoginExists.Visible = loginAlreadyExists;
-
-            buttonRegister.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0  && !loginAlreadyExists;
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-            buttonRegister.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0  && !loginAlreadyExists;
-        }
-
-        private void textBoxKey_TextChanged(object sender, EventArgs e)
-        {
-            buttonRegister.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0 && !loginAlreadyExists;
-        }
-
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             User user = new User(textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
@@ -59,11 +30,40 @@ namespace РillСipher.forms
                 MessageBox.Show("Ошибка создания пользователя");
             }
 
+            user = UserDAO.getUserByLoginAndPassword(textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
+
             MainForm mainForm = new MainForm(user);
             mainForm.Show();
             this.Hide();
         }
 
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+            User potentialUser = UserDAO.getUserByLogin(textBoxLogin.Text.Trim());
+            loginAlreadyExists = potentialUser != null;
+            labelLoginExists.Visible = loginAlreadyExists;
 
+            buttonRegister.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0 && !loginAlreadyExists;
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegister.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0 && !loginAlreadyExists;
+        }
+
+        private void textBoxKey_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegister.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0 && !loginAlreadyExists;
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -25,21 +25,7 @@ namespace РillСipher
 
         }
 
-        private void textBoxLogin_TextChanged(object sender, EventArgs e)
-        {
-            buttonLogin.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0;
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-            buttonLogin.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0;
-        }
-
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        #region События
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
@@ -59,5 +45,21 @@ namespace РillСipher
                 this.Hide();
             }
         }
+
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+            buttonLogin.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0;
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+            buttonLogin.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0;
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
     }
 }
