@@ -14,21 +14,25 @@ namespace CommunalServices.model
         public int addressRegisterId { get; set; }
         public int typeOfConsumerId { get; set; }
         public int credentialsId { get; set; }
-        public int phoneNumberId { get; set; }
-        //public string login { get; set; }
-        // public string password { get; set; }
 
-        /*public Consumer(int id, string login, string password)
+
+        public Consumer(string name, string surname, int addressRegisterId, int typeOfConsumerId, int credentialsId)
         {
-            this.id = id;
-            this.login = login;
-            this.password = password;
+            this.name = name;
+            this.surname = surname;
+            this.addressRegisterId = addressRegisterId;
+            this.typeOfConsumerId = typeOfConsumerId;
+            this.credentialsId = credentialsId;
         }
 
-        public Consumer(string login, string password)
+        public Consumer(int id, string name, string surname, int addressRegisterId, int typeOfConsumerId, int credentialsId)
         {
-            this.login = login;
-            this.password = password;
-        }*/
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.addressRegisterId = addressRegisterId;
+            this.typeOfConsumerId = typeOfConsumerId;
+            this.credentialsId = credentialsId;
+        }
     }
 }

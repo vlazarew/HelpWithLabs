@@ -13,5 +13,19 @@ namespace CommunalServices.model
         public string house { get; set; }
         public int flat { get; set; }
 
+        public AddressRegister(string street, string house, int flat)
+        {
+            this.street = street;
+            this.house = house;
+            this.flat = flat;
+        }
+
+        public AddressRegister(int id, string street, string house, int flat)
+        {
+            this.id = id;
+            this.street = street;
+            this.house = house;
+            this.flat = flat;
+        }
     }
 }

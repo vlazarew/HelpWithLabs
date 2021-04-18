@@ -11,5 +11,11 @@ namespace CommunalServices.model
         public int id { get; set; }
         public string name { get; set; }
 
+        public TypeOfConsumer(int id, string name)
+        {
+            this.id = id;
+            this.name = name;
+        }
+
     }
 }

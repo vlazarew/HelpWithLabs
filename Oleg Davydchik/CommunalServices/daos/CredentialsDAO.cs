@@ -11,10 +11,10 @@ namespace CommunalServices.daos
 {
     class CredentialsDAO
     {
-        public static bool createCredentials(Credentials credentials)
+        public static bool saveCredentials(Credentials credentials, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
-            MySqlConnection connection = MySQLDAO.createConnect();
-            MySqlTransaction transaction = connection.BeginTransaction();
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
 
             string query = "INSERT INTO credentials (credentials.login, credentials.password) VALUES (@login, @password)";
             MySqlCommand command = new MySqlCommand(query, connection, transaction);
@@ -25,8 +25,15 @@ namespace CommunalServices.daos
             try
             {
                 command.ExecuteNonQuery();
-                transaction.Commit();
-                connection.Close();
+                if (externalTransaction == null)
+                {
+                    transaction.Commit();
+                }
+
+                if (externalConnection == null)
+                {
+                    connection.Close();
+                }
                 return true;
             }
             catch
@@ -35,31 +42,46 @@ namespace CommunalServices.daos
             }
         }
 
-        public static Credentials getCredentialsByLogin(string login)
+        public static Credentials getCredentialsByLogin(string login, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
-            MySqlConnection connection = MySQLDAO.createConnect();
+            Credentials result = null;
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
 
             string query = "select * from credentials where credentials.login = @login";
-            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
 
             command.Parameters.AddWithValue("@login", login);
 
             using (DbDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
-
-                    return new Credentials(reader.GetString(1), reader.GetString(2));
+                {
+                    result = new Credentials(reader.GetString(1), reader.GetString(2));
+                }
             }
 
-            return null;
+            if (externalTransaction == null)
+            {
+                transaction.Commit();
+            }
+
+            if (externalConnection == null)
+            {
+                connection.Close();
+            }
+
+            return result;
         }
 
-        public static Credentials getCredentialsByLoginAndPassword(string login, string password)
+        public static Credentials getCredentialsByLoginAndPassword(string login, string password, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
-            MySqlConnection connection = MySQLDAO.createConnect();
+            Credentials result = null;
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
 
             string query = "select id, login, password from credentials where credentials.login = @login and credentials.password = @password";
-            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
 
             command.Parameters.AddWithValue("@login", login);
             command.Parameters.AddWithValue("@password", password);
@@ -68,11 +90,21 @@ namespace CommunalServices.daos
             {
                 while (reader.Read())
                 {
-                    return new Credentials(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                    result = new Credentials(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
                 }
             }
 
-            return null;
+            if (externalTransaction == null)
+            {
+                transaction.Commit();
+            }
+
+            if (externalConnection == null)
+            {
+                connection.Close();
+            }
+
+            return result;
         }
 
     }

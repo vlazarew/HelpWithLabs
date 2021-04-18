@@ -8,8 +8,19 @@ namespace CommunalServices.model
 {
     class PhoneNumber
     {
-        public int id { get; set; }
+        public int consumerId { get; set; }
         public string value { get; set; }
+
+        public PhoneNumber(string number)
+        {
+            this.value = number;
+        }
+
+        public PhoneNumber(int consumerId, string number)
+        {
+            this.consumerId = consumerId;
+            this.value = number;
+        }
 
     }
 }
