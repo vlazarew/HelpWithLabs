@@ -79,5 +79,70 @@ namespace CommunalServices.daos
 
             return result;
         }
+
+        public static AddressRegister getAddressRegisterById(int id, MySqlConnection externalConnection = null,
+            MySqlTransaction externalTransaction = null)
+        {
+            AddressRegister result = null;
+
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "select * from address_register where address_register.id = @id ";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            command.Parameters.AddWithValue("@id", id);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result = new AddressRegister(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
+                }
+            }
+
+            if (externalTransaction == null)
+            {
+                transaction.Commit();
+            }
+
+            if (externalConnection == null)
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
+
+        public static List<AddressRegister> getAddressRegisters(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        {
+            List<AddressRegister> result = new List<AddressRegister>();
+
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "select * from address_register";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result.Add(new AddressRegister(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3)));
+                }
+            }
+
+            if (externalTransaction == null)
+            {
+                transaction.Commit();
+            }
+
+            if (externalConnection == null)
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
     }
 }

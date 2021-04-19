@@ -74,5 +74,38 @@ namespace CommunalServices.daos
 
             return result;
         }
+
+        public static List<PhoneNumber> getPhoneByConsumerId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        {
+            List<PhoneNumber> result = new List<PhoneNumber>();
+
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "select * from phone_number where phone_number.consumer_id = @consumer_id";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            command.Parameters.AddWithValue("@consumer_id", id);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result.Add(new PhoneNumber(reader.GetInt32(0), reader.GetString(1)));
+                }
+            }
+
+            if (externalTransaction == null)
+            {
+                transaction.Commit();
+            }
+
+            if (externalConnection == null)
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
     }
 }

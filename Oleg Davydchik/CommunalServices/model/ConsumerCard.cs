@@ -13,5 +13,12 @@ namespace CommunalServices.model
         public int consumerId { get; set; }
         public int typeOfServiceId { get; set; }
 
+        public ConsumerCard(int id, int dateOfPay, int consumerId, int typeOfServiceId)
+        {
+            this.id = id;
+            this.dateOfPay = dateOfPay;
+            this.consumerId = consumerId;
+            this.typeOfServiceId = typeOfServiceId;
+        }
     }
 }

@@ -31,49 +31,21 @@ namespace CommunalServices.forms
         {
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageConsumerCard = new System.Windows.Forms.TabPage();
-            this.tabPageReport = new System.Windows.Forms.TabPage();
-            this.tabPageData = new System.Windows.Forms.TabPage();
-            this.tabPagePayTrack = new System.Windows.Forms.TabPage();
-            this.tabControlAdditionalData = new System.Windows.Forms.TabControl();
-            this.tabPageTypesOfServices = new System.Windows.Forms.TabPage();
-            this.tabPageAddressRegister = new System.Windows.Forms.TabPage();
-            this.tabPageConsumers = new System.Windows.Forms.TabPage();
-            this.tabControlAdditionalReport = new System.Windows.Forms.TabControl();
-            this.tabPageReportPayment = new System.Windows.Forms.TabPage();
-            this.tabPageValueOfServices = new System.Windows.Forms.TabPage();
-            this.tabPageReportDebtor = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelSurname = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelBalance = new System.Windows.Forms.Label();
             this.dataGridViewConsumerCard = new System.Windows.Forms.DataGridView();
             this.ColumnTypeOfService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnToPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPayed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateOfPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTypesOfServices = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumnTypeOfService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewAddressRegister = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumnStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnHouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFlat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewConsumers = new System.Windows.Forms.DataGridView();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnHouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAddressFlat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewPayTrack = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnTypeOfServiceTrack = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnDateOfPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelBalance = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelSurname = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPageReport = new System.Windows.Forms.TabPage();
+            this.tabControlAdditionalReport = new System.Windows.Forms.TabControl();
+            this.tabPageReportPayment = new System.Windows.Forms.TabPage();
             this.dataGridViewReport = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnConsumerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,38 +54,66 @@ namespace CommunalServices.forms
             this.dataGridViewTextBoxColumnFlatReport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeadlineReport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateOfPayReport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageValueOfServices = new System.Windows.Forms.TabPage();
             this.dataGridViewValueOfServices = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumnTypeOfServiceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnConsumerIdValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnStreetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnHouseValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnFlatValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageReportDebtor = new System.Windows.Forms.TabPage();
             this.dataGridViewDebtor = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumnConsumerIdDebtor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnTypeOfServiceDebtor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeadlineDebtor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnDateOfPayDebtor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageData = new System.Windows.Forms.TabPage();
+            this.tabControlAdditionalData = new System.Windows.Forms.TabControl();
+            this.tabPageTypesOfServices = new System.Windows.Forms.TabPage();
+            this.dataGridViewTypesOfServices = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumnTypeOfService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageAddressRegister = new System.Windows.Forms.TabPage();
+            this.dataGridViewAddressRegister = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumnStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnHouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFlat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageConsumers = new System.Windows.Forms.TabPage();
+            this.dataGridViewConsumers = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnHouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAddressFlat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPagePayTrack = new System.Windows.Forms.TabPage();
+            this.dataGridViewPayTrack = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnTypeOfServiceTrack = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnDateOfPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlMain.SuspendLayout();
             this.tabPageConsumerCard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumerCard)).BeginInit();
             this.tabPageReport.SuspendLayout();
-            this.tabPageData.SuspendLayout();
-            this.tabPagePayTrack.SuspendLayout();
-            this.tabControlAdditionalData.SuspendLayout();
-            this.tabPageTypesOfServices.SuspendLayout();
-            this.tabPageAddressRegister.SuspendLayout();
-            this.tabPageConsumers.SuspendLayout();
             this.tabControlAdditionalReport.SuspendLayout();
             this.tabPageReportPayment.SuspendLayout();
-            this.tabPageValueOfServices.SuspendLayout();
-            this.tabPageReportDebtor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumerCard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTypesOfServices)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddressRegister)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayTrack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).BeginInit();
+            this.tabPageValueOfServices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewValueOfServices)).BeginInit();
+            this.tabPageReportDebtor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDebtor)).BeginInit();
+            this.tabPageData.SuspendLayout();
+            this.tabControlAdditionalData.SuspendLayout();
+            this.tabPageTypesOfServices.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTypesOfServices)).BeginInit();
+            this.tabPageAddressRegister.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddressRegister)).BeginInit();
+            this.tabPageConsumers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumers)).BeginInit();
+            this.tabPagePayTrack.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayTrack)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -127,6 +127,7 @@ namespace CommunalServices.forms
             this.tabControlMain.SelectedIndex = 0;
             this.tabControlMain.Size = new System.Drawing.Size(776, 372);
             this.tabControlMain.TabIndex = 0;
+            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
             // tabPageConsumerCard
             // 
@@ -144,178 +145,7 @@ namespace CommunalServices.forms
             this.tabPageConsumerCard.TabIndex = 0;
             this.tabPageConsumerCard.Text = "Карточка клиента";
             this.tabPageConsumerCard.UseVisualStyleBackColor = true;
-            // 
-            // tabPageReport
-            // 
-            this.tabPageReport.Controls.Add(this.tabControlAdditionalReport);
-            this.tabPageReport.Location = new System.Drawing.Point(4, 22);
-            this.tabPageReport.Name = "tabPageReport";
-            this.tabPageReport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageReport.Size = new System.Drawing.Size(768, 346);
-            this.tabPageReport.TabIndex = 1;
-            this.tabPageReport.Text = "Отчеты";
-            this.tabPageReport.UseVisualStyleBackColor = true;
-            // 
-            // tabPageData
-            // 
-            this.tabPageData.Controls.Add(this.tabControlAdditionalData);
-            this.tabPageData.Location = new System.Drawing.Point(4, 22);
-            this.tabPageData.Name = "tabPageData";
-            this.tabPageData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageData.Size = new System.Drawing.Size(768, 346);
-            this.tabPageData.TabIndex = 2;
-            this.tabPageData.Text = "Справочники";
-            this.tabPageData.UseVisualStyleBackColor = true;
-            // 
-            // tabPagePayTrack
-            // 
-            this.tabPagePayTrack.Controls.Add(this.dataGridViewPayTrack);
-            this.tabPagePayTrack.Location = new System.Drawing.Point(4, 22);
-            this.tabPagePayTrack.Name = "tabPagePayTrack";
-            this.tabPagePayTrack.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePayTrack.Size = new System.Drawing.Size(768, 346);
-            this.tabPagePayTrack.TabIndex = 3;
-            this.tabPagePayTrack.Text = "Учет оплат";
-            this.tabPagePayTrack.UseVisualStyleBackColor = true;
-            // 
-            // tabControlAdditionalData
-            // 
-            this.tabControlAdditionalData.Controls.Add(this.tabPageTypesOfServices);
-            this.tabControlAdditionalData.Controls.Add(this.tabPageAddressRegister);
-            this.tabControlAdditionalData.Controls.Add(this.tabPageConsumers);
-            this.tabControlAdditionalData.Location = new System.Drawing.Point(6, 6);
-            this.tabControlAdditionalData.Name = "tabControlAdditionalData";
-            this.tabControlAdditionalData.SelectedIndex = 0;
-            this.tabControlAdditionalData.Size = new System.Drawing.Size(756, 337);
-            this.tabControlAdditionalData.TabIndex = 0;
-            // 
-            // tabPageTypesOfServices
-            // 
-            this.tabPageTypesOfServices.Controls.Add(this.dataGridViewTypesOfServices);
-            this.tabPageTypesOfServices.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTypesOfServices.Name = "tabPageTypesOfServices";
-            this.tabPageTypesOfServices.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTypesOfServices.Size = new System.Drawing.Size(748, 311);
-            this.tabPageTypesOfServices.TabIndex = 1;
-            this.tabPageTypesOfServices.Text = "Виды коммунальных услуг";
-            this.tabPageTypesOfServices.UseVisualStyleBackColor = true;
-            // 
-            // tabPageAddressRegister
-            // 
-            this.tabPageAddressRegister.Controls.Add(this.dataGridViewAddressRegister);
-            this.tabPageAddressRegister.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAddressRegister.Name = "tabPageAddressRegister";
-            this.tabPageAddressRegister.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAddressRegister.Size = new System.Drawing.Size(748, 311);
-            this.tabPageAddressRegister.TabIndex = 2;
-            this.tabPageAddressRegister.Text = "Адресная база";
-            this.tabPageAddressRegister.UseVisualStyleBackColor = true;
-            // 
-            // tabPageConsumers
-            // 
-            this.tabPageConsumers.Controls.Add(this.dataGridViewConsumers);
-            this.tabPageConsumers.Location = new System.Drawing.Point(4, 22);
-            this.tabPageConsumers.Name = "tabPageConsumers";
-            this.tabPageConsumers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConsumers.Size = new System.Drawing.Size(748, 311);
-            this.tabPageConsumers.TabIndex = 3;
-            this.tabPageConsumers.Text = "Плательщики";
-            this.tabPageConsumers.UseVisualStyleBackColor = true;
-            // 
-            // tabControlAdditionalReport
-            // 
-            this.tabControlAdditionalReport.Controls.Add(this.tabPageReportPayment);
-            this.tabControlAdditionalReport.Controls.Add(this.tabPageValueOfServices);
-            this.tabControlAdditionalReport.Controls.Add(this.tabPageReportDebtor);
-            this.tabControlAdditionalReport.Location = new System.Drawing.Point(6, 5);
-            this.tabControlAdditionalReport.Name = "tabControlAdditionalReport";
-            this.tabControlAdditionalReport.SelectedIndex = 0;
-            this.tabControlAdditionalReport.Size = new System.Drawing.Size(756, 337);
-            this.tabControlAdditionalReport.TabIndex = 1;
-            // 
-            // tabPageReportPayment
-            // 
-            this.tabPageReportPayment.Controls.Add(this.dataGridViewReport);
-            this.tabPageReportPayment.Location = new System.Drawing.Point(4, 22);
-            this.tabPageReportPayment.Name = "tabPageReportPayment";
-            this.tabPageReportPayment.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageReportPayment.Size = new System.Drawing.Size(748, 311);
-            this.tabPageReportPayment.TabIndex = 1;
-            this.tabPageReportPayment.Text = "Ведомость оплат";
-            this.tabPageReportPayment.UseVisualStyleBackColor = true;
-            // 
-            // tabPageValueOfServices
-            // 
-            this.tabPageValueOfServices.Controls.Add(this.dataGridViewValueOfServices);
-            this.tabPageValueOfServices.Location = new System.Drawing.Point(4, 22);
-            this.tabPageValueOfServices.Name = "tabPageValueOfServices";
-            this.tabPageValueOfServices.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageValueOfServices.Size = new System.Drawing.Size(748, 311);
-            this.tabPageValueOfServices.TabIndex = 2;
-            this.tabPageValueOfServices.Text = "Объемы услуг";
-            this.tabPageValueOfServices.UseVisualStyleBackColor = true;
-            // 
-            // tabPageReportDebtor
-            // 
-            this.tabPageReportDebtor.Controls.Add(this.dataGridViewDebtor);
-            this.tabPageReportDebtor.Location = new System.Drawing.Point(4, 22);
-            this.tabPageReportDebtor.Name = "tabPageReportDebtor";
-            this.tabPageReportDebtor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageReportDebtor.Size = new System.Drawing.Size(748, 311);
-            this.tabPageReportDebtor.TabIndex = 3;
-            this.tabPageReportDebtor.Text = "Ведомость должников";
-            this.tabPageReportDebtor.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Имя:";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(71, 13);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(0, 13);
-            this.labelName.TabIndex = 1;
-            // 
-            // labelSurname
-            // 
-            this.labelSurname.AutoSize = true;
-            this.labelSurname.Location = new System.Drawing.Point(71, 48);
-            this.labelSurname.Name = "labelSurname";
-            this.labelSurname.Size = new System.Drawing.Size(0, 13);
-            this.labelSurname.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Фамилия:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Баланс:";
-            // 
-            // labelBalance
-            // 
-            this.labelBalance.AutoSize = true;
-            this.labelBalance.Location = new System.Drawing.Point(71, 83);
-            this.labelBalance.Name = "labelBalance";
-            this.labelBalance.Size = new System.Drawing.Size(0, 13);
-            this.labelBalance.TabIndex = 4;
+            this.tabPageConsumerCard.Enter += new System.EventHandler(this.tabPageConsumerCard_Enter);
             // 
             // dataGridViewConsumerCard
             // 
@@ -365,169 +195,90 @@ namespace CommunalServices.forms
             this.ColumnDateOfPay.Name = "ColumnDateOfPay";
             this.ColumnDateOfPay.ReadOnly = true;
             // 
-            // dataGridViewTypesOfServices
+            // label2
             // 
-            this.dataGridViewTypesOfServices.AllowUserToAddRows = false;
-            this.dataGridViewTypesOfServices.AllowUserToDeleteRows = false;
-            this.dataGridViewTypesOfServices.AllowUserToOrderColumns = true;
-            this.dataGridViewTypesOfServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTypesOfServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnTypeOfService,
-            this.dataGridViewTextBoxColumnCost});
-            this.dataGridViewTypesOfServices.Location = new System.Drawing.Point(6, 6);
-            this.dataGridViewTypesOfServices.Name = "dataGridViewTypesOfServices";
-            this.dataGridViewTypesOfServices.ReadOnly = true;
-            this.dataGridViewTypesOfServices.Size = new System.Drawing.Size(245, 299);
-            this.dataGridViewTypesOfServices.TabIndex = 7;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Баланс:";
             // 
-            // dataGridViewTextBoxColumnTypeOfService
+            // labelBalance
             // 
-            this.dataGridViewTextBoxColumnTypeOfService.HeaderText = "Тип услуги";
-            this.dataGridViewTextBoxColumnTypeOfService.Name = "dataGridViewTextBoxColumnTypeOfService";
-            this.dataGridViewTextBoxColumnTypeOfService.ReadOnly = true;
+            this.labelBalance.AutoSize = true;
+            this.labelBalance.Location = new System.Drawing.Point(71, 83);
+            this.labelBalance.Name = "labelBalance";
+            this.labelBalance.Size = new System.Drawing.Size(0, 13);
+            this.labelBalance.TabIndex = 4;
             // 
-            // dataGridViewTextBoxColumnCost
+            // label4
             // 
-            this.dataGridViewTextBoxColumnCost.HeaderText = "Стоимость";
-            this.dataGridViewTextBoxColumnCost.Name = "dataGridViewTextBoxColumnCost";
-            this.dataGridViewTextBoxColumnCost.ReadOnly = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Фамилия:";
             // 
-            // dataGridViewAddressRegister
+            // labelSurname
             // 
-            this.dataGridViewAddressRegister.AllowUserToAddRows = false;
-            this.dataGridViewAddressRegister.AllowUserToDeleteRows = false;
-            this.dataGridViewAddressRegister.AllowUserToOrderColumns = true;
-            this.dataGridViewAddressRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAddressRegister.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnStreet,
-            this.dataGridViewTextBoxColumnHouse,
-            this.ColumnFlat});
-            this.dataGridViewAddressRegister.Location = new System.Drawing.Point(6, 6);
-            this.dataGridViewAddressRegister.Name = "dataGridViewAddressRegister";
-            this.dataGridViewAddressRegister.ReadOnly = true;
-            this.dataGridViewAddressRegister.Size = new System.Drawing.Size(344, 299);
-            this.dataGridViewAddressRegister.TabIndex = 8;
+            this.labelSurname.AutoSize = true;
+            this.labelSurname.Location = new System.Drawing.Point(71, 48);
+            this.labelSurname.Name = "labelSurname";
+            this.labelSurname.Size = new System.Drawing.Size(0, 13);
+            this.labelSurname.TabIndex = 2;
             // 
-            // dataGridViewTextBoxColumnStreet
+            // labelName
             // 
-            this.dataGridViewTextBoxColumnStreet.HeaderText = "Улица";
-            this.dataGridViewTextBoxColumnStreet.Name = "dataGridViewTextBoxColumnStreet";
-            this.dataGridViewTextBoxColumnStreet.ReadOnly = true;
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(71, 13);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(0, 13);
+            this.labelName.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumnHouse
+            // label1
             // 
-            this.dataGridViewTextBoxColumnHouse.HeaderText = "Дом";
-            this.dataGridViewTextBoxColumnHouse.Name = "dataGridViewTextBoxColumnHouse";
-            this.dataGridViewTextBoxColumnHouse.ReadOnly = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Имя:";
             // 
-            // ColumnFlat
+            // tabPageReport
             // 
-            this.ColumnFlat.HeaderText = "Квартира";
-            this.ColumnFlat.Name = "ColumnFlat";
-            this.ColumnFlat.ReadOnly = true;
+            this.tabPageReport.Controls.Add(this.tabControlAdditionalReport);
+            this.tabPageReport.Location = new System.Drawing.Point(4, 22);
+            this.tabPageReport.Name = "tabPageReport";
+            this.tabPageReport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageReport.Size = new System.Drawing.Size(768, 346);
+            this.tabPageReport.TabIndex = 1;
+            this.tabPageReport.Text = "Отчеты";
+            this.tabPageReport.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewConsumers
+            // tabControlAdditionalReport
             // 
-            this.dataGridViewConsumers.AllowUserToAddRows = false;
-            this.dataGridViewConsumers.AllowUserToDeleteRows = false;
-            this.dataGridViewConsumers.AllowUserToOrderColumns = true;
-            this.dataGridViewConsumers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConsumers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnName,
-            this.ColumnSurname,
-            this.ColumnStreet,
-            this.ColumnHouse,
-            this.ColumnAddressFlat,
-            this.ColumnPhoneNumber});
-            this.dataGridViewConsumers.Location = new System.Drawing.Point(6, 6);
-            this.dataGridViewConsumers.Name = "dataGridViewConsumers";
-            this.dataGridViewConsumers.ReadOnly = true;
-            this.dataGridViewConsumers.Size = new System.Drawing.Size(645, 299);
-            this.dataGridViewConsumers.TabIndex = 9;
+            this.tabControlAdditionalReport.Controls.Add(this.tabPageReportPayment);
+            this.tabControlAdditionalReport.Controls.Add(this.tabPageValueOfServices);
+            this.tabControlAdditionalReport.Controls.Add(this.tabPageReportDebtor);
+            this.tabControlAdditionalReport.Location = new System.Drawing.Point(6, 5);
+            this.tabControlAdditionalReport.Name = "tabControlAdditionalReport";
+            this.tabControlAdditionalReport.SelectedIndex = 0;
+            this.tabControlAdditionalReport.Size = new System.Drawing.Size(756, 337);
+            this.tabControlAdditionalReport.TabIndex = 1;
             // 
-            // ColumnName
+            // tabPageReportPayment
             // 
-            this.ColumnName.HeaderText = "Имя";
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnSurname
-            // 
-            this.ColumnSurname.HeaderText = "Фамилия";
-            this.ColumnSurname.Name = "ColumnSurname";
-            this.ColumnSurname.ReadOnly = true;
-            // 
-            // ColumnStreet
-            // 
-            this.ColumnStreet.HeaderText = "Улица";
-            this.ColumnStreet.Name = "ColumnStreet";
-            this.ColumnStreet.ReadOnly = true;
-            // 
-            // ColumnHouse
-            // 
-            this.ColumnHouse.HeaderText = "Дом";
-            this.ColumnHouse.Name = "ColumnHouse";
-            this.ColumnHouse.ReadOnly = true;
-            // 
-            // ColumnAddressFlat
-            // 
-            this.ColumnAddressFlat.HeaderText = "Квартира";
-            this.ColumnAddressFlat.Name = "ColumnAddressFlat";
-            this.ColumnAddressFlat.ReadOnly = true;
-            // 
-            // ColumnPhoneNumber
-            // 
-            this.ColumnPhoneNumber.HeaderText = "Номер телефона";
-            this.ColumnPhoneNumber.Name = "ColumnPhoneNumber";
-            this.ColumnPhoneNumber.ReadOnly = true;
-            // 
-            // dataGridViewPayTrack
-            // 
-            this.dataGridViewPayTrack.AllowUserToAddRows = false;
-            this.dataGridViewPayTrack.AllowUserToDeleteRows = false;
-            this.dataGridViewPayTrack.AllowUserToOrderColumns = true;
-            this.dataGridViewPayTrack.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPayTrack.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnName,
-            this.dataGridViewTextBoxColumnSurname,
-            this.dataGridViewTextBoxColumnTypeOfServiceTrack,
-            this.dataGridViewTextBoxColumnDeadline,
-            this.dataGridViewTextBoxColumnDateOfPay});
-            this.dataGridViewPayTrack.Location = new System.Drawing.Point(6, 3);
-            this.dataGridViewPayTrack.Name = "dataGridViewPayTrack";
-            this.dataGridViewPayTrack.ReadOnly = true;
-            this.dataGridViewPayTrack.Size = new System.Drawing.Size(756, 337);
-            this.dataGridViewPayTrack.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumnName
-            // 
-            this.dataGridViewTextBoxColumnName.HeaderText = "Имя";
-            this.dataGridViewTextBoxColumnName.Name = "dataGridViewTextBoxColumnName";
-            this.dataGridViewTextBoxColumnName.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnSurname
-            // 
-            this.dataGridViewTextBoxColumnSurname.HeaderText = "Фамилия";
-            this.dataGridViewTextBoxColumnSurname.Name = "dataGridViewTextBoxColumnSurname";
-            this.dataGridViewTextBoxColumnSurname.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnTypeOfServiceTrack
-            // 
-            this.dataGridViewTextBoxColumnTypeOfServiceTrack.HeaderText = "Тип услуги";
-            this.dataGridViewTextBoxColumnTypeOfServiceTrack.Name = "dataGridViewTextBoxColumnTypeOfServiceTrack";
-            this.dataGridViewTextBoxColumnTypeOfServiceTrack.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnDeadline
-            // 
-            this.dataGridViewTextBoxColumnDeadline.HeaderText = "Крайний срок";
-            this.dataGridViewTextBoxColumnDeadline.Name = "dataGridViewTextBoxColumnDeadline";
-            this.dataGridViewTextBoxColumnDeadline.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnDateOfPay
-            // 
-            this.dataGridViewTextBoxColumnDateOfPay.HeaderText = "Дата оплаты";
-            this.dataGridViewTextBoxColumnDateOfPay.Name = "dataGridViewTextBoxColumnDateOfPay";
-            this.dataGridViewTextBoxColumnDateOfPay.ReadOnly = true;
+            this.tabPageReportPayment.Controls.Add(this.dataGridViewReport);
+            this.tabPageReportPayment.Location = new System.Drawing.Point(4, 22);
+            this.tabPageReportPayment.Name = "tabPageReportPayment";
+            this.tabPageReportPayment.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageReportPayment.Size = new System.Drawing.Size(748, 311);
+            this.tabPageReportPayment.TabIndex = 1;
+            this.tabPageReportPayment.Text = "Ведомость оплат";
+            this.tabPageReportPayment.UseVisualStyleBackColor = true;
+            this.tabPageReportPayment.Enter += new System.EventHandler(this.tabPageReportPayment_Enter);
             // 
             // dataGridViewReport
             // 
@@ -591,6 +342,18 @@ namespace CommunalServices.forms
             this.ColumnDateOfPayReport.Name = "ColumnDateOfPayReport";
             this.ColumnDateOfPayReport.ReadOnly = true;
             // 
+            // tabPageValueOfServices
+            // 
+            this.tabPageValueOfServices.Controls.Add(this.dataGridViewValueOfServices);
+            this.tabPageValueOfServices.Location = new System.Drawing.Point(4, 22);
+            this.tabPageValueOfServices.Name = "tabPageValueOfServices";
+            this.tabPageValueOfServices.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageValueOfServices.Size = new System.Drawing.Size(748, 311);
+            this.tabPageValueOfServices.TabIndex = 2;
+            this.tabPageValueOfServices.Text = "Объемы услуг";
+            this.tabPageValueOfServices.UseVisualStyleBackColor = true;
+            this.tabPageValueOfServices.Enter += new System.EventHandler(this.tabPageValueOfServices_Enter);
+            // 
             // dataGridViewValueOfServices
             // 
             this.dataGridViewValueOfServices.AllowUserToAddRows = false;
@@ -639,6 +402,18 @@ namespace CommunalServices.forms
             this.dataGridViewTextBoxColumnFlatValue.Name = "dataGridViewTextBoxColumnFlatValue";
             this.dataGridViewTextBoxColumnFlatValue.ReadOnly = true;
             // 
+            // tabPageReportDebtor
+            // 
+            this.tabPageReportDebtor.Controls.Add(this.dataGridViewDebtor);
+            this.tabPageReportDebtor.Location = new System.Drawing.Point(4, 22);
+            this.tabPageReportDebtor.Name = "tabPageReportDebtor";
+            this.tabPageReportDebtor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageReportDebtor.Size = new System.Drawing.Size(748, 311);
+            this.tabPageReportDebtor.TabIndex = 3;
+            this.tabPageReportDebtor.Text = "Ведомость должников";
+            this.tabPageReportDebtor.UseVisualStyleBackColor = true;
+            this.tabPageReportDebtor.Enter += new System.EventHandler(this.tabPageReportDebtor_Enter);
+            // 
             // dataGridViewDebtor
             // 
             this.dataGridViewDebtor.AllowUserToAddRows = false;
@@ -680,6 +455,240 @@ namespace CommunalServices.forms
             this.dataGridViewTextBoxColumnDateOfPayDebtor.Name = "dataGridViewTextBoxColumnDateOfPayDebtor";
             this.dataGridViewTextBoxColumnDateOfPayDebtor.ReadOnly = true;
             // 
+            // tabPageData
+            // 
+            this.tabPageData.Controls.Add(this.tabControlAdditionalData);
+            this.tabPageData.Location = new System.Drawing.Point(4, 22);
+            this.tabPageData.Name = "tabPageData";
+            this.tabPageData.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageData.Size = new System.Drawing.Size(768, 346);
+            this.tabPageData.TabIndex = 2;
+            this.tabPageData.Text = "Справочники";
+            this.tabPageData.UseVisualStyleBackColor = true;
+            // 
+            // tabControlAdditionalData
+            // 
+            this.tabControlAdditionalData.Controls.Add(this.tabPageTypesOfServices);
+            this.tabControlAdditionalData.Controls.Add(this.tabPageAddressRegister);
+            this.tabControlAdditionalData.Controls.Add(this.tabPageConsumers);
+            this.tabControlAdditionalData.Location = new System.Drawing.Point(6, 6);
+            this.tabControlAdditionalData.Name = "tabControlAdditionalData";
+            this.tabControlAdditionalData.SelectedIndex = 0;
+            this.tabControlAdditionalData.Size = new System.Drawing.Size(756, 337);
+            this.tabControlAdditionalData.TabIndex = 0;
+            // 
+            // tabPageTypesOfServices
+            // 
+            this.tabPageTypesOfServices.Controls.Add(this.dataGridViewTypesOfServices);
+            this.tabPageTypesOfServices.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTypesOfServices.Name = "tabPageTypesOfServices";
+            this.tabPageTypesOfServices.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTypesOfServices.Size = new System.Drawing.Size(748, 311);
+            this.tabPageTypesOfServices.TabIndex = 1;
+            this.tabPageTypesOfServices.Text = "Виды коммунальных услуг";
+            this.tabPageTypesOfServices.UseVisualStyleBackColor = true;
+            this.tabPageTypesOfServices.Enter += new System.EventHandler(this.tabPageTypesOfServices_Enter);
+            // 
+            // dataGridViewTypesOfServices
+            // 
+            this.dataGridViewTypesOfServices.AllowUserToAddRows = false;
+            this.dataGridViewTypesOfServices.AllowUserToDeleteRows = false;
+            this.dataGridViewTypesOfServices.AllowUserToOrderColumns = true;
+            this.dataGridViewTypesOfServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTypesOfServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumnTypeOfService,
+            this.dataGridViewTextBoxColumnCost});
+            this.dataGridViewTypesOfServices.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewTypesOfServices.Name = "dataGridViewTypesOfServices";
+            this.dataGridViewTypesOfServices.ReadOnly = true;
+            this.dataGridViewTypesOfServices.Size = new System.Drawing.Size(245, 299);
+            this.dataGridViewTypesOfServices.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumnTypeOfService
+            // 
+            this.dataGridViewTextBoxColumnTypeOfService.HeaderText = "Тип услуги";
+            this.dataGridViewTextBoxColumnTypeOfService.Name = "dataGridViewTextBoxColumnTypeOfService";
+            this.dataGridViewTextBoxColumnTypeOfService.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnCost
+            // 
+            this.dataGridViewTextBoxColumnCost.HeaderText = "Стоимость";
+            this.dataGridViewTextBoxColumnCost.Name = "dataGridViewTextBoxColumnCost";
+            this.dataGridViewTextBoxColumnCost.ReadOnly = true;
+            // 
+            // tabPageAddressRegister
+            // 
+            this.tabPageAddressRegister.Controls.Add(this.dataGridViewAddressRegister);
+            this.tabPageAddressRegister.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAddressRegister.Name = "tabPageAddressRegister";
+            this.tabPageAddressRegister.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAddressRegister.Size = new System.Drawing.Size(748, 311);
+            this.tabPageAddressRegister.TabIndex = 2;
+            this.tabPageAddressRegister.Text = "Адресная база";
+            this.tabPageAddressRegister.UseVisualStyleBackColor = true;
+            this.tabPageAddressRegister.Enter += new System.EventHandler(this.tabPageAddressRegister_Enter);
+            // 
+            // dataGridViewAddressRegister
+            // 
+            this.dataGridViewAddressRegister.AllowUserToAddRows = false;
+            this.dataGridViewAddressRegister.AllowUserToDeleteRows = false;
+            this.dataGridViewAddressRegister.AllowUserToOrderColumns = true;
+            this.dataGridViewAddressRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAddressRegister.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumnStreet,
+            this.dataGridViewTextBoxColumnHouse,
+            this.ColumnFlat});
+            this.dataGridViewAddressRegister.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewAddressRegister.Name = "dataGridViewAddressRegister";
+            this.dataGridViewAddressRegister.ReadOnly = true;
+            this.dataGridViewAddressRegister.Size = new System.Drawing.Size(344, 299);
+            this.dataGridViewAddressRegister.TabIndex = 8;
+            // 
+            // dataGridViewTextBoxColumnStreet
+            // 
+            this.dataGridViewTextBoxColumnStreet.HeaderText = "Улица";
+            this.dataGridViewTextBoxColumnStreet.Name = "dataGridViewTextBoxColumnStreet";
+            this.dataGridViewTextBoxColumnStreet.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnHouse
+            // 
+            this.dataGridViewTextBoxColumnHouse.HeaderText = "Дом";
+            this.dataGridViewTextBoxColumnHouse.Name = "dataGridViewTextBoxColumnHouse";
+            this.dataGridViewTextBoxColumnHouse.ReadOnly = true;
+            // 
+            // ColumnFlat
+            // 
+            this.ColumnFlat.HeaderText = "Квартира";
+            this.ColumnFlat.Name = "ColumnFlat";
+            this.ColumnFlat.ReadOnly = true;
+            // 
+            // tabPageConsumers
+            // 
+            this.tabPageConsumers.Controls.Add(this.dataGridViewConsumers);
+            this.tabPageConsumers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageConsumers.Name = "tabPageConsumers";
+            this.tabPageConsumers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageConsumers.Size = new System.Drawing.Size(748, 311);
+            this.tabPageConsumers.TabIndex = 3;
+            this.tabPageConsumers.Text = "Плательщики";
+            this.tabPageConsumers.UseVisualStyleBackColor = true;
+            this.tabPageConsumers.Enter += new System.EventHandler(this.tabPageConsumers_Enter);
+            // 
+            // dataGridViewConsumers
+            // 
+            this.dataGridViewConsumers.AllowUserToAddRows = false;
+            this.dataGridViewConsumers.AllowUserToDeleteRows = false;
+            this.dataGridViewConsumers.AllowUserToOrderColumns = true;
+            this.dataGridViewConsumers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewConsumers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnName,
+            this.ColumnSurname,
+            this.ColumnStreet,
+            this.ColumnHouse,
+            this.ColumnAddressFlat,
+            this.ColumnPhoneNumber});
+            this.dataGridViewConsumers.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewConsumers.Name = "dataGridViewConsumers";
+            this.dataGridViewConsumers.ReadOnly = true;
+            this.dataGridViewConsumers.Size = new System.Drawing.Size(645, 299);
+            this.dataGridViewConsumers.TabIndex = 9;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Имя";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnSurname
+            // 
+            this.ColumnSurname.HeaderText = "Фамилия";
+            this.ColumnSurname.Name = "ColumnSurname";
+            this.ColumnSurname.ReadOnly = true;
+            // 
+            // ColumnStreet
+            // 
+            this.ColumnStreet.HeaderText = "Улица";
+            this.ColumnStreet.Name = "ColumnStreet";
+            this.ColumnStreet.ReadOnly = true;
+            // 
+            // ColumnHouse
+            // 
+            this.ColumnHouse.HeaderText = "Дом";
+            this.ColumnHouse.Name = "ColumnHouse";
+            this.ColumnHouse.ReadOnly = true;
+            // 
+            // ColumnAddressFlat
+            // 
+            this.ColumnAddressFlat.HeaderText = "Квартира";
+            this.ColumnAddressFlat.Name = "ColumnAddressFlat";
+            this.ColumnAddressFlat.ReadOnly = true;
+            // 
+            // ColumnPhoneNumber
+            // 
+            this.ColumnPhoneNumber.HeaderText = "Номер телефона";
+            this.ColumnPhoneNumber.Name = "ColumnPhoneNumber";
+            this.ColumnPhoneNumber.ReadOnly = true;
+            // 
+            // tabPagePayTrack
+            // 
+            this.tabPagePayTrack.Controls.Add(this.dataGridViewPayTrack);
+            this.tabPagePayTrack.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePayTrack.Name = "tabPagePayTrack";
+            this.tabPagePayTrack.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePayTrack.Size = new System.Drawing.Size(768, 346);
+            this.tabPagePayTrack.TabIndex = 3;
+            this.tabPagePayTrack.Text = "Учет оплат";
+            this.tabPagePayTrack.UseVisualStyleBackColor = true;
+            this.tabPagePayTrack.Enter += new System.EventHandler(this.tabPagePayTrack_Enter);
+            // 
+            // dataGridViewPayTrack
+            // 
+            this.dataGridViewPayTrack.AllowUserToAddRows = false;
+            this.dataGridViewPayTrack.AllowUserToDeleteRows = false;
+            this.dataGridViewPayTrack.AllowUserToOrderColumns = true;
+            this.dataGridViewPayTrack.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPayTrack.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumnName,
+            this.dataGridViewTextBoxColumnSurname,
+            this.dataGridViewTextBoxColumnTypeOfServiceTrack,
+            this.dataGridViewTextBoxColumnDeadline,
+            this.dataGridViewTextBoxColumnDateOfPay});
+            this.dataGridViewPayTrack.Location = new System.Drawing.Point(6, 3);
+            this.dataGridViewPayTrack.Name = "dataGridViewPayTrack";
+            this.dataGridViewPayTrack.ReadOnly = true;
+            this.dataGridViewPayTrack.Size = new System.Drawing.Size(756, 337);
+            this.dataGridViewPayTrack.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumnName
+            // 
+            this.dataGridViewTextBoxColumnName.HeaderText = "Имя";
+            this.dataGridViewTextBoxColumnName.Name = "dataGridViewTextBoxColumnName";
+            this.dataGridViewTextBoxColumnName.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnSurname
+            // 
+            this.dataGridViewTextBoxColumnSurname.HeaderText = "Фамилия";
+            this.dataGridViewTextBoxColumnSurname.Name = "dataGridViewTextBoxColumnSurname";
+            this.dataGridViewTextBoxColumnSurname.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnTypeOfServiceTrack
+            // 
+            this.dataGridViewTextBoxColumnTypeOfServiceTrack.HeaderText = "Тип услуги";
+            this.dataGridViewTextBoxColumnTypeOfServiceTrack.Name = "dataGridViewTextBoxColumnTypeOfServiceTrack";
+            this.dataGridViewTextBoxColumnTypeOfServiceTrack.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnDeadline
+            // 
+            this.dataGridViewTextBoxColumnDeadline.HeaderText = "Крайний срок";
+            this.dataGridViewTextBoxColumnDeadline.Name = "dataGridViewTextBoxColumnDeadline";
+            this.dataGridViewTextBoxColumnDeadline.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnDateOfPay
+            // 
+            this.dataGridViewTextBoxColumnDateOfPay.HeaderText = "Дата оплаты";
+            this.dataGridViewTextBoxColumnDateOfPay.Name = "dataGridViewTextBoxColumnDateOfPay";
+            this.dataGridViewTextBoxColumnDateOfPay.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,25 +701,25 @@ namespace CommunalServices.forms
             this.tabControlMain.ResumeLayout(false);
             this.tabPageConsumerCard.ResumeLayout(false);
             this.tabPageConsumerCard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumerCard)).EndInit();
             this.tabPageReport.ResumeLayout(false);
-            this.tabPageData.ResumeLayout(false);
-            this.tabPagePayTrack.ResumeLayout(false);
-            this.tabControlAdditionalData.ResumeLayout(false);
-            this.tabPageTypesOfServices.ResumeLayout(false);
-            this.tabPageAddressRegister.ResumeLayout(false);
-            this.tabPageConsumers.ResumeLayout(false);
             this.tabControlAdditionalReport.ResumeLayout(false);
             this.tabPageReportPayment.ResumeLayout(false);
-            this.tabPageValueOfServices.ResumeLayout(false);
-            this.tabPageReportDebtor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumerCard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTypesOfServices)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddressRegister)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayTrack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).EndInit();
+            this.tabPageValueOfServices.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewValueOfServices)).EndInit();
+            this.tabPageReportDebtor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDebtor)).EndInit();
+            this.tabPageData.ResumeLayout(false);
+            this.tabControlAdditionalData.ResumeLayout(false);
+            this.tabPageTypesOfServices.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTypesOfServices)).EndInit();
+            this.tabPageAddressRegister.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddressRegister)).EndInit();
+            this.tabPageConsumers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumers)).EndInit();
+            this.tabPagePayTrack.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayTrack)).EndInit();
             this.ResumeLayout(false);
 
         }

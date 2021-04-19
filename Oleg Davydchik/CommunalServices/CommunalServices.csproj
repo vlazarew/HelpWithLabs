@@ -93,11 +93,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="daos\AddressRegisterDAO.cs" />
+    <Compile Include="daos\ConsumerCardDAO.cs" />
     <Compile Include="daos\CredentialsDAO.cs" />
     <Compile Include="daos\MySQLDAO.cs" />
     <Compile Include="daos\ConsumerDAO.cs" />
     <Compile Include="daos\PhoneDAO.cs" />
     <Compile Include="daos\TypeOfConsumerDAO.cs" />
+    <Compile Include="daos\TypeOfServiceDAO.cs" />
     <Compile Include="forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -113,5 +113,36 @@ namespace CommunalServices.daos
 
             return result;
         }
+
+        public static List<Consumer> getConsumers( MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        {
+            List<Consumer> result = new List<Consumer>();
+
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "select * from consumer";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result.Add(new Consumer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5)));
+                }
+            }
+
+            if (externalTransaction == null)
+            {
+                transaction.Commit();
+            }
+
+            if (externalConnection == null)
+            {
+                connection.Close();
+            }
+
+            return result;
+        }
     }
 }
