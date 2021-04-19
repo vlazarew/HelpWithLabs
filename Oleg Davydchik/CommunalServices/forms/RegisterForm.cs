@@ -24,6 +24,8 @@ namespace CommunalServices
         {
             InitializeComponent();
             this.isCreatingByAdmin = isCreatingByAdmin;
+            this.groupBoxTypeOfUser.Visible = isCreatingByAdmin;
+            this.radioButtonConsumer.Checked = true;
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -44,9 +46,12 @@ namespace CommunalServices
             Credentials credentials = CredentialsDAO.getCredentialsByLoginAndPassword(textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
             Consumer consumer = ConsumerDAO.getConsumerByCredentialsId(credentials.id);
 
-            MainForm mainForm = new MainForm(consumer);
-            mainForm.Show();
-            this.Hide();
+            if (!this.isCreatingByAdmin)
+            {
+                MainForm mainForm = new MainForm(consumer);
+                mainForm.Show();
+                this.Hide();
+            }
         }
 
         private bool isRegisterEnabled()

@@ -51,14 +51,14 @@ namespace CommunalServices
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridViewPhoneNumbers = new System.Windows.Forms.DataGridView();
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxTypeOfUser = new System.Windows.Forms.GroupBox();
             this.radioButtonAdmin = new System.Windows.Forms.RadioButton();
             this.radioButtonConsumer = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhoneNumbers)).BeginInit();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxTypeOfUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelLoginExists
@@ -273,16 +273,16 @@ namespace CommunalServices
             this.PhoneNumber.HeaderText = "Номер телефона";
             this.PhoneNumber.Name = "PhoneNumber";
             // 
-            // groupBox4
+            // groupBoxTypeOfUser
             // 
-            this.groupBox4.Controls.Add(this.radioButtonAdmin);
-            this.groupBox4.Controls.Add(this.radioButtonConsumer);
-            this.groupBox4.Location = new System.Drawing.Point(281, 228);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(395, 52);
-            this.groupBox4.TabIndex = 25;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Тип пользователя";
+            this.groupBoxTypeOfUser.Controls.Add(this.radioButtonAdmin);
+            this.groupBoxTypeOfUser.Controls.Add(this.radioButtonConsumer);
+            this.groupBoxTypeOfUser.Location = new System.Drawing.Point(281, 228);
+            this.groupBoxTypeOfUser.Name = "groupBoxTypeOfUser";
+            this.groupBoxTypeOfUser.Size = new System.Drawing.Size(395, 52);
+            this.groupBoxTypeOfUser.TabIndex = 25;
+            this.groupBoxTypeOfUser.TabStop = false;
+            this.groupBoxTypeOfUser.Text = "Тип пользователя";
             // 
             // radioButtonAdmin
             // 
@@ -311,7 +311,7 @@ namespace CommunalServices
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 282);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBoxTypeOfUser);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -327,8 +327,8 @@ namespace CommunalServices
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhoneNumbers)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxTypeOfUser.ResumeLayout(false);
+            this.groupBoxTypeOfUser.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -357,7 +357,7 @@ namespace CommunalServices
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridViewPhoneNumbers;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxTypeOfUser;
         private System.Windows.Forms.RadioButton radioButtonAdmin;
         private System.Windows.Forms.RadioButton radioButtonConsumer;
     }

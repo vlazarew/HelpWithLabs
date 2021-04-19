@@ -97,7 +97,6 @@
     <Compile Include="daos\MySQLDAO.cs" />
     <Compile Include="daos\ConsumerDAO.cs" />
     <Compile Include="daos\PhoneDAO.cs" />
-    <Compile Include="daos\PhoneNumberListDAO.cs" />
     <Compile Include="daos\TypeOfConsumerDAO.cs" />
     <Compile Include="forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -123,7 +122,6 @@
     <Compile Include="model\Credentials.cs" />
     <Compile Include="model\Payments.cs" />
     <Compile Include="model\PhoneNumber.cs" />
-    <Compile Include="model\PhoneNumberList.cs" />
     <Compile Include="model\TypeOfConsumer.cs" />
     <Compile Include="model\TypeOfService.cs" />
     <Compile Include="Program.cs" />
