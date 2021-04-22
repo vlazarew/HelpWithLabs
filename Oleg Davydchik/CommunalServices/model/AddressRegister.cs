@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.model
 {
-    class AddressRegister
+    public class AddressRegister
     {
         public int id { get; set; }
         public string street { get; set; }

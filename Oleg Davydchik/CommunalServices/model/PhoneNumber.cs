@@ -16,7 +16,7 @@ namespace CommunalServices.model
             this.value = number;
         }
 
-        public PhoneNumber(int consumerId, string number)
+        public PhoneNumber(string number, int consumerId)
         {
             this.consumerId = consumerId;
             this.value = number;

@@ -42,7 +42,7 @@ namespace CommunalServices.resolvers
 
             foreach (string number in numbers)
             {
-                PhoneNumber phoneNumber = new PhoneNumber(consumer.id, number);
+                PhoneNumber phoneNumber = new PhoneNumber(number,consumer.id);
                 if (!PhoneDAO.saveNumber(phoneNumber, consumer.id, connection, transaction))
                 {
                     throw new Exception("Ошибка создания нового номера телефона");

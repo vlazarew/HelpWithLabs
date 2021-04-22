@@ -58,7 +58,7 @@ namespace CommunalServices.daos
             {
                 while (reader.Read())
                 {
-                    result = new PhoneNumber(reader.GetInt32(0), reader.GetString(1));
+                    result = new PhoneNumber(reader.GetString(0), reader.GetInt32(1));
                 }
             }
 
@@ -91,7 +91,7 @@ namespace CommunalServices.daos
             {
                 while (reader.Read())
                 {
-                    result.Add(new PhoneNumber(reader.GetInt32(0), reader.GetString(1)));
+                    result.Add(new PhoneNumber(reader.GetString(0), reader.GetInt32(1)));
                 }
             }
 
@@ -106,6 +106,37 @@ namespace CommunalServices.daos
             }
 
             return result;
+        }
+
+
+        public static bool deletePhoneByConsumer(Consumer consumer, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        {
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "delete from communal_services.phone_number where phone_number.consumer_id = @id";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            command.Parameters.AddWithValue("@id", consumer.id);
+
+            try
+            {
+                command.ExecuteNonQuery();
+                if (externalTransaction == null)
+                {
+                    transaction.Commit();
+                }
+
+                if (externalConnection == null)
+                {
+                    connection.Close();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

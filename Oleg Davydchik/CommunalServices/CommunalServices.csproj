@@ -97,9 +97,22 @@
     <Compile Include="daos\CredentialsDAO.cs" />
     <Compile Include="daos\MySQLDAO.cs" />
     <Compile Include="daos\ConsumerDAO.cs" />
+    <Compile Include="daos\PaymentsDAO.cs" />
     <Compile Include="daos\PhoneDAO.cs" />
     <Compile Include="daos\TypeOfConsumerDAO.cs" />
     <Compile Include="daos\TypeOfServiceDAO.cs" />
+    <Compile Include="forms\AddressRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\AddressRegisterForm.Designer.cs">
+      <DependentUpon>AddressRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ConsumerEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ConsumerEditForm.Designer.cs">
+      <DependentUpon>ConsumerEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +131,12 @@
     <Compile Include="forms\RegisterForm.designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\TypeOfServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\TypeOfServiceForm.Designer.cs">
+      <DependentUpon>TypeOfServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="model\AddressRegister.cs" />
     <Compile Include="model\Consumer.cs" />
     <Compile Include="model\ConsumerCard.cs" />
@@ -129,6 +148,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resolvers\CredentialsResolver.cs" />
+    <Compile Include="resolvers\ReportResolver.cs" />
+    <EmbeddedResource Include="forms\AddressRegisterForm.resx">
+      <DependentUpon>AddressRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ConsumerEditForm.resx">
+      <DependentUpon>ConsumerEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\TypeOfServiceForm.resx">
+      <DependentUpon>TypeOfServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

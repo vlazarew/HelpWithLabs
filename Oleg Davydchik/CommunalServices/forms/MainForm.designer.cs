@@ -93,6 +93,20 @@ namespace CommunalServices.forms
             this.dataGridViewTextBoxColumnTypeOfServiceTrack = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnDeadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnDateOfPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonAddService = new System.Windows.Forms.Button();
+            this.buttonDeleteService = new System.Windows.Forms.Button();
+            this.buttonEditService = new System.Windows.Forms.Button();
+            this.buttonEditAddress = new System.Windows.Forms.Button();
+            this.buttonDeleteAddress = new System.Windows.Forms.Button();
+            this.buttonAddAddress = new System.Windows.Forms.Button();
+            this.buttonEditConsumer = new System.Windows.Forms.Button();
+            this.buttonDeleteConsumer = new System.Windows.Forms.Button();
+            this.buttonAddConsumer = new System.Windows.Forms.Button();
+            this.buttonOpenCustomerCard = new System.Windows.Forms.Button();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageConsumerCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumerCard)).BeginInit();
@@ -284,7 +298,6 @@ namespace CommunalServices.forms
             // 
             this.dataGridViewReport.AllowUserToAddRows = false;
             this.dataGridViewReport.AllowUserToDeleteRows = false;
-            this.dataGridViewReport.AllowUserToOrderColumns = true;
             this.dataGridViewReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
@@ -358,7 +371,6 @@ namespace CommunalServices.forms
             // 
             this.dataGridViewValueOfServices.AllowUserToAddRows = false;
             this.dataGridViewValueOfServices.AllowUserToDeleteRows = false;
-            this.dataGridViewValueOfServices.AllowUserToOrderColumns = true;
             this.dataGridViewValueOfServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewValueOfServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumnTypeOfServiceValue,
@@ -418,7 +430,6 @@ namespace CommunalServices.forms
             // 
             this.dataGridViewDebtor.AllowUserToAddRows = false;
             this.dataGridViewDebtor.AllowUserToDeleteRows = false;
-            this.dataGridViewDebtor.AllowUserToOrderColumns = true;
             this.dataGridViewDebtor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDebtor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumnConsumerIdDebtor,
@@ -479,6 +490,9 @@ namespace CommunalServices.forms
             // 
             // tabPageTypesOfServices
             // 
+            this.tabPageTypesOfServices.Controls.Add(this.buttonEditService);
+            this.tabPageTypesOfServices.Controls.Add(this.buttonDeleteService);
+            this.tabPageTypesOfServices.Controls.Add(this.buttonAddService);
             this.tabPageTypesOfServices.Controls.Add(this.dataGridViewTypesOfServices);
             this.tabPageTypesOfServices.Location = new System.Drawing.Point(4, 22);
             this.tabPageTypesOfServices.Name = "tabPageTypesOfServices";
@@ -501,7 +515,8 @@ namespace CommunalServices.forms
             this.dataGridViewTypesOfServices.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewTypesOfServices.Name = "dataGridViewTypesOfServices";
             this.dataGridViewTypesOfServices.ReadOnly = true;
-            this.dataGridViewTypesOfServices.Size = new System.Drawing.Size(245, 299);
+            this.dataGridViewTypesOfServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTypesOfServices.Size = new System.Drawing.Size(496, 299);
             this.dataGridViewTypesOfServices.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumnTypeOfService
@@ -518,6 +533,9 @@ namespace CommunalServices.forms
             // 
             // tabPageAddressRegister
             // 
+            this.tabPageAddressRegister.Controls.Add(this.buttonEditAddress);
+            this.tabPageAddressRegister.Controls.Add(this.buttonDeleteAddress);
+            this.tabPageAddressRegister.Controls.Add(this.buttonAddAddress);
             this.tabPageAddressRegister.Controls.Add(this.dataGridViewAddressRegister);
             this.tabPageAddressRegister.Location = new System.Drawing.Point(4, 22);
             this.tabPageAddressRegister.Name = "tabPageAddressRegister";
@@ -541,7 +559,8 @@ namespace CommunalServices.forms
             this.dataGridViewAddressRegister.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewAddressRegister.Name = "dataGridViewAddressRegister";
             this.dataGridViewAddressRegister.ReadOnly = true;
-            this.dataGridViewAddressRegister.Size = new System.Drawing.Size(344, 299);
+            this.dataGridViewAddressRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAddressRegister.Size = new System.Drawing.Size(496, 299);
             this.dataGridViewAddressRegister.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumnStreet
@@ -564,6 +583,14 @@ namespace CommunalServices.forms
             // 
             // tabPageConsumers
             // 
+            this.tabPageConsumers.Controls.Add(this.label5);
+            this.tabPageConsumers.Controls.Add(this.label3);
+            this.tabPageConsumers.Controls.Add(this.textBoxSurname);
+            this.tabPageConsumers.Controls.Add(this.textBoxName);
+            this.tabPageConsumers.Controls.Add(this.buttonOpenCustomerCard);
+            this.tabPageConsumers.Controls.Add(this.buttonEditConsumer);
+            this.tabPageConsumers.Controls.Add(this.buttonDeleteConsumer);
+            this.tabPageConsumers.Controls.Add(this.buttonAddConsumer);
             this.tabPageConsumers.Controls.Add(this.dataGridViewConsumers);
             this.tabPageConsumers.Location = new System.Drawing.Point(4, 22);
             this.tabPageConsumers.Name = "tabPageConsumers";
@@ -590,6 +617,7 @@ namespace CommunalServices.forms
             this.dataGridViewConsumers.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewConsumers.Name = "dataGridViewConsumers";
             this.dataGridViewConsumers.ReadOnly = true;
+            this.dataGridViewConsumers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewConsumers.Size = new System.Drawing.Size(645, 299);
             this.dataGridViewConsumers.TabIndex = 9;
             // 
@@ -689,6 +717,140 @@ namespace CommunalServices.forms
             this.dataGridViewTextBoxColumnDateOfPay.Name = "dataGridViewTextBoxColumnDateOfPay";
             this.dataGridViewTextBoxColumnDateOfPay.ReadOnly = true;
             // 
+            // buttonAddService
+            // 
+            this.buttonAddService.Location = new System.Drawing.Point(508, 17);
+            this.buttonAddService.Name = "buttonAddService";
+            this.buttonAddService.Size = new System.Drawing.Size(234, 23);
+            this.buttonAddService.TabIndex = 8;
+            this.buttonAddService.Text = "Добавить";
+            this.buttonAddService.UseVisualStyleBackColor = true;
+            this.buttonAddService.Click += new System.EventHandler(this.buttonAddService_Click);
+            // 
+            // buttonDeleteService
+            // 
+            this.buttonDeleteService.Location = new System.Drawing.Point(508, 75);
+            this.buttonDeleteService.Name = "buttonDeleteService";
+            this.buttonDeleteService.Size = new System.Drawing.Size(234, 23);
+            this.buttonDeleteService.TabIndex = 9;
+            this.buttonDeleteService.Text = "Удалить";
+            this.buttonDeleteService.UseVisualStyleBackColor = true;
+            this.buttonDeleteService.Click += new System.EventHandler(this.buttonDeleteService_Click);
+            // 
+            // buttonEditService
+            // 
+            this.buttonEditService.Location = new System.Drawing.Point(508, 46);
+            this.buttonEditService.Name = "buttonEditService";
+            this.buttonEditService.Size = new System.Drawing.Size(234, 23);
+            this.buttonEditService.TabIndex = 10;
+            this.buttonEditService.Text = "Изменить";
+            this.buttonEditService.UseVisualStyleBackColor = true;
+            this.buttonEditService.Click += new System.EventHandler(this.buttonEditService_Click);
+            // 
+            // buttonEditAddress
+            // 
+            this.buttonEditAddress.Location = new System.Drawing.Point(508, 35);
+            this.buttonEditAddress.Name = "buttonEditAddress";
+            this.buttonEditAddress.Size = new System.Drawing.Size(234, 23);
+            this.buttonEditAddress.TabIndex = 13;
+            this.buttonEditAddress.Text = "Изменить";
+            this.buttonEditAddress.UseVisualStyleBackColor = true;
+            this.buttonEditAddress.Click += new System.EventHandler(this.buttonEditAddress_Click);
+            // 
+            // buttonDeleteAddress
+            // 
+            this.buttonDeleteAddress.Location = new System.Drawing.Point(508, 64);
+            this.buttonDeleteAddress.Name = "buttonDeleteAddress";
+            this.buttonDeleteAddress.Size = new System.Drawing.Size(234, 23);
+            this.buttonDeleteAddress.TabIndex = 12;
+            this.buttonDeleteAddress.Text = "Удалить";
+            this.buttonDeleteAddress.UseVisualStyleBackColor = true;
+            this.buttonDeleteAddress.Click += new System.EventHandler(this.buttonDeleteAddress_Click);
+            // 
+            // buttonAddAddress
+            // 
+            this.buttonAddAddress.Location = new System.Drawing.Point(508, 6);
+            this.buttonAddAddress.Name = "buttonAddAddress";
+            this.buttonAddAddress.Size = new System.Drawing.Size(234, 23);
+            this.buttonAddAddress.TabIndex = 11;
+            this.buttonAddAddress.Text = "Добавить";
+            this.buttonAddAddress.UseVisualStyleBackColor = true;
+            this.buttonAddAddress.Click += new System.EventHandler(this.buttonAddAddress_Click);
+            // 
+            // buttonEditConsumer
+            // 
+            this.buttonEditConsumer.Location = new System.Drawing.Point(657, 35);
+            this.buttonEditConsumer.Name = "buttonEditConsumer";
+            this.buttonEditConsumer.Size = new System.Drawing.Size(85, 23);
+            this.buttonEditConsumer.TabIndex = 16;
+            this.buttonEditConsumer.Text = "Изменить";
+            this.buttonEditConsumer.UseVisualStyleBackColor = true;
+            this.buttonEditConsumer.Click += new System.EventHandler(this.buttonEditConsumer_Click);
+            // 
+            // buttonDeleteConsumer
+            // 
+            this.buttonDeleteConsumer.Location = new System.Drawing.Point(657, 64);
+            this.buttonDeleteConsumer.Name = "buttonDeleteConsumer";
+            this.buttonDeleteConsumer.Size = new System.Drawing.Size(85, 23);
+            this.buttonDeleteConsumer.TabIndex = 15;
+            this.buttonDeleteConsumer.Text = "Удалить";
+            this.buttonDeleteConsumer.UseVisualStyleBackColor = true;
+            this.buttonDeleteConsumer.Click += new System.EventHandler(this.buttonDeleteConsumer_Click);
+            // 
+            // buttonAddConsumer
+            // 
+            this.buttonAddConsumer.Location = new System.Drawing.Point(657, 6);
+            this.buttonAddConsumer.Name = "buttonAddConsumer";
+            this.buttonAddConsumer.Size = new System.Drawing.Size(85, 23);
+            this.buttonAddConsumer.TabIndex = 14;
+            this.buttonAddConsumer.Text = "Добавить";
+            this.buttonAddConsumer.UseVisualStyleBackColor = true;
+            this.buttonAddConsumer.Click += new System.EventHandler(this.buttonAddConsumer_Click);
+            // 
+            // buttonOpenCustomerCard
+            // 
+            this.buttonOpenCustomerCard.Location = new System.Drawing.Point(657, 153);
+            this.buttonOpenCustomerCard.Name = "buttonOpenCustomerCard";
+            this.buttonOpenCustomerCard.Size = new System.Drawing.Size(85, 23);
+            this.buttonOpenCustomerCard.TabIndex = 17;
+            this.buttonOpenCustomerCard.Text = "Открыть";
+            this.buttonOpenCustomerCard.UseVisualStyleBackColor = true;
+            this.buttonOpenCustomerCard.Click += new System.EventHandler(this.buttonOpenCustomerCard_Click);
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(657, 243);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(85, 20);
+            this.textBoxName.TabIndex = 18;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
+            // 
+            // textBoxSurname
+            // 
+            this.textBoxSurname.Location = new System.Drawing.Point(657, 285);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(85, 20);
+            this.textBoxSurname.TabIndex = 19;
+            this.textBoxSurname.TextChanged += new System.EventHandler(this.textBoxSurname_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(657, 266);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Фамилия";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(657, 227);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Имя";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -698,6 +860,7 @@ namespace CommunalServices.forms
             this.Name = "MainForm";
             this.Text = "ЖКХ. Пользователь: ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlMain.ResumeLayout(false);
             this.tabPageConsumerCard.ResumeLayout(false);
             this.tabPageConsumerCard.PerformLayout();
@@ -717,6 +880,7 @@ namespace CommunalServices.forms
             this.tabPageAddressRegister.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddressRegister)).EndInit();
             this.tabPageConsumers.ResumeLayout(false);
+            this.tabPageConsumers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsumers)).EndInit();
             this.tabPagePayTrack.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPayTrack)).EndInit();
@@ -790,5 +954,19 @@ namespace CommunalServices.forms
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTypeOfServiceTrack;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnDeadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnDateOfPay;
+        private System.Windows.Forms.Button buttonEditService;
+        private System.Windows.Forms.Button buttonDeleteService;
+        private System.Windows.Forms.Button buttonAddService;
+        private System.Windows.Forms.Button buttonEditAddress;
+        private System.Windows.Forms.Button buttonDeleteAddress;
+        private System.Windows.Forms.Button buttonAddAddress;
+        private System.Windows.Forms.Button buttonEditConsumer;
+        private System.Windows.Forms.Button buttonDeleteConsumer;
+        private System.Windows.Forms.Button buttonAddConsumer;
+        private System.Windows.Forms.Button buttonOpenCustomerCard;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxSurname;
+        private System.Windows.Forms.TextBox textBoxName;
     }
 }

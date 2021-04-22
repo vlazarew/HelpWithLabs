@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
-    class ConsumerCardDAO
+    class PaymentsDAO
     {
-        public static List<ConsumerCard> getConsumerCardByConsumerId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        public static Payments getPaymentsByConsumerCardId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
-            List<ConsumerCard> result = new List<ConsumerCard>();
+            Payments result = null;
 
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
             MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
 
-            string query = "select * from consumer_card where consumer_card.consumer_id = @consumer_id";
+            string query = "select * from payments where payments.consumer_card_id = @consumer_card_id";
             MySqlCommand command = new MySqlCommand(query, connection, transaction);
 
-            command.Parameters.AddWithValue("@consumer_id", id);
+            command.Parameters.AddWithValue("@consumer_card_id", id);
 
             using (DbDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    result.Add(new ConsumerCard(reader.GetInt32(0), reader.GetDateTime(1), reader.GetInt32(2), reader.GetInt32(3)));
+                    result = new Payments(reader.GetInt32(0), reader.GetDateTime(1), reader.GetInt32(2), reader.GetFloat(3));
                 }
             }
 
@@ -44,23 +44,21 @@ namespace CommunalServices.daos
             return result;
         }
 
-        public static ConsumerCard getConsumerCardByConsumerCardId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        public static List<Payments> getPayments(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
-            ConsumerCard result = null;
+            List<Payments> result = new List<Payments>();
 
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
             MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
 
-            string query = "select * from consumer_card where consumer_card.id = @id";
+            string query = "select * from payments";
             MySqlCommand command = new MySqlCommand(query, connection, transaction);
-
-            command.Parameters.AddWithValue("@id", id);
 
             using (DbDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    result = new ConsumerCard(reader.GetInt32(0), reader.GetDateTime(1), reader.GetInt32(2), reader.GetInt32(3));
+                    result.Add(new Payments(reader.GetInt32(0), reader.GetDateTime(1), reader.GetInt32(2), reader.GetFloat(3)));
                 }
             }
 
@@ -76,5 +74,6 @@ namespace CommunalServices.daos
 
             return result;
         }
+
     }
 }

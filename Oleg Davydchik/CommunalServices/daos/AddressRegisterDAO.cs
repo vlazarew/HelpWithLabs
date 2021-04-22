@@ -43,6 +43,74 @@ namespace CommunalServices.daos
             }
         }
 
+        public static bool updateAddressRegister(AddressRegister addressRegister, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        {
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "update address_register set address_register.street = @street, address_register.house = @house, " +
+                "address_register.flat = @flat where address_register.id = @id";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            command.Parameters.AddWithValue("@id", addressRegister.id);
+            command.Parameters.AddWithValue("@street", addressRegister.street);
+            command.Parameters.AddWithValue("@house", addressRegister.house);
+            command.Parameters.AddWithValue("@flat", addressRegister.flat);
+
+            try
+            {
+                command.ExecuteNonQuery();
+                if (externalTransaction == null)
+                {
+                    transaction.Commit();
+                }
+
+                if (externalConnection == null)
+                {
+                    connection.Close();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool deleteAddressRegister(AddressRegister addressRegister, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
+        {
+            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
+            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
+
+            string query = "delete from address_register where address_register.street = @street and address_register.house = @house and " +
+                "address_register.flat = @flat and address_register.id = @id";
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
+
+            command.Parameters.AddWithValue("@id", addressRegister.id);
+            command.Parameters.AddWithValue("@street", addressRegister.street);
+            command.Parameters.AddWithValue("@house", addressRegister.house);
+            command.Parameters.AddWithValue("@flat", addressRegister.flat);
+
+            try
+            {
+                command.ExecuteNonQuery();
+                if (externalTransaction == null)
+                {
+                    transaction.Commit();
+                }
+
+                if (externalConnection == null)
+                {
+                    connection.Close();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static AddressRegister getAddressRegisterFromStreetHouseFlat(string street, string house, int flat, MySqlConnection externalConnection = null,
             MySqlTransaction externalTransaction = null)
         {

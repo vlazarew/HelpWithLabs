@@ -20,7 +20,7 @@ namespace CommunalServices
         private bool isCreatingByAdmin;
 
 
-        public RegisterForm(bool isCreatingByAdmin = false)
+        public RegisterForm(bool isCreatingByAdmin = false, Consumer consumer = null)
         {
             InitializeComponent();
             this.isCreatingByAdmin = isCreatingByAdmin;
@@ -51,6 +51,11 @@ namespace CommunalServices
                 MainForm mainForm = new MainForm(consumer);
                 mainForm.Show();
                 this.Hide();
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
@@ -96,12 +101,18 @@ namespace CommunalServices
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (!this.isCreatingByAdmin)
+            {
+                Application.Exit();
+            }
         }
 
         private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (!this.isCreatingByAdmin)
+            {
+                Application.Exit();
+            }
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
