@@ -9,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
+    /// <summary>
+    /// DAO = Data Access Odject
+    /// Класс для взаимодействия класса Credentials в коде с ее реализацией в БД
+    /// </summary>
     class CredentialsDAO
     {
+        /// <summary>
+        /// Сохранить учетные данные
+        /// </summary>
+        /// <param name="credentials">Учетные данные</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>true - успех, false - провал</returns>
         public static bool saveCredentials(Credentials credentials, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
@@ -42,6 +53,13 @@ namespace CommunalServices.daos
             }
         }
 
+        /// <summary>
+        /// Получить учетные данные по логину
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Найденные учетные данные</returns>
         public static Credentials getCredentialsByLogin(string login, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             Credentials result = null;
@@ -74,6 +92,14 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить учетные данные по логину/паролю
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="password">Пароль</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Найденные учетные данные</returns>
         public static Credentials getCredentialsByLoginAndPassword(string login, string password, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             Credentials result = null;

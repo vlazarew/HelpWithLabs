@@ -16,6 +16,7 @@ namespace CommunalServices
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Входная точка приложения (форма логина)
             Application.Run(new LoginForm());
         }
     }

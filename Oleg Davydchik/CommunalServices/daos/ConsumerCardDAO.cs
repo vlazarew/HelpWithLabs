@@ -9,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
+    /// <summary>
+    /// DAO = Data Access Odject
+    /// Класс для взаимодействия класса ConsumerCard в коде с ее реализацией в БД
+    /// </summary>
     class ConsumerCardDAO
     {
+        /// <summary>
+        /// Получить карточку клиента по id клиента
+        /// </summary>
+        /// <param name="id">id клиента</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Список карточек указанного клиента</returns>
         public static List<ConsumerCard> getConsumerCardByConsumerId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<ConsumerCard> result = new List<ConsumerCard>();
@@ -44,6 +55,13 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить карточку клиента по id карточки клиента
+        /// </summary>
+        /// <param name="id">id карточки клиента</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Карта клиента</returns>
         public static ConsumerCard getConsumerCardByConsumerCardId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             ConsumerCard result = null;

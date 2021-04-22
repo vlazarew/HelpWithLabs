@@ -9,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
+    /// <summary>
+    /// DAO = Data Access Odject
+    /// Класс для взаимодействия класса TypeOfService в коде с ее реализацией в БД
+    /// </summary>
     class TypeOfServiceDAO
     {
+        /// <summary>
+        /// Получение вид сервиса по id карты клиента
+        /// </summary>
+        /// <param name="id">id карты клиента</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Вид сервиса</returns>
         public static TypeOfService getTypeOfServiceByConsumerCardId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             TypeOfService result = null;
@@ -45,6 +56,14 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить вид сервиса по имени и стоимости
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="cost">Стоимость</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Найденный вид сервиса</returns>
         public static TypeOfService getTypeOfServiceByNameAndCost(string name, float cost, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             TypeOfService result = null;
@@ -80,6 +99,12 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить все виды сервиса
+        /// </summary>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Все виды сервисов</returns>
         public static List<TypeOfService> getTypesOfServices(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<TypeOfService> result = new List<TypeOfService>();
@@ -111,6 +136,13 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Сохранить вид сервиса
+        /// </summary>
+        /// <param name="typeOfService">Новый вид сервиса</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>true - успех, false - провал</returns>
         public static bool saveTypeOfService(TypeOfService typeOfService, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
@@ -142,6 +174,13 @@ namespace CommunalServices.daos
             }
         }
 
+        /// <summary>
+        /// Обновить вид сервиса
+        /// </summary>
+        /// <param name="typeOfService">Обновляемый вид сервиса</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>true - успех, false - провал</returns>
         public static bool updateTypeOfService(TypeOfService typeOfService, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
@@ -174,6 +213,13 @@ namespace CommunalServices.daos
             }
         }
 
+        /// <summary>
+        /// Удалить вид сервиса
+        /// </summary>
+        /// <param name="typeOfService">Удаляемый вид сервиса</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>true - успех, false - провал</returns>
         public static bool deleteTypeOfService(TypeOfService typeOfService, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();

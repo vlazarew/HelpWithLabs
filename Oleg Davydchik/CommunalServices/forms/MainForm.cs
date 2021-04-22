@@ -15,16 +15,21 @@ using System.Windows.Forms;
 
 namespace CommunalServices.forms
 {
+    /// <summary>
+    /// Главная форма приложения
+    /// </summary>
     public partial class MainForm : Form
     {
+        // Текущий пользователь
         private Consumer currentConsumer;
+        // Открыто извне как карточка пользоватля
         private bool externalOpen = false;
-
 
         public MainForm(Consumer consumer, bool externalOpen = false)
         {
             this.currentConsumer = consumer;
             InitializeComponent();
+            // В заголовок формы добавляем имя + фамилию
             this.Text += (consumer.name + " " + consumer.surname);
             this.labelName.Text = consumer.name;
             this.labelSurname.Text = consumer.surname;
@@ -32,6 +37,7 @@ namespace CommunalServices.forms
             this.externalOpen = externalOpen;
         }
 
+        // Если открыто не как внешнее окно, то выключаем приложение
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!externalOpen)
@@ -40,10 +46,15 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Карточка Клиента
         private void tabPageConsumerCard_Enter(object sender, EventArgs e)
         {
             float balance = 0;
+
+            // Очищаем таблицу
             dataGridViewConsumerCard.Rows.Clear();
+
+            // Заполняем данными
             List<ConsumerCard> consumerCards = ConsumerCardDAO.getConsumerCardByConsumerId(currentConsumer.id);
             for (int i = 0; i < consumerCards.Count; i++)
             {
@@ -53,12 +64,17 @@ namespace CommunalServices.forms
                 dataGridViewConsumerCard.Rows[i].Selected = false;
                 balance += (payments.payed - typeOfService.cost);
             }
+            // Изменяем состояние баланса
             labelBalance.Text = balance.ToString();
         }
 
+        // Когда активна вкладка Ведомость Оплат
         private void tabPageReportPayment_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewReport.Rows.Clear();
+
+            // Заполняем данными
             List<PaymentReport> paymentReports = ReportResolver.getPaymentReport();
             for (int i = 0; i < paymentReports.Count; i++)
             {
@@ -68,9 +84,13 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Объем услуг
         private void tabPageValueOfServices_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewValueOfServices.Rows.Clear();
+
+            // Заполняем данными
             List<ValueOfServices> valueOfServices = ReportResolver.getValueOfServices();
             for (int i = 0; i < valueOfServices.Count; i++)
             {
@@ -79,9 +99,13 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Ведомость должников
         private void tabPageReportDebtor_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewDebtor.Rows.Clear();
+
+            // Заполняем данными
             List<ReportDebtor> reportDebtors = ReportResolver.getReportDebtor();
             for (int i = 0; i < reportDebtors.Count; i++)
             {
@@ -90,9 +114,13 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Виды услуг
         private void tabPageTypesOfServices_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewTypesOfServices.Rows.Clear();
+
+            // Заполняем данными
             List<TypeOfService> typeOfServices = TypeOfServiceDAO.getTypesOfServices();
             for (int i = 0; i < typeOfServices.Count; i++)
             {
@@ -101,9 +129,13 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Адреса
         private void tabPageAddressRegister_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewAddressRegister.Rows.Clear();
+
+            // Заполняем данными
             List<AddressRegister> addressRegisters = AddressRegisterDAO.getAddressRegisters();
             for (int i = 0; i < addressRegisters.Count; i++)
             {
@@ -112,9 +144,13 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Клиенты
         private void tabPageConsumers_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewConsumers.Rows.Clear();
+
+            // Заполняем данными
             List<Consumer> consumers = ConsumerDAO.getConsumersByTemplate(textBoxName.Text.Trim(), textBoxSurname.Text.Trim());
             for (int i = 0; i < consumers.Count; i++)
             {
@@ -126,9 +162,13 @@ namespace CommunalServices.forms
             }
         }
 
+        // Когда активна вкладка Учет оплат
         private void tabPagePayTrack_Enter(object sender, EventArgs e)
         {
+            // Очищаем таблицу
             dataGridViewPayTrack.Rows.Clear();
+
+            // Заполняем данными
             List<Payments> payments = PaymentsDAO.getPayments();
             for (int i = 0; i < payments.Count; i++)
             {
@@ -140,6 +180,7 @@ namespace CommunalServices.forms
             }
         }
 
+        // Делаем авто переключение на первуб подвкладку (может быть пролаг из-за этого, но все свойства зато отрабатывают)
         private void tabControlMain_Click(object sender, EventArgs e)
         {
             if (tabControlMain.SelectedIndex == 1)
@@ -154,24 +195,33 @@ namespace CommunalServices.forms
             }
         }
 
+        // Добавление Вида услуг
         private void buttonAddService_Click(object sender, EventArgs e)
         {
+            // Создаем вспомогательную форму
             TypeOfServiceForm typeOfServiceForm = new TypeOfServiceForm();
             DialogResult result = typeOfServiceForm.ShowDialog();
+
+            // Если результат ОК, то перезагрузим таблицу (для обновления данных)
             if (result == DialogResult.OK)
             {
                 tabPageTypesOfServices_Enter(sender, e);
             }
         }
 
+        // Обновление Вида услуг
         private void buttonEditService_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewTypesOfServices.SelectedRows.Count == 1)
             {
+                // Создаем вспомогательную форму
                 DataGridViewRow row = dataGridViewTypesOfServices.SelectedRows[0];
                 TypeOfServiceForm typeOfServiceForm = new TypeOfServiceForm(TypeOfServiceDAO.getTypeOfServiceByNameAndCost(row.Cells[0].Value.ToString(),
                     float.Parse(row.Cells[1].Value.ToString())));
                 DialogResult result = typeOfServiceForm.ShowDialog();
+
+                // Если результат ОК, то перезагрузим таблицу (для обновления данных)
                 if (result == DialogResult.OK)
                 {
                     tabPageTypesOfServices_Enter(sender, e);
@@ -179,11 +229,15 @@ namespace CommunalServices.forms
             }
         }
 
+        // Удаление Вида Услуг
         private void buttonDeleteService_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewTypesOfServices.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = dataGridViewTypesOfServices.SelectedRows[0];
+
+                // перезагрузим таблицу (для обновления данных)
                 if (TypeOfServiceDAO.deleteTypeOfService(TypeOfServiceDAO.getTypeOfServiceByNameAndCost(row.Cells[0].Value.ToString(),
                     float.Parse(row.Cells[1].Value.ToString()))))
                 {
@@ -192,24 +246,33 @@ namespace CommunalServices.forms
             }
         }
 
+        // Добавление Адреса
         private void buttonAddAddress_Click(object sender, EventArgs e)
         {
+            // Создаем вспомогательную форму
             AddressRegisterForm addressRegisterForm = new AddressRegisterForm();
             DialogResult result = addressRegisterForm.ShowDialog();
+
+            // Если результат ОК, то перезагрузим таблицу (для обновления данных)
             if (result == DialogResult.OK)
             {
                 tabPageAddressRegister_Enter(sender, e);
             }
         }
 
+        // Изменение Адреса
         private void buttonEditAddress_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewAddressRegister.SelectedRows.Count == 1)
             {
+                // Создаем вспомогательную форму
                 DataGridViewRow row = dataGridViewAddressRegister.SelectedRows[0];
                 AddressRegisterForm addressRegisterForm = new AddressRegisterForm(AddressRegisterDAO.getAddressRegisterFromStreetHouseFlat(row.Cells[0].Value.ToString(),
                     row.Cells[1].Value.ToString(), int.Parse(row.Cells[2].Value.ToString())));
                 DialogResult result = addressRegisterForm.ShowDialog();
+
+                // Если результат ОК, то перезагрузим таблицу (для обновления данных)
                 if (result == DialogResult.OK)
                 {
                     tabPageAddressRegister_Enter(sender, e);
@@ -217,11 +280,15 @@ namespace CommunalServices.forms
             }
         }
 
+        // Удаление Адреса
         private void buttonDeleteAddress_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewAddressRegister.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = dataGridViewAddressRegister.SelectedRows[0];
+
+                // перезагрузим таблицу (для обновления данных)
                 if (AddressRegisterDAO.deleteAddressRegister(AddressRegisterDAO.getAddressRegisterFromStreetHouseFlat(row.Cells[0].Value.ToString(),
                     row.Cells[1].Value.ToString(), int.Parse(row.Cells[2].Value.ToString()))))
                 {
@@ -230,25 +297,34 @@ namespace CommunalServices.forms
             }
         }
 
+        // Добавление клиента
         private void buttonAddConsumer_Click(object sender, EventArgs e)
         {
+            // Создаем вспомогательную форму
             RegisterForm registerForm = new RegisterForm(true);
             DialogResult result = registerForm.ShowDialog();
+
+            // Если результат ОК, то перезагрузим таблицу (для обновления данных)
             if (result == DialogResult.OK)
             {
                 tabPageConsumers_Enter(sender, e);
             }
         }
 
+        // Изменение клиента
         private void buttonEditConsumer_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewConsumers.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = dataGridViewConsumers.SelectedRows[0];
                 Consumer consumer = ConsumerDAO.getConsumerByNameSurname(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString());
 
+                // Создаем вспомогательную форму
                 ConsumerEditForm consumerEditForm = new ConsumerEditForm(consumer);
                 DialogResult result = consumerEditForm.ShowDialog();
+
+                // Если результат ОК, то перезагрузим таблицу (для обновления данных)
                 if (result == DialogResult.OK)
                 {
                     tabPageConsumers_Enter(sender, e);
@@ -256,13 +332,16 @@ namespace CommunalServices.forms
             }
         }
 
+        // Удаление клиента
         private void buttonDeleteConsumer_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewConsumers.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = dataGridViewConsumers.SelectedRows[0];
                 Consumer consumer = ConsumerDAO.getConsumerByNameSurname(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString());
 
+                // перезагрузим таблицу (для обновления данных)
                 if (ConsumerDAO.deleteConsumer(consumer))
                 {
                     tabPageConsumers_Enter(sender, e);
@@ -272,6 +351,7 @@ namespace CommunalServices.forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // Настройки приватности для обыкновеного клиета (скрыто все)
             if (this.currentConsumer.typeOfConsumerId == 1)
             {
                 tabControlAdditionalReport.Visible = false;
@@ -281,23 +361,28 @@ namespace CommunalServices.forms
             }
         }
 
+        // Открыть карту клиента выбранного пользователя
         private void buttonOpenCustomerCard_Click(object sender, EventArgs e)
         {
+            // Если выделена одна строчка
             if (dataGridViewConsumers.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = dataGridViewConsumers.SelectedRows[0];
                 Consumer consumer = ConsumerDAO.getConsumerByNameSurname(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString());
 
+                // Создаем вспомогательную форму
                 MainForm mainForm = new MainForm(consumer, true);
                 mainForm.ShowDialog();
             }
         }
 
+        // Для динамического отбора среди пользователей
         private void textBoxSurname_TextChanged(object sender, EventArgs e)
         {
             tabPageConsumers_Enter(sender, e);
         }
 
+        // Для динамического отбора среди пользователей
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             tabPageConsumers_Enter(sender, e);

@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace CommunalServices.forms
 {
+    /// <summary>
+    /// Класс для изменения Клиента
+    /// </summary>
     public partial class ConsumerEditForm : Form
     {
         Consumer consumer = null;
@@ -20,6 +23,7 @@ namespace CommunalServices.forms
         {
             InitializeComponent();
             this.consumer = consumer;
+            // Отрисовка данных на форме
             if (this.consumer != null)
             {
                 textBoxName.Text = consumer.name;
@@ -47,6 +51,7 @@ namespace CommunalServices.forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            // Изменяем объект и обновляем его
             this.consumer.name = textBoxName.Text.Trim();
             this.consumer.surname = textBoxSurname.Text.Trim();
             this.consumer.typeOfConsumerId = radioButtonAdmin.Checked ? 0 : 1;

@@ -9,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
+    /// <summary>
+    /// DAO = Data Access Odject
+    /// Класс для взаимодействия класса Payments в коде с ее реализацией в БД
+    /// </summary>
     class PaymentsDAO
     {
+        /// <summary>
+        /// Получить выплаты по id карты клиента
+        /// </summary>
+        /// <param name="id">id карты клиента</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Объект Выплаты</returns>
         public static Payments getPaymentsByConsumerCardId(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             Payments result = null;
@@ -44,6 +55,12 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить все выплаты в БД
+        /// </summary>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Все выплаты в БД</returns>
         public static List<Payments> getPayments(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<Payments> result = new List<Payments>();

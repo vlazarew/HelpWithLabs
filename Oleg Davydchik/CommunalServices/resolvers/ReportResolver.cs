@@ -9,14 +9,24 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.resolvers
 {
+    /// <summary>
+    /// Структура для отчета по "Ведомость оплат"
+    /// </summary>
     struct PaymentReport
     {
+        // вид услуги
         public string typeOfService { get; set; }
+        // id плательщика
         public int consumerId { get; set; }
+        // улица
         public string street { get; set; }
+        // дом
         public string house { get; set; }
+        // квартира
         public int flat { get; set; }
+        // дата оплаты
         public DateTime dateOfPay { get; set; }
+        // крайний срок
         public DateTime deadline { get; set; }
 
         public PaymentReport(string typeOfService, int consumerId, string street, string house, int flat, DateTime dateOfPay, DateTime deadline)
@@ -31,12 +41,20 @@ namespace CommunalServices.resolvers
         }
     }
 
+    /// <summary>
+    /// Структура для отчета по "Объемы услуг"
+    /// </summary>
     struct ValueOfServices
     {
+        // вид сервиса
         public string typeOfService { get; set; }
+        // id плательщика
         public int consumerId { get; set; }
+        // улица
         public string street { get; set; }
+        // дом
         public string house { get; set; }
+        // квартира
         public int flat { get; set; }
 
         public ValueOfServices(string typeOfService, int consumerId, string street, string house, int flat)
@@ -49,11 +67,18 @@ namespace CommunalServices.resolvers
         }
     }
 
+    /// <summary>
+    /// Структура для отчета по "Ведомость должников"
+    /// </summary>
     struct ReportDebtor
     {
+        // вид услуги
         public string typeOfService { get; set; }
+        // id плательщика
         public int consumerId { get; set; }
+        // дата оплаты
         public DateTime dateOfPay { get; set; }
+        // крайний срок
         public DateTime deadline { get; set; }
 
         public ReportDebtor(string typeOfService, int consumerId, DateTime dateOfPay, DateTime deadline)
@@ -65,8 +90,17 @@ namespace CommunalServices.resolvers
         }
     }
 
+    /// <summary>
+    /// Класс для обработки всех отчетов
+    /// </summary>
     class ReportResolver
     {
+        /// <summary>
+        /// Получить отчет "Ведомость оплат"
+        /// </summary>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Отчет "Ведомость оплат"</returns>
         public static List<PaymentReport> getPaymentReport(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<PaymentReport> result = new List<PaymentReport>();
@@ -107,6 +141,12 @@ namespace CommunalServices.resolvers
         }
 
 
+        /// <summary>
+        /// Получить отчет "Объемы услуг"
+        /// </summary>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Отчет "Объемы услуг"</returns>
         public static List<ValueOfServices> getValueOfServices(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<ValueOfServices> result = new List<ValueOfServices>();
@@ -144,6 +184,12 @@ namespace CommunalServices.resolvers
             return result;
         }
 
+        /// <summary>
+        /// Получить отчет "Ведомость должников"
+        /// </summary>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Отчет "Ведомость должников"</returns>
         public static List<ReportDebtor> getReportDebtor(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<ReportDebtor> result = new List<ReportDebtor>();

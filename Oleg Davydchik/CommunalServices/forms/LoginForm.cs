@@ -26,6 +26,7 @@ namespace CommunalServices
         }
 
         #region События
+        // При нажатии на регистрацию переходим в форму регистрации
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();
@@ -33,11 +34,14 @@ namespace CommunalServices
             this.Hide();
         }
 
+        // При нажатии на логин
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            // Получаем учетные данные на основе введенных
             Credentials credentials = CredentialsDAO.getCredentialsByLoginAndPassword(textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
             labelBadLogin.Visible = credentials == null;
 
+            // Если норм данные, то получаем клиента и запускам главную форму
             if (credentials != null)
             {
                 Consumer consumer = ConsumerDAO.getConsumerByCredentialsId(credentials.id);
@@ -47,11 +51,13 @@ namespace CommunalServices
             }
         }
 
+        // Логин доступен, если введен логин/пароль
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
         {
             buttonLogin.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0;
         }
 
+        // Логин доступен, если введен логин/пароль
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
         {
             buttonLogin.Enabled = textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0;

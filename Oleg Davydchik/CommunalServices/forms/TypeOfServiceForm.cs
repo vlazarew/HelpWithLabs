@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace CommunalServices.forms
 {
+    /// <summary>
+    /// Форма для создания/изменения видов услуг
+    /// </summary>
     public partial class TypeOfServiceForm : Form
     {
         TypeOfService typeOfService;
@@ -20,6 +23,8 @@ namespace CommunalServices.forms
         {
             InitializeComponent();
             this.typeOfService = typeOfService;
+
+            // Отрисовка данных при изменении объекта
             if (this.typeOfService != null)
             {
                 textBoxName.Text = typeOfService.name;
@@ -35,6 +40,7 @@ namespace CommunalServices.forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            // Пытаемся привести стоимость к типу float
             float cost = 0;
             try
             {
@@ -46,6 +52,7 @@ namespace CommunalServices.forms
                 return;
             }
 
+            // Если у нас добавление, то сохраняем в бд
             if (this.typeOfService == null)
             {
                 if (!TypeOfServiceDAO.saveTypeOfService(new TypeOfService(textBoxName.Text.Trim(), cost)))
@@ -55,6 +62,7 @@ namespace CommunalServices.forms
             }
             else
             {
+                // Иначе меняем объект и обновляем его
                 this.typeOfService.cost = cost;
                 this.typeOfService.name = textBoxName.Text.Trim();
                 if (!TypeOfServiceDAO.updateTypeOfService(this.typeOfService))

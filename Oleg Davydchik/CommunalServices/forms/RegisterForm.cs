@@ -14,31 +14,42 @@ using System.Windows.Forms;
 
 namespace CommunalServices
 {
+    /// <summary>
+    /// Форма регистрации в приложении
+    /// </summary>
     public partial class RegisterForm : Form
     {
+        // Флажок на "Логин уже занят"
         private bool loginAlreadyExists = false;
+        // Создание при помощи админа (выбор ролей)
         private bool isCreatingByAdmin;
 
 
         public RegisterForm(bool isCreatingByAdmin = false, Consumer consumer = null)
         {
             InitializeComponent();
+            // По умолчанию - ложь
             this.isCreatingByAdmin = isCreatingByAdmin;
+            // По умолчанию - ложь
             this.groupBoxTypeOfUser.Visible = isCreatingByAdmin;
+            // // По умолчанию - тип пользователя = "Клиент"
             this.radioButtonConsumer.Checked = true;
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
+            // Собираем все введенные телефонные номера в список
             List<string> numbers = new List<string>();
             foreach (DataGridViewRow row in dataGridViewPhoneNumbers.Rows)
             {
                 if (row.Cells[0].Value != null)
                 {
+                    // Обрезаем их справа и слева от пробелов
                     numbers.Add(row.Cells[0].Value.ToString().Trim());
                 }
             }
 
+            // Сохраняем и регистрируем пользователя
             CredentialsResolver.createCredentialsAndConsumer(textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim(),
                 textBoxStreet.Text.Trim(), textBoxHouse.Text.Trim(), Int32.Parse(textBoxFlat.Text.Trim()),
                 numbers, radioButtonAdmin.Checked, textBoxName.Text.Trim(), textBoxSurname.Text.Trim());
@@ -46,6 +57,7 @@ namespace CommunalServices
             Credentials credentials = CredentialsDAO.getCredentialsByLoginAndPassword(textBoxLogin.Text.Trim(), textBoxPassword.Text.Trim());
             Consumer consumer = ConsumerDAO.getConsumerByCredentialsId(credentials.id);
 
+            // Если была настоящая регистрация незнакомцем, то включим ему главную форму
             if (!this.isCreatingByAdmin)
             {
                 MainForm mainForm = new MainForm(consumer);
@@ -54,11 +66,13 @@ namespace CommunalServices
             }
             else
             {
+                // Если админ - просто закроем форму
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
 
+        // Условие доступности кнопки "Зарегистрироваться"
         private bool isRegisterEnabled()
         {
             return textBoxLogin.Text.Length != 0 && textBoxPassword.Text.Length != 0 && !loginAlreadyExists
@@ -66,6 +80,7 @@ namespace CommunalServices
                 && textBoxHouse.Text.Length != 0 && textBoxFlat.Text.Length != 0 && numbersAreFilled();
         }
 
+        // Проверка, что введен хотя бы один телефонный номер
         private bool numbersAreFilled()
         {
             bool result = false;
@@ -80,6 +95,7 @@ namespace CommunalServices
             return result;
         }
 
+        // Провека на занятый логин при измении текстового поля ЛОГИН
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
         {
             Credentials potentialCredentials = CredentialsDAO.getCredentialsByLogin(textBoxLogin.Text.Trim());
@@ -87,6 +103,33 @@ namespace CommunalServices
             labelLoginExists.Visible = loginAlreadyExists;
 
             buttonRegister.Enabled = isRegisterEnabled();
+        }
+
+        // Снимаем выделение со всех строк в таблице с номерами телефонов
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewPhoneNumbers.Rows)
+            {
+                row.Selected = false;
+            }
+        }
+
+        // Выключаем приложение, если окно не создано админом
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            if (!this.isCreatingByAdmin)
+            {
+                Application.Exit();
+            }
+        }
+
+        // Выключаем приложение, если окно не создано админом
+        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!this.isCreatingByAdmin)
+            {
+                Application.Exit();
+            }
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
@@ -97,22 +140,6 @@ namespace CommunalServices
         private void textBoxKey_TextChanged(object sender, EventArgs e)
         {
             buttonRegister.Enabled = isRegisterEnabled();
-        }
-
-        private void buttonExit_Click(object sender, EventArgs e)
-        {
-            if (!this.isCreatingByAdmin)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (!this.isCreatingByAdmin)
-            {
-                Application.Exit();
-            }
         }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
@@ -153,14 +180,6 @@ namespace CommunalServices
         private void dataGridViewPhoneNumbers_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             buttonRegister.Enabled = isRegisterEnabled();
-        }
-
-        private void RegisterForm_Load(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dataGridViewPhoneNumbers.Rows)
-            {
-                row.Selected = false;
-            }
         }
 
         private void dataGridViewPhoneNumbers_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)

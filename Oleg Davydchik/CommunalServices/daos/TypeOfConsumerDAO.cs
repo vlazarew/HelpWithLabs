@@ -9,8 +9,17 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
+    /// <summary>
+    /// DAO = Data Access Odject
+    /// Класс для взаимодействия класса TypeOfConsumer в коде с ее реализацией в БД
+    /// </summary>
     class TypeOfConsumerDAO
     {
+        /// <summary>
+        /// Проверка, есть ли стандартные типы клиентов в БД
+        /// </summary>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
         public static void checkTypesOfConsumer(MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             bool needToGenerate = false;
@@ -31,12 +40,25 @@ namespace CommunalServices.daos
             }
         }
 
+        /// <summary>
+        /// Создание Типов "Администратор" и "Клиент"
+        /// </summary>
+        /// <param name="connection">Cоединение с БД</param>
+        /// <param name="transaction">Nранзакция, которая будет навешиваться на команду</param>
         private static void generateDefaultTypesOfCustomer(MySqlConnection connection, MySqlTransaction transaction)
         {
             saveTypeOfConsumer("Администратор", 0, connection, transaction);
             saveTypeOfConsumer("Клиент", 1, connection, transaction);
         }
 
+        /// <summary>
+        /// Сохранение типа Клиента в БД
+        /// </summary>
+        /// <param name="value">Значение типа</param>
+        /// <param name="id">id типа</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>true - успех, false - провал</returns>
         public static bool saveTypeOfConsumer(string value, int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
@@ -68,6 +90,13 @@ namespace CommunalServices.daos
             }
         }
 
+        /// <summary>
+        /// Получить тип клиента по id типа
+        /// </summary>
+        /// <param name="id">id типа клиента</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Найденный тип</returns>
         public static TypeOfConsumer getTypeOfConsumerById(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             TypeOfConsumer result = null;

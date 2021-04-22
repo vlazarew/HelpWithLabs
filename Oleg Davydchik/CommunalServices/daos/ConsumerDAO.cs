@@ -9,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace CommunalServices.daos
 {
+    /// <summary>
+    /// DAO = Data Access Odject
+    /// Класс для взаимодействия класса Consumer в коде с ее реализацией в БД
+    /// </summary>
     static class ConsumerDAO
     {
+        /// <summary>
+        /// Получить клиента по id его учетных данных
+        /// </summary>
+        /// <param name="credentialsId">id учетных данных</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Объект Клиент</returns>
         public static Consumer getConsumerByCredentialsId(int credentialsId, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             Consumer result = null;
@@ -44,6 +55,13 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Сохранить клиента
+        /// </summary>
+        /// <param name="consumer">Объект клиент</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>True - если успех, false - провал</returns>
         public static bool saveConsumer(Consumer consumer, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
@@ -79,6 +97,13 @@ namespace CommunalServices.daos
             }
         }
 
+        /// <summary>
+        /// Обновление Клиента
+        /// </summary>
+        /// <param name="consumer">Объект Клиент к обновлению</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>True - успех, false - провал</returns>
         public static bool updateConsumer(Consumer consumer, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
@@ -113,41 +138,14 @@ namespace CommunalServices.daos
             }
         }
 
-        public static Consumer getConsumerByNameSurnameCredentials(string name, string surname, int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
-        {
-            Consumer result = null;
-
-            MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();
-            MySqlTransaction transaction = externalTransaction != null ? externalTransaction : connection.BeginTransaction();
-
-            string query = "select * from consumer where consumer.credentials_id = @credentialsId and consumer.name = @name and consumer.surname = @surname";
-            MySqlCommand command = new MySqlCommand(query, connection, transaction);
-
-            command.Parameters.AddWithValue("@credentialsId", id);
-            command.Parameters.AddWithValue("@name", name);
-            command.Parameters.AddWithValue("@surname", surname);
-
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    result = new Consumer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5));
-                }
-            }
-
-            if (externalTransaction == null)
-            {
-                transaction.Commit();
-            }
-
-            if (externalConnection == null)
-            {
-                connection.Close();
-            }
-
-            return result;
-        }
-
+        /// <summary>
+        /// Получить список Клиентов по части имени/фамилии
+        /// </summary>
+        /// <param name="name">Часть имени</param>
+        /// <param name="surname">Часть фамилии</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Список найденных Клиентов</returns>
         public static List<Consumer> getConsumersByTemplate(string name, string surname, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             List<Consumer> result = new List<Consumer>();
@@ -179,6 +177,13 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить клиента по его id
+        /// </summary>
+        /// <param name="id">id клиента</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Найденный клиент</returns>
         public static Consumer getConsumerById(int id, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             Consumer result = null;
@@ -212,6 +217,14 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Получить клиента по его имени/фамилии
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>Найденный клиент</returns>
         public static Consumer getConsumerByNameSurname(string name, string surname, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             Consumer result = null;
@@ -246,6 +259,13 @@ namespace CommunalServices.daos
             return result;
         }
 
+        /// <summary>
+        /// Удаление Клиента
+        /// </summary>
+        /// <param name="consumer">Удаляемый клиент</param>
+        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
+        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <returns>true - успех, false - провал</returns>
         public static bool deleteConsumer(Consumer consumer, MySqlConnection externalConnection = null, MySqlTransaction externalTransaction = null)
         {
             MySqlConnection connection = externalConnection != null ? externalConnection : MySQLDAO.createConnect();

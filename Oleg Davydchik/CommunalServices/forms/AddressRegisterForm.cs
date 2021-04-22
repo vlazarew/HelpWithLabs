@@ -12,14 +12,22 @@ using System.Windows.Forms;
 
 namespace CommunalServices.forms
 {
+    /// <summary>
+    /// Форма для добавления/изменения адреса
+    /// </summary>
     public partial class AddressRegisterForm : Form
     {
         AddressRegister addressRegister;
 
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="addressRegister">адрес для изменения</param>
         public AddressRegisterForm(AddressRegister addressRegister = null)
         {
             InitializeComponent();
             this.addressRegister = addressRegister;
+            // Заполняем форму, если мы изменяем адрес
             if (this.addressRegister != null)
             {
                 textBoxStreet.Text = addressRegister.street;
@@ -28,14 +36,17 @@ namespace CommunalServices.forms
             }
         }
 
+        // Нажимаем отмену и закрываем форму
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
+        // Нажимаем ОК
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            // Пытаемся получить значение квартиры
             int flat = 0;
             try
             {
@@ -47,6 +58,7 @@ namespace CommunalServices.forms
                 return;
             }
 
+            // Если сохранение, то сохраняем
             if (this.addressRegister == null)
             {
                 if (!AddressRegisterDAO.saveAddressRegister(new AddressRegister(textBoxStreet.Text.Trim(), textBoxHouse.Text.Trim(), flat)))
@@ -56,6 +68,7 @@ namespace CommunalServices.forms
             }
             else
             {
+                // Иначе изменяем полученный объект и обновляем его в БД
                 this.addressRegister.flat = flat;
                 this.addressRegister.street = textBoxStreet.Text.Trim();
                 this.addressRegister.house = textBoxHouse.Text.Trim();
@@ -65,6 +78,7 @@ namespace CommunalServices.forms
                 }
             }
 
+            // Закрываем форму
             DialogResult = DialogResult.OK;
             this.Close();
         }
