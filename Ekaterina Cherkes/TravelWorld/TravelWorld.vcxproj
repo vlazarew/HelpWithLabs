@@ -135,6 +135,11 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CountryDAO.h" />
+    <ClInclude Include="Credentials.h" />
+    <ClInclude Include="CredentialsDAO.h" />
+    <ClInclude Include="Hotel.h" />
+    <ClInclude Include="HotelDAO.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -144,11 +149,14 @@
     <ClInclude Include="MySQLDAO.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="readme.txt" />
+    <ClInclude Include="Schedule.h" />
+    <ClInclude Include="ScheduleDAO.h" />
     <ClInclude Include="WorldRegion.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TravelWorld.h" />
     <ClInclude Include="WorldRegionDAO.h" />
+    <ClInclude Include="Country.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />

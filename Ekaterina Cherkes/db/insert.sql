@@ -1,22 +1,22 @@
-insert into hotel_traveller.region (name) values ('Азия');
-insert into hotel_traveller.region (name) values ('Европа');
-insert into hotel_traveller.region (name) values ('Ближний восток');
-insert into hotel_traveller.region (name) values ('Латинская Америка');
+insert into hotel_traveller.region (name) values ('Asia');
+insert into hotel_traveller.region (name) values ('Europe');
+insert into hotel_traveller.region (name) values ('Near East');
+insert into hotel_traveller.region (name) values ('Latin America');
 
-insert into hotel_traveller.country (name, region_id) values ('Таиланд', 1);
-insert into hotel_traveller.country (name, region_id) values ('Вьетнам', 1);
-insert into hotel_traveller.country (name, region_id) values ('Мальдивы', 1);
-insert into hotel_traveller.country (name, region_id) values ('Великобритания', 2);
-insert into hotel_traveller.country (name, region_id) values ('Германия', 2);
-insert into hotel_traveller.country (name, region_id) values ('Франция', 2);
-insert into hotel_traveller.country (name, region_id) values ('Испания', 2);
-insert into hotel_traveller.country (name, region_id) values ('Италия', 2);
-insert into hotel_traveller.country (name, region_id) values ('Швейцария', 2);
-insert into hotel_traveller.country (name, region_id) values ('Египет', 3);
-insert into hotel_traveller.country (name, region_id) values ('Кипр', 3);
-insert into hotel_traveller.country (name, region_id) values ('Израиль', 3);
-insert into hotel_traveller.country (name, region_id) values ('Доминикана', 4);
-insert into hotel_traveller.country (name, region_id) values ('Куба', 4);
+insert into hotel_traveller.country (name, region_id) values ('Thailand', 1);
+insert into hotel_traveller.country (name, region_id) values ('Vietnam', 1);
+insert into hotel_traveller.country (name, region_id) values ('Maldives', 1);
+insert into hotel_traveller.country (name, region_id) values ('UK', 2);
+insert into hotel_traveller.country (name, region_id) values ('Germany', 2);
+insert into hotel_traveller.country (name, region_id) values ('France', 2);
+insert into hotel_traveller.country (name, region_id) values ('Spain', 2);
+insert into hotel_traveller.country (name, region_id) values ('Italy', 2);
+insert into hotel_traveller.country (name, region_id) values ('Switzerland', 2);
+insert into hotel_traveller.country (name, region_id) values ('Egypt', 3);
+insert into hotel_traveller.country (name, region_id) values ('Cyprus', 3);
+insert into hotel_traveller.country (name, region_id) values ('Israel', 3);
+insert into hotel_traveller.country (name, region_id) values ('Dominican Republic', 4);
+insert into hotel_traveller.country (name, region_id) values ('Cuba', 4);
 
 insert into hotel_traveller.hotel (name, rating, description, country_id) values ('Garden Sea View Resort', 4, 'Путешествующие туристы уже давно сошлись во мнении, что Таиланд – страна, которая вобрала в себя лучшее, что есть в Азии. Доброжелательность населения, комфортный отдых, разнообразие развлечений… В Таиланде есть все!
  Желаете активной ночной жизни, добро пожаловать в Паттайю, размеренный отдых в Таиланде можно найти на острове Самуи, хочется вечеринок и «угара» - прекрасно подойдет Пхукет. И в любом случае все будет сопровождаться отменным сервисом и прекрасными пляжами.', 1);
@@ -48,9 +48,12 @@ insert into hotel_traveller.hotel (name, rating, description, country_id) values
 insert into hotel_traveller.hotel (name, rating, description, country_id) values ('Starfish Varadero', 3, 'Куба – жемчужина Карибского моря, остров, где солнце светит 330 дней в году. Отдых на Кубе – это отдых в стране карнавалов, фестивалей и зажигательных латинских танцев – румбы, мамбы и ча-ча-ча. Здесь вас ждет фантастический коктейль из революционных лозунгов на каждом углу, ритмов мамбы и шикарных пляжей в стиле «баунти». Остров Свободы покоряет контрастами в архитектуре, культуре, укладе жизни и не отпускает гостей без целого букета ярких впечатлений и гигабайтов сочных фотографий.', 14);
 
 
-insert into hotel_traveller.shedule (from_date, to_date, price, hotel_id) values (date('2021-06-02'), date('2021-06-12'), 1060, 1);
-insert into hotel_traveller.shedule (from_date, to_date, price, hotel_id) values (date('2021-07-15'), date('2021-07-25'), 1160, 1);
-insert into hotel_traveller.shedule (from_date, to_date, price, hotel_id) values (date('2021-08-01'), date('2021-08-13'), 1260, 1);
-insert into hotel_traveller.shedule (from_date, to_date, price, hotel_id) values (date('2021-06-15'), date('2021-06-26'), 1060, 1);
-insert into hotel_traveller.shedule (from_date, to_date, price, hotel_id) values (date('2021-07-03'), date('2021-07-14'), 1160, 1);
+insert into hotel_traveller.schedule (from_date, to_date, price, hotel_id) values (date('2021-06-02'), date('2021-06-12'), 1060, 1);
+insert into hotel_traveller.schedule (from_date, to_date, price, hotel_id) values (date('2021-07-15'), date('2021-07-25'), 1160, 1);
+insert into hotel_traveller.schedule (from_date, to_date, price, hotel_id) values (date('2021-08-01'), date('2021-08-13'), 1260, 1);
+insert into hotel_traveller.schedule (from_date, to_date, price, hotel_id) values (date('2021-06-15'), date('2021-06-26'), 1060, 1);
+insert into hotel_traveller.schedule (from_date, to_date, price, hotel_id) values (date('2021-07-03'), date('2021-07-14'), 1160, 1);
+
+insert into hotel_traveller.credentials (login, password) values ('admin', 'admin');
+insert into hotel_traveller.credentials (login, password) values ('test', 'test');
 

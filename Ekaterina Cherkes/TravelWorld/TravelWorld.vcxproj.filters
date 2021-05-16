@@ -63,6 +63,30 @@
     <ClInclude Include="WorldRegion.h">
       <Filter>Файлы заголовков\models</Filter>
     </ClInclude>
+    <ClInclude Include="Country.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotel.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Credentials.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Schedule.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="CredentialsDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="HotelDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="CountryDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TravelWorld.cpp">

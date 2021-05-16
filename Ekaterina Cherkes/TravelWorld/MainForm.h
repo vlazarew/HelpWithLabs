@@ -2,6 +2,9 @@
 #include <list>
 #include "WorldRegion.h"
 #include "WorldRegionDAO.h"
+#include "Credentials.h"
+#include "CredentialsDAO.h"
+#include "ScheduleDAO.h"
 
 using namespace std;
 
@@ -155,6 +158,8 @@ namespace TravelWorld {
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		list<WorldRegion> regions = WorldRegionDAO::getAllRegions();
+		list<Credentials> adminCredentials = CredentialsDAO::getCredentialsByLogin("test");
+		list<Schedule> schedules = ScheduleDAO::getAllShedules();
 		int i = 1;
 	}
 	};

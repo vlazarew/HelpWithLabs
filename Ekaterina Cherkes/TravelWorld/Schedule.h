@@ -8,8 +8,8 @@ using namespace std;
 class Schedule
 {
 public:
-	Schedule(time_t fromDate, time_t toDate, int hotelId, float price);
-	Schedule(int id, time_t fromDate, time_t toDate, int hotelId, float price);
+	Schedule(time_t fromDate, time_t toDate, float price, int hotelId);
+	Schedule(int id, time_t fromDate, time_t toDate, float price, int hotelId);
 	int getId();
 	time_t getFromDate();
 	time_t getToDate();
@@ -28,7 +28,7 @@ private:
 	int hotelId;
 };
 
-Schedule::Schedule(time_t fromDate, time_t toDate, int hotelId, float price)
+Schedule::Schedule(time_t fromDate, time_t toDate, float price, int hotelId)
 {
 	this->fromDate = fromDate;
 	this->toDate = toDate;
@@ -36,7 +36,7 @@ Schedule::Schedule(time_t fromDate, time_t toDate, int hotelId, float price)
 	this->price = price;
 }
 
-Schedule::Schedule(int id, time_t fromDate, time_t toDate, int hotelId, float price)
+Schedule::Schedule(int id, time_t fromDate, time_t toDate, float price, int hotelId)
 {
 	this->id = id;
 	this->fromDate = fromDate;
