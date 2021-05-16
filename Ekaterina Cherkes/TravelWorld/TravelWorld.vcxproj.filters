@@ -22,6 +22,12 @@
     <Filter Include="Файлы заголовков\other">
       <UniqueIdentifier>{1344d5c5-0b3b-4c11-a123-776eebe237fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\models">
+      <UniqueIdentifier>{c2c7931e-d8ed-4f2e-b9f5-56d831f06a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\daos">
+      <UniqueIdentifier>{b9528178-bdc8-4eda-8043-780b4f172bd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -29,15 +35,13 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TravelWorld.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="MainForm.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="LoginForm.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="readme.txt" />
     <ClInclude Include="pch.h">
       <Filter>Файлы заголовков\other</Filter>
     </ClInclude>
@@ -46,6 +50,18 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="TravelWorld.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="MySQLDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRegionDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRegion.h">
+      <Filter>Файлы заголовков\models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -58,10 +74,10 @@
     <ClCompile Include="MainForm.cpp">
       <Filter>Исходные файлы\forms</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Исходные файлы\other</Filter>
     </ClCompile>
-    <ClCompile Include="AssemblyInfo.cpp">
+    <ClCompile Include="pch.cpp">
       <Filter>Исходные файлы\other</Filter>
     </ClCompile>
   </ItemGroup>
