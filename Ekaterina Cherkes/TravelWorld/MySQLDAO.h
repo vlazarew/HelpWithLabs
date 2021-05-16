@@ -22,6 +22,8 @@ public:
 		{
 			throw "Ќе удалось установить соединение с базой";
 		}
+
+		mysql_query(&connection, "set names cp1251");
 		
 		return connection;
 	};

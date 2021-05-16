@@ -6,7 +6,7 @@ using namespace System::Windows::Forms;
 
 int main()
 {
-	//setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Rus");
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	TravelWorld::MainForm mainForm;

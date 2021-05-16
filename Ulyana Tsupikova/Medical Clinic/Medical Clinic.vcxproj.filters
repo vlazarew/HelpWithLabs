@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\forms">
+      <UniqueIdentifier>{149cfbfd-eb65-43d3-9461-705ddd5a6a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\models">
+      <UniqueIdentifier>{f685729a-80d9-4d0f-b500-cf6041b9a975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\daos">
+      <UniqueIdentifier>{8d014170-978e-4e77-92a2-003960a75131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\resolvers">
+      <UniqueIdentifier>{0325d18f-432e-421b-b6b6-43cddad7d900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\other">
+      <UniqueIdentifier>{7457b1bf-bd79-4229-b572-90ea54ab7049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\forms">
+      <UniqueIdentifier>{1c03435d-b4cc-45b5-8ab4-b4637754e86c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\other">
+      <UniqueIdentifier>{7537177f-3d69-495c-85a3-632887667c85}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MySQLDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Credentials.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="CredentialsDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="Department.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Employee.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeOfService.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Service.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Registration.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
+    <ClInclude Include="MainForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
+    <ClInclude Include="EditForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistrationForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistrationDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="EmployeeDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="DepartmentDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeOfServiceDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="DepartmentForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LoginForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Исходные файлы\other</Filter>
+    </ClCompile>
+    <ClCompile Include="Medical Clinic.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Исходные файлы\other</Filter>
+    </ClCompile>
+    <ClCompile Include="EditForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistrationForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="DepartmentForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

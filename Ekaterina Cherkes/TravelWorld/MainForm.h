@@ -73,6 +73,14 @@ namespace TravelWorld {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColumnPrice;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColumnDescription;
 
+
+
+
+
+
+
+
+
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -229,7 +237,6 @@ namespace TravelWorld {
 			this->ColumnDescription->HeaderText = L"Описание";
 			this->ColumnDescription->Name = L"ColumnDescription";
 			this->ColumnDescription->ReadOnly = true;
-			this->ColumnDescription->Visible = false;
 			this->ColumnDescription->Width = 82;
 			// 
 			// MainForm
@@ -286,7 +293,7 @@ namespace TravelWorld {
 				this->dataGridViewConsumerCard->Rows[i]->Cells[4]->Value = gcnew String(timeStampToHReadble(schedules.at(i).getFromDate()).c_str());
 				this->dataGridViewConsumerCard->Rows[i]->Cells[5]->Value = gcnew String(timeStampToHReadble(schedules.at(i).getToDate()).c_str());
 				this->dataGridViewConsumerCard->Rows[i]->Cells[6]->Value = Convert::ToString(schedules.at(i).getPrice());
-				//this->dataGridViewConsumerCard->Rows[i]->Cells[7]->Value = gcnew String(hotel.getDescription().c_str());
+				this->dataGridViewConsumerCard->Rows[i]->Cells[7]->Value = gcnew String(hotel.getDescription().c_str());
 				this->dataGridViewConsumerCard->Rows[i]->Selected = false;
 			}
 		}
