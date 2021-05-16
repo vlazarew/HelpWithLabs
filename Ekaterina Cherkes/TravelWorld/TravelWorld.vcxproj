@@ -138,6 +138,9 @@
     <ClInclude Include="CountryDAO.h" />
     <ClInclude Include="Credentials.h" />
     <ClInclude Include="CredentialsDAO.h" />
+    <ClInclude Include="EditForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Hotel.h" />
     <ClInclude Include="HotelDAO.h" />
     <ClInclude Include="LoginForm.h">
@@ -160,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="EditForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="pch.cpp">
@@ -182,6 +186,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>

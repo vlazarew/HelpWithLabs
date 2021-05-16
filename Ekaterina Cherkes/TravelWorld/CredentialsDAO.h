@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include<string>
-#include <list>
+#include <vector>
 #include "MySQLDAO.h"
 #include "Credentials.h"
 
@@ -10,9 +10,9 @@ using namespace std;
 
 class CredentialsDAO {
 public:
-	static list<Credentials> getCredentialsByLogin(string login)
+	static vector<Credentials> getCredentialsByLogin(string login)
 	{
-		list<Credentials> resultList = list<Credentials>();
+		vector<Credentials> resultList = vector<Credentials>();
 		MYSQL connection = MySQLDAO::createConnection();
 		char query[1024];
 
@@ -39,9 +39,8 @@ public:
 		return resultList;
 	};
 
-	static list<Credentials> getCredentialsByLoginAndPassword(string login, string password)
+	static Credentials getCredentialsByLoginAndPassword(string login, string password)
 	{
-		list<Credentials> resultList = list<Credentials>();
 		MYSQL connection = MySQLDAO::createConnection();
 		char query[1024];
 
@@ -55,7 +54,7 @@ public:
 
 			while (row = mysql_fetch_row(result))
 			{
-				resultList.push_back(Credentials::Credentials(atoi(row[0]), row[1], row[2]));
+				return Credentials::Credentials(atoi(row[0]), row[1], row[2]);
 			}
 		}
 		else
@@ -65,6 +64,6 @@ public:
 			throw pattern + error;
 		}
 
-		return resultList;
+		return Credentials::Credentials(-10, "", "");
 	};
 };

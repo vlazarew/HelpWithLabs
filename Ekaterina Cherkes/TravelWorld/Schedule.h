@@ -8,27 +8,27 @@ using namespace std;
 class Schedule
 {
 public:
-	Schedule(time_t fromDate, time_t toDate, float price, int hotelId);
-	Schedule(int id, time_t fromDate, time_t toDate, float price, int hotelId);
+	Schedule(time_t fromDate, time_t toDate, int price, int hotelId);
+	Schedule(int id, time_t fromDate, time_t toDate, int price, int hotelId);
 	int getId();
 	time_t getFromDate();
 	time_t getToDate();
 	int getHotelId();
-	float getPrice();
+	int getPrice();
 	void setFromDate(time_t value);
 	void setToDate(time_t value);
-	void setPrice(float value);
+	void setPrice(int value);
 	void setHotelId(int value);
 
 private:
 	int id;
 	time_t fromDate;
 	time_t toDate;
-	float price;
+	int price;
 	int hotelId;
 };
 
-Schedule::Schedule(time_t fromDate, time_t toDate, float price, int hotelId)
+Schedule::Schedule(time_t fromDate, time_t toDate, int price, int hotelId)
 {
 	this->fromDate = fromDate;
 	this->toDate = toDate;
@@ -36,7 +36,7 @@ Schedule::Schedule(time_t fromDate, time_t toDate, float price, int hotelId)
 	this->price = price;
 }
 
-Schedule::Schedule(int id, time_t fromDate, time_t toDate, float price, int hotelId)
+Schedule::Schedule(int id, time_t fromDate, time_t toDate, int price, int hotelId)
 {
 	this->id = id;
 	this->fromDate = fromDate;
@@ -65,7 +65,7 @@ inline int Schedule::getHotelId()
 	return this->hotelId;
 }
 
-inline float Schedule::getPrice()
+inline int Schedule::getPrice()
 {
 	return this->price;
 }
@@ -80,7 +80,7 @@ inline void Schedule::setToDate(time_t value)
 	this->toDate = value;
 }
 
-inline void Schedule::setPrice(float value)
+inline void Schedule::setPrice(int value)
 {
 	this->price = value;
 }
