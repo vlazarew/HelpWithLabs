@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\forms">
+      <UniqueIdentifier>{1262bf19-a66a-443d-8301-eb29cca9ac88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\other">
+      <UniqueIdentifier>{cbb2c50b-c4de-49fb-b0d5-d1ae0b95f23c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\other">
+      <UniqueIdentifier>{1344d5c5-0b3b-4c11-a123-776eebe237fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\models">
+      <UniqueIdentifier>{c2c7931e-d8ed-4f2e-b9f5-56d831f06a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\daos">
+      <UniqueIdentifier>{b9528178-bdc8-4eda-8043-780b4f172bd6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainForm.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginForm.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="readme.txt" />
+    <ClInclude Include="pch.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="TravelWorld.h">
+      <Filter>Файлы заголовков\other</Filter>
+    </ClInclude>
+    <ClInclude Include="MySQLDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRegionDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldRegion.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Country.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotel.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Credentials.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="Schedule.h">
+      <Filter>Файлы заголовков\models</Filter>
+    </ClInclude>
+    <ClInclude Include="CredentialsDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="HotelDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="CountryDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleDAO.h">
+      <Filter>Файлы заголовков\daos</Filter>
+    </ClInclude>
+    <ClInclude Include="EditForm.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TravelWorld.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Исходные файлы\other</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Исходные файлы\other</Filter>
+    </ClCompile>
+    <ClCompile Include="EditForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
