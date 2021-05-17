@@ -5,6 +5,8 @@
 #include "ServiceDAO.h"
 #include "TypeOfServiceDAO.h"
 #include "DepartmentForm.h"
+#include "EmployeeForm.h"
+#include "RegistrationForm.h"
 
 namespace MedicalClinic {
 
@@ -22,6 +24,10 @@ namespace MedicalClinic {
 	{
 	private:
 		Credentials* currentCredentials;
+		int credentialsId;
+	private: System::Windows::Forms::Button^ buttonWatchEmployees;
+	private: System::Windows::Forms::Button^ buttonDelete;
+		   bool isAdmin;
 	public:
 		MainForm(void)
 		{
@@ -34,6 +40,8 @@ namespace MedicalClinic {
 		{
 			InitializeComponent();
 			this->currentCredentials = &credentials;
+			this->credentialsId = this->currentCredentials->getId();
+			this->isAdmin = this->currentCredentials->getIsAdmin();
 			//
 			//TODO: добавьте код конструктора
 			//
@@ -52,9 +60,9 @@ namespace MedicalClinic {
 		}
 	private: System::Windows::Forms::Button^ buttonExit;
 	protected:
-	private: System::Windows::Forms::Button^ buttonDelete;
-	private: System::Windows::Forms::Button^ buttonEdit;
-	private: System::Windows::Forms::Button^ buttonAdd;
+
+
+
 	private: System::Windows::Forms::DataGridView^ dataGridViewClientCard;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColumnEmployee;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ColumnDateTime;
@@ -84,9 +92,6 @@ namespace MedicalClinic {
 		void InitializeComponent(void)
 		{
 			this->buttonExit = (gcnew System::Windows::Forms::Button());
-			this->buttonDelete = (gcnew System::Windows::Forms::Button());
-			this->buttonEdit = (gcnew System::Windows::Forms::Button());
-			this->buttonAdd = (gcnew System::Windows::Forms::Button());
 			this->dataGridViewClientCard = (gcnew System::Windows::Forms::DataGridView());
 			this->ColumnEmployee = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ColumnDateTime = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -96,6 +101,8 @@ namespace MedicalClinic {
 			this->ColumnDescription = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->buttonWatchDepartments = (gcnew System::Windows::Forms::Button());
 			this->buttonMakeRegistration = (gcnew System::Windows::Forms::Button());
+			this->buttonWatchEmployees = (gcnew System::Windows::Forms::Button());
+			this->buttonDelete = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewClientCard))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -108,36 +115,6 @@ namespace MedicalClinic {
 			this->buttonExit->Text = L"Выход";
 			this->buttonExit->UseVisualStyleBackColor = true;
 			this->buttonExit->Click += gcnew System::EventHandler(this, &MainForm::buttonExit_Click);
-			// 
-			// buttonDelete
-			// 
-			this->buttonDelete->Enabled = false;
-			this->buttonDelete->Location = System::Drawing::Point(720, 321);
-			this->buttonDelete->Name = L"buttonDelete";
-			this->buttonDelete->Size = System::Drawing::Size(184, 23);
-			this->buttonDelete->TabIndex = 16;
-			this->buttonDelete->Text = L"Удалить тур";
-			this->buttonDelete->UseVisualStyleBackColor = true;
-			// 
-			// buttonEdit
-			// 
-			this->buttonEdit->Enabled = false;
-			this->buttonEdit->Location = System::Drawing::Point(720, 292);
-			this->buttonEdit->Name = L"buttonEdit";
-			this->buttonEdit->Size = System::Drawing::Size(184, 23);
-			this->buttonEdit->TabIndex = 15;
-			this->buttonEdit->Text = L"Редактировать тур";
-			this->buttonEdit->UseVisualStyleBackColor = true;
-			// 
-			// buttonAdd
-			// 
-			this->buttonAdd->Enabled = false;
-			this->buttonAdd->Location = System::Drawing::Point(720, 263);
-			this->buttonAdd->Name = L"buttonAdd";
-			this->buttonAdd->Size = System::Drawing::Size(184, 23);
-			this->buttonAdd->TabIndex = 14;
-			this->buttonAdd->Text = L"Добавить тур";
-			this->buttonAdd->UseVisualStyleBackColor = true;
 			// 
 			// dataGridViewClientCard
 			// 
@@ -202,7 +179,7 @@ namespace MedicalClinic {
 			// 
 			// buttonWatchDepartments
 			// 
-			this->buttonWatchDepartments->Location = System::Drawing::Point(721, 12);
+			this->buttonWatchDepartments->Location = System::Drawing::Point(720, 82);
 			this->buttonWatchDepartments->Name = L"buttonWatchDepartments";
 			this->buttonWatchDepartments->Size = System::Drawing::Size(184, 23);
 			this->buttonWatchDepartments->TabIndex = 18;
@@ -212,24 +189,44 @@ namespace MedicalClinic {
 			// 
 			// buttonMakeRegistration
 			// 
-			this->buttonMakeRegistration->Location = System::Drawing::Point(720, 41);
+			this->buttonMakeRegistration->Location = System::Drawing::Point(720, 12);
 			this->buttonMakeRegistration->Name = L"buttonMakeRegistration";
 			this->buttonMakeRegistration->Size = System::Drawing::Size(184, 23);
 			this->buttonMakeRegistration->TabIndex = 19;
 			this->buttonMakeRegistration->Text = L"Записаться на прием";
 			this->buttonMakeRegistration->UseVisualStyleBackColor = true;
+			this->buttonMakeRegistration->Click += gcnew System::EventHandler(this, &MainForm::buttonMakeRegistration_Click);
+			// 
+			// buttonWatchEmployees
+			// 
+			this->buttonWatchEmployees->Location = System::Drawing::Point(720, 111);
+			this->buttonWatchEmployees->Name = L"buttonWatchEmployees";
+			this->buttonWatchEmployees->Size = System::Drawing::Size(184, 23);
+			this->buttonWatchEmployees->TabIndex = 20;
+			this->buttonWatchEmployees->Text = L"Просмотреть всех врачей";
+			this->buttonWatchEmployees->UseVisualStyleBackColor = true;
+			this->buttonWatchEmployees->Click += gcnew System::EventHandler(this, &MainForm::buttonWatchEmployees_Click);
+			// 
+			// buttonDelete
+			// 
+			this->buttonDelete->Location = System::Drawing::Point(720, 41);
+			this->buttonDelete->Name = L"buttonDelete";
+			this->buttonDelete->Size = System::Drawing::Size(184, 23);
+			this->buttonDelete->TabIndex = 21;
+			this->buttonDelete->Text = L"Отменить прием";
+			this->buttonDelete->UseVisualStyleBackColor = true;
+			this->buttonDelete->Click += gcnew System::EventHandler(this, &MainForm::buttonDelete_Click);
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(917, 406);
+			this->Controls->Add(this->buttonDelete);
+			this->Controls->Add(this->buttonWatchEmployees);
 			this->Controls->Add(this->buttonMakeRegistration);
 			this->Controls->Add(this->buttonWatchDepartments);
 			this->Controls->Add(this->buttonExit);
-			this->Controls->Add(this->buttonDelete);
-			this->Controls->Add(this->buttonEdit);
-			this->Controls->Add(this->buttonAdd);
 			this->Controls->Add(this->dataGridViewClientCard);
 			this->Name = L"MainForm";
 			this->Text = L"Информационная система частной медицинской клиники";
@@ -257,7 +254,7 @@ namespace MedicalClinic {
 		   {
 			   this->dataGridViewClientCard->Rows->Clear();
 
-			   vector<Registration> registrations = RegistrationDAO::getRegistrationsByCredentialsId(this->currentCredentials->getId());
+			   vector<Registration> registrations = RegistrationDAO::getRegistrationsByCredentialsId(this->credentialsId);
 			   for (size_t i = 0; i < registrations.size(); i++)
 			   {
 				   Employee employee = EmployeeDAO::getEmployeeById(registrations.at(i).getEmployeeId());
@@ -285,14 +282,44 @@ namespace MedicalClinic {
 	}
 	private: System::Void buttonWatchDepartments_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		DepartmentForm^ departmentForm = gcnew DepartmentForm();
+		DepartmentForm^ departmentForm = gcnew DepartmentForm(this->isAdmin);
 		departmentForm->Show();
 	}
-		   void changeVisibility()
-		   {
-			   buttonAdd->Visible = this->currentCredentials->getIsAdmin();
-			   buttonEdit->Visible = this->currentCredentials->getIsAdmin();
-			   buttonDelete->Visible = this->currentCredentials->getIsAdmin();
-		   }
-	};
+
+	private: System::Void buttonWatchEmployees_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		EmployeeForm^ employeesForm = gcnew EmployeeForm(this->isAdmin);
+		employeesForm->Show();
+	}
+	private: System::Void buttonMakeRegistration_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		Credentials credentials = CredentialsDAO::getCredentialsById(this->currentCredentials->getId());
+		RegistrationForm^ registrationForm = gcnew RegistrationForm(credentials);
+
+		// Если результат ОК, то перезагрузим таблицу (для обновления данных)
+		if (registrationForm->ShowDialog(this) == System::Windows::Forms::DialogResult::OK) {
+			updateTable();
+		}
+	}
+	private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (this->dataGridViewClientCard->SelectedRows->Count == 1)
+		{
+			DataGridViewRow^ row = this->dataGridViewClientCard->SelectedRows[0];
+
+			Service service = ServiceDAO::getServiceByName(msclr::interop::marshal_as<string>(row->Cells[3]->Value->ToString()));
+			Employee employee = EmployeeDAO::getEmployeeByFIO(msclr::interop::marshal_as<string>(row->Cells[0]->Value->ToString()));
+
+			// перезагрузим таблицу (для обновления данных)
+			if (RegistrationDAO::deleteRegistration(RegistrationDAO::getRegistrationByDateCredentialsEmployeeService(
+				msclr::interop::marshal_as<string>(row->Cells[1]->Value->ToString()),
+				this->credentialsId,
+				employee.getId(),
+				service.getId()))) 
+			{
+				updateTable();
+			}
+		}
+	}
+};
 }

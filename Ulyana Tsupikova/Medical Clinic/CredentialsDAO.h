@@ -66,4 +66,33 @@ public:
 
 		return Credentials::Credentials(-10, "", "", false);
 	};
+
+	static Credentials getCredentialsById(int id)
+	{
+		MYSQL connection = MySQLDAO::createConnection();
+		char query[1024];
+
+		sprintf(query, "select * from Credentials where Credentials.id='%s'", to_string(id).c_str());
+
+		int queryState = mysql_query(&connection, query);
+		if (!queryState) {
+			MYSQL_ROW row;
+			MYSQL_RES* result;
+			result = mysql_store_result(&connection);
+
+			while (row = mysql_fetch_row(result))
+			{
+				return Credentials::Credentials(atoi(row[0]), row[1], row[2], (*row[3] != '0'));
+			}
+		}
+		else
+		{
+			string pattern = "Ошибка выполнения запроса ";
+			string error = mysql_error(&connection);
+			throw pattern + error;
+		}
+
+		return Credentials::Credentials(-10, "", "", false);
+	};
+
 };

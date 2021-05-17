@@ -1,0 +1,1 @@
+https://www.youtube.com/watch?v=yNniOHn9Xe0 - Гайд по настроке VS для MySQL

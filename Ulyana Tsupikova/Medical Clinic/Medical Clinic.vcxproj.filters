@@ -80,7 +80,7 @@
     <ClInclude Include="MainForm.h">
       <Filter>Файлы заголовков\forms</Filter>
     </ClInclude>
-    <ClInclude Include="EditForm.h">
+    <ClInclude Include="DepartmentEditForm.h">
       <Filter>Файлы заголовков\forms</Filter>
     </ClInclude>
     <ClInclude Include="RegistrationForm.h">
@@ -104,6 +104,12 @@
     <ClInclude Include="DepartmentForm.h">
       <Filter>Файлы заголовков\forms</Filter>
     </ClInclude>
+    <ClInclude Include="EmployeeForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
+    <ClInclude Include="EmployeeEditForm.h">
+      <Filter>Файлы заголовков\forms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LoginForm.cpp">
@@ -121,13 +127,19 @@
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Исходные файлы\other</Filter>
     </ClCompile>
-    <ClCompile Include="EditForm.cpp">
+    <ClCompile Include="DepartmentEditForm.cpp">
       <Filter>Исходные файлы\forms</Filter>
     </ClCompile>
     <ClCompile Include="RegistrationForm.cpp">
       <Filter>Исходные файлы\forms</Filter>
     </ClCompile>
     <ClCompile Include="DepartmentForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="EmployeeEditForm.cpp">
+      <Filter>Исходные файлы\forms</Filter>
+    </ClCompile>
+    <ClCompile Include="EmployeeForm.cpp">
       <Filter>Исходные файлы\forms</Filter>
     </ClCompile>
   </ItemGroup>

@@ -92,7 +92,6 @@ public:
 
 	static bool deleteSchedule(Schedule schedule)
 	{
-		vector<Schedule> resultList = vector<Schedule>();
 		MYSQL connection = MySQLDAO::createConnection();
 		char query[1024];
 
@@ -115,7 +114,6 @@ public:
 
 	static bool saveSchedule(Schedule schedule)
 	{
-		vector<Schedule> resultList = vector<Schedule>();
 		MYSQL connection = MySQLDAO::createConnection();
 		char query[1024];
 
@@ -138,7 +136,6 @@ public:
 
 	static bool updateSchedule(Schedule schedule)
 	{
-		vector<Schedule> resultList = vector<Schedule>();
 		MYSQL connection = MySQLDAO::createConnection();
 		char query[1024];
 

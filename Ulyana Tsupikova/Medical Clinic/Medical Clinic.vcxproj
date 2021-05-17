@@ -141,11 +141,17 @@
     <ClInclude Include="DepartmentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="EditForm.h">
+    <ClInclude Include="DepartmentEditForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeDAO.h" />
+    <ClInclude Include="EmployeeEditForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EmployeeForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -169,7 +175,9 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="DepartmentForm.cpp" />
-    <ClCompile Include="EditForm.cpp" />
+    <ClCompile Include="DepartmentEditForm.cpp" />
+    <ClCompile Include="EmployeeEditForm.cpp" />
+    <ClCompile Include="EmployeeForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Medical Clinic.cpp" />
@@ -192,14 +200,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DepartmentEditForm.resx">
+      <DependentUpon>DepartmentEditForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DepartmentForm.resx">
       <DependentUpon>DepartmentForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeEditForm.resx">
+      <DependentUpon>EmployeeEditForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -63,12 +63,13 @@ public:
 		return resultList;
 	};
 
-	/*static Registration getRegistrationByLoginAndPassword(string login, string password)
+	static Registration getRegistrationByDateCredentialsEmployeeService(string date, int credentialsId, int employeeId, int serviceId)
 	{
 		MYSQL connection = MySQLDAO::createConnection();
 		char query[1024];
 
-		sprintf(query, "select * from Registration where Registration.login='%s' and Registration.password='%s'", login.c_str(), password.c_str());
+		sprintf(query, "select * from Registration where Registration.date='%s' and Registration.credentials_Id='%s' and Registration.employee_Id='%s' and Registration.service_Id='%s'", 
+			date.c_str(), to_string(credentialsId).c_str(), to_string(employeeId).c_str(), to_string(serviceId).c_str());
 
 		int queryState = mysql_query(&connection, query);
 		if (!queryState) {
@@ -78,7 +79,7 @@ public:
 
 			while (row = mysql_fetch_row(result))
 			{
-				return Registration::Registration(atoi(row[0]), row[1], row[2]);
+				return Registration::Registration(atoi(row[0]), createTS(row[1]), atoi(row[2]), atoi(row[3]), atoi(row[4]));
 			}
 		}
 		else
@@ -87,7 +88,49 @@ public:
 			string error = mysql_error(&connection);
 			throw pattern + error;
 		}
+	}
 
-		return Registration::Registration(-10, "", "");
-	};*/
+	static bool saveRegistration(Registration registration)
+	{
+		MYSQL connection = MySQLDAO::createConnection();
+		char query[1024];
+
+		sprintf(query, "insert into registration (date, credentials_id, employee_id, service_id) values('%s', '%s', '%s', '%s')", timeStampToHReadble(registration.getDate()).c_str(),
+			to_string(registration.getCredentialsId()).c_str(), to_string(registration.getEmployeeId()).c_str(), to_string(registration.getServiceId()).c_str());
+
+		int queryState = mysql_query(&connection, query);
+		if (!queryState) {
+			return true;
+		}
+		else
+		{
+			string pattern = "Ошибка выполнения запроса ";
+			string error = mysql_error(&connection);
+			throw pattern + error;
+		}
+
+		return false;
+	};
+
+	static bool deleteRegistration(Registration registration)
+	{
+		MYSQL connection = MySQLDAO::createConnection();
+		char query[1024];
+
+		sprintf(query, "delete from registration where registration.id='%s'", to_string(registration.getId()).c_str());
+
+		int queryState = mysql_query(&connection, query);
+		if (!queryState) {
+			return true;
+		}
+		else
+		{
+			string pattern = "Ошибка выполнения запроса ";
+			string error = mysql_error(&connection);
+			throw pattern + error;
+		}
+
+		return false;
+	};
+
 };
