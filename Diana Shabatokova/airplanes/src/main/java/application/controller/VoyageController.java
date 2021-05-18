@@ -14,19 +14,31 @@ import java.util.ArrayList;
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-@RequestMapping(value = "/voyage", produces = "application/json")
+@RequestMapping(value = "/voyages", produces = "application/json")
 @CrossOrigin("*")
 public class VoyageController {
 
     @Autowired
     VoyageService voyageService;
 
-    @GetMapping(params = {"numberOfPage", "voyagesOnPage", "targetDate"}, produces = "application/json")
+    @GetMapping(params = {"numberOfPage", "voyagesOnPage"}, produces = "application/json")
     public ArrayList<Object> getAllVoyages(@RequestParam("numberOfPage") int numberOfPage,
-                                           @RequestParam("voyagesOnPage") int voyagesOnPage,
-                                           @RequestParam("targetDate") String targetDateString) {
+                                           @RequestParam("voyagesOnPage") int voyagesOnPage) {
         ArrayList result = new ArrayList<>();
-        Page<Voyage> queryResult = voyageService.getPageOfVoyages(numberOfPage, voyagesOnPage, targetDateString);
+        Page<Voyage> queryResult = voyageService.getPageOfVoyages(numberOfPage, voyagesOnPage);
+        result.add(queryResult.getContent());
+        result.add(queryResult.getTotalElements());
+        result.add(queryResult.getTotalPages());
+
+        return result;
+    }
+
+    @GetMapping(params = {"numberOfPage", "voyagesOnPage", "targetDate"}, produces = "application/json")
+    public ArrayList<Object> getVoyagesByDate(@RequestParam("numberOfPage") int numberOfPage,
+                                              @RequestParam("voyagesOnPage") int voyagesOnPage,
+                                              @RequestParam("targetDate") String targetDateString) {
+        ArrayList result = new ArrayList<>();
+        Page<Voyage> queryResult = voyageService.getPageOfVoyagesByDate(numberOfPage, voyagesOnPage, targetDateString);
         result.add(queryResult.getContent());
         result.add(queryResult.getTotalElements());
         result.add(queryResult.getTotalPages());

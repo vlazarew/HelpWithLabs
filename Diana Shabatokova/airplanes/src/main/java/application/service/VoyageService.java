@@ -20,19 +20,24 @@ public class VoyageService {
     @Autowired
     private VoyageRepository voyageRepository;
 
-    public Page<Voyage> getPageOfVoyages(int numberOfPage, int voyagesOnPage, String targetDateString) {
+    public Page<Voyage> getPageOfVoyages(int numberOfPage, int voyagesOnPage) {
+        PageRequest page = PageRequest.of(numberOfPage, voyagesOnPage, Sort.by("price"));
+        return voyageRepository.findAll(page);
+    }
+
+    public Page<Voyage> getPageOfVoyagesByDate(int numberOfPage, int voyagesOnPage, String targetDateString) {
         PageRequest page = PageRequest.of(numberOfPage, voyagesOnPage, Sort.by("price"));
 
         LocalDate targetDate = LocalDate.parse(targetDateString, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         LocalDateTime startOfDay = targetDate.atStartOfDay();
         LocalDateTime endOfDay = LocalDateTime.of(targetDate, LocalTime.MAX);
 
-        return voyageRepository.findByFromBetweenOrderByPriceAsc(Timestamp.valueOf(startOfDay),
-                Timestamp.valueOf(endOfDay), page);
+        return voyageRepository.findByFromDateBetweenOrderByPriceAsc(
+                startOfDay.toLocalDate(), endOfDay.toLocalDate(), page);
 
     }
 
-    public void saveVoyage(Voyage voyage){
+    public void saveVoyage(Voyage voyage) {
         voyageRepository.save(voyage);
     }
 }

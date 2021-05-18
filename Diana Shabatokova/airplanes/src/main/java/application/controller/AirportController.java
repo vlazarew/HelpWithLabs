@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-@RequestMapping(value = "/airport", produces = "application/json")
+@RequestMapping(value = "/airports", produces = "application/json")
 @CrossOrigin("*")
 public class AirportController {
     @Autowired
