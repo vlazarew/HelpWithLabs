@@ -21,7 +21,7 @@ public class VoyageController {
     @Autowired
     VoyageService voyageService;
 
-        @GetMapping(params = {"numberOfPage", "voyagesOnPage", "targetDate"}, produces = "application/json")
+    @GetMapping(params = {"numberOfPage", "voyagesOnPage", "targetDate"}, produces = "application/json")
     public ArrayList<Object> getAllVoyages(@RequestParam("numberOfPage") int numberOfPage,
                                            @RequestParam("voyagesOnPage") int voyagesOnPage,
                                            @RequestParam("targetDate") String targetDateString) {
