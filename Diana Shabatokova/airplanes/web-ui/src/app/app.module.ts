@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
-import {CustomPaginator} from './custom-paginator/custom-paginator.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MainDataComponent} from './main-data/main-data.component';
 import {MatTableModule} from '@angular/material/table';
@@ -15,29 +14,38 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
+import {AirportsComponent} from './airports/airports.component';
+import {VoyagesComponent} from './voyages/voyages.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ApiService} from './api/api.service';
 
-// import { CustomPaginatorComponent } from './custom-paginator/custom-paginator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    MainDataComponent
+    MainDataComponent,
+    AirportsComponent,
+    VoyagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // MatTableModule,
-    // MatMenuModule,
+    MatTableModule,
+    MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
-    // MatButtonToggleModule,
-    // MatIconModule,
-    MatPaginatorModule
+    MatButtonToggleModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatButtonToggleModule,
+    MatTabsModule,
+    HttpClientModule
   ],
-  providers: [{provide: MatPaginatorIntl, useClass: CustomPaginator}],
+  providers: [{provide: MatPaginatorIntl}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
