@@ -21,6 +21,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {ApiService} from './api/api.service';
 
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +51,14 @@ import {ApiService} from './api/api.service';
     MatPaginatorModule,
     MatButtonToggleModule,
     MatTabsModule,
+    HttpClientModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [{provide: MatPaginatorIntl}],
