@@ -12,10 +12,10 @@ import java.time.LocalTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(indexes = {@Index(columnList = "name", name = "airport_name_index")})
+@Table(indexes = {@Index(columnList = "name", name = "country_name_index")})
 @Getter
 @Setter
-public class Airport {
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +28,4 @@ public class Airport {
 
     @Column(name = "name")
     String name;
-
-    @Column(name = "short_name")
-    String shortName;
-
-    @JoinColumn(name ="city_id")
-    @ManyToOne
-    City city;
 }
