@@ -1,62 +1,160 @@
-<div class="main">
-  <p>
-    <mat-toolbar color="primary" class="mat-elevation-z23">
-      Поиск рейса
-    </mat-toolbar>
-  </p>
+<p>
+  <mat-toolbar color="primary" class="mat-elevation-z23">
+    Поиск рейса
+  </mat-toolbar>
+</p>
 
-  <div class="container footer">
+<form name="addForm" class="form-group"
+      [ngClass]="{'has-error': ((formGroupFrom.get('fromCity')?.touched ||
+                                   formGroupFrom.get('fromCity')?.dirty) &&
+                                   formGroupFrom.get('fromCity')?.errors) && ((formGroupTo.get('toCity')?.touched ||
+                                   formGroupTo.get('toCity')?.dirty) &&
+                                   formGroupTo.get('toCity')?.errors)}">
+  <mat-form-field [formGroup]="formGroupFrom" class="form first">
+    <mat-label>
+      Город отправления
+    </mat-label>
+    <input formControlName="fromCity" matInput type="text" name="from" [(ngModel)]="model.from"
+           [matAutocomplete]="autoFrom" required/>
+    <span class="help-block"
+          *ngIf="((formGroupFrom.get('fromCity')?.touched ||
+                   formGroupFrom.get('fromCity')?.dirty) &&
+                   formGroupFrom.get('fromCity')?.errors)">
+      <span *ngIf="formGroupFrom.get('fromCity')?.errors?.required">
+        Необходимо заполнить
+      </span>
+    </span>
+    <mat-autocomplete #autoFrom="matAutocomplete">
+      <mat-option *ngFor="let item of filteredOptionsFrom" [value]="item">
+        {{item}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 
-    <form [formGroup]="formGroupFrom">
-      <mat-form-field>
-        <mat-label>
-          Город отправления
-        </mat-label>
-        <input formControlName="fromCity" matInput type="text" [matAutocomplete]="auto"/>
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let item of filteredOptionsFrom" [value]="item">
-            {{item}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
+  <mat-form-field [formGroup]="formGroupTo" class="form">
+    <mat-label>
+      Город прибытия
+    </mat-label>
+    <input formControlName="toCity" matInput type="text" name="text" [(ngModel)]="model.to" [matAutocomplete]="autoTo"
+           required/>
+    <span class="help-block"
+          *ngIf="((formGroupTo.get('toCity')?.touched ||
+                   formGroupTo.get('toCity')?.dirty) &&
+                   formGroupTo.get('toCity')?.errors)">
+      <span *ngIf="formGroupTo.get('toCity')?.errors?.required">
+        Необходимо заполнить
+      </span>
+    </span>
+    <mat-autocomplete #autoTo="matAutocomplete">
+      <mat-option *ngFor="let itemTo of filteredOptionsTo" [value]="itemTo">
+        {{itemTo}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 
-  </div>
+  <mat-form-field class="form">
+    <input matInput [matDatepicker]="picker" placeholder="Дата отправления" name="date" [(ngModel)]="model.date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-  <div class="container footer">
+  <button mat-raised-button color="primary" (click)="getVoyagesByFromToDate()">Найти</button>
+  <button mat-raised-button color="primary" (click)="getVoyagesByFromToDate()">Добавить</button>
+</form>
 
-    <form [formGroup]="formGroupTo">
-      <mat-form-field>
-        <mat-label>
-          Город прибытия
-        </mat-label>
-        <input formControlName="toCity" matInput type="text" [matAutocomplete]="auto"/>
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let itemTo of filteredOptionsTo" [value]="itemTo">
-            {{itemTo}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
+<div *ngIf="foundedVoyages.length > 0">
+  <table mat-table [dataSource]="foundedVoyages" class="mat-elevation-z8">
 
-  </div>
+    <ng-container matColumnDef="fromCity" class="fromCity">
+      <th mat-header-cell *matHeaderCellDef>Город отправления</th>
+      <td mat-cell *matCellDef="let element"> {{element.from.city.name}} </td>
+    </ng-container>
 
-  <!--  <form [formGroup]="stateForm">-->
-  <!--    <mat-form-field>-->
-  <!--      <mat-label>States Group</mat-label>-->
-  <!--      <input type="text"-->
-  <!--             matInput-->
-  <!--             formControlName="stateGroup"-->
-  <!--             required-->
-  <!--             [matAutocomplete]="autoGroup">-->
-  <!--      <mat-autocomplete #autoGroup="matAutocomplete">-->
-  <!--        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">-->
-  <!--          <mat-option *ngFor="let name of group.names" [value]="name">-->
-  <!--            {{name}}-->
-  <!--          </mat-option>-->
-  <!--        </mat-optgroup>-->
-  <!--      </mat-autocomplete>-->
-  <!--    </mat-form-field>-->
-  <!--  </form>-->
+    <ng-container matColumnDef="fromCountry" class="fromCountry">
+      <th mat-header-cell *matHeaderCellDef>Страна отправления</th>
+      <td mat-cell *matCellDef="let element"> {{element.from.city.country.name}} </td>
+    </ng-container>
 
+    <ng-container matColumnDef="fromDate" class="fromDate">
+      <th mat-header-cell *matHeaderCellDef>Дата отправления</th>
+      <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fromTime" class="fromTime">
+      <th mat-header-cell *matHeaderCellDef>Время отправления</th>
+      <td mat-cell *matCellDef="let element"> {{element.fromTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toCity" class="toCity">
+      <th mat-header-cell *matHeaderCellDef>Город прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{element.to.city.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toCountry" class="toCountry">
+      <th mat-header-cell *matHeaderCellDef>Страна прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{element.to.city.country.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toDate" class="toDate">
+      <th mat-header-cell *matHeaderCellDef>Дата прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toTime" class="toTime">
+      <th mat-header-cell *matHeaderCellDef>Время прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{element.toTime}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="price" class="price">
+      <th mat-header-cell *matHeaderCellDef>Стоимость поездки</th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="baggagePassed" class="baggagePassed">
+      <th mat-header-cell *matHeaderCellDef>Багаж включен</th>
+      <td mat-cell *matCellDef="let element"> {{element.baggagePassed}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator #paginator
+                 [length]=countOfVoyages
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="setPageSizeOptions($event)"></mat-paginator>
 </div>
+<!--<h3>Add Course Lessons:</h3>-->
+<!--<div class="add-lessons-form" [formGroup]="form">-->
+<!--  <ng-container formArrayName="lessons">-->
+<!--    <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">-->
+<!--      <div class="lesson-form-row">-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <input matInput-->
+<!--                 formControlName="title"-->
+<!--                 placeholder="Lesson title">-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-select formControlName="level"-->
+<!--                      placeholder="Lesson level">-->
+<!--            <mat-option value="beginner">Beginner</mat-option>-->
+<!--            <mat-option value="intermediate">Intermediate</mat-option>-->
+<!--            <mat-option value="advanced">Advanced</mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--        <mat-icon class="delete-btn" (click)="deleteLesson(i)">-->
+<!--          delete_forever</mat-icon>-->
+<!--      </div>-->
+<!--    </ng-container>-->
+<!--  </ng-container>-->
+
+<!--  <button mat-mini-fab (click)="addLesson()">-->
+<!--    <mat-icon class="add-course-btn">add</mat-icon>-->
+<!--  </button>-->
+
+<!--</div>-->

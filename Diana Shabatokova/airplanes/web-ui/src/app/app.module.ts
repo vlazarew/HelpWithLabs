@@ -18,7 +18,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {AirportsComponent} from './airports/airports.component';
 import {VoyagesComponent} from './voyages/voyages.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ApiService} from './api/api.service';
 
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -27,6 +26,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {DatePipe} from "@angular/common";
+import {MatChipsModule} from "@angular/material/chips";
 
 
 @NgModule({
@@ -39,17 +43,14 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     VoyagesComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     MatTableModule,
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
-    MatButtonToggleModule,
     MatIconModule,
-    MatPaginatorModule,
     MatButtonToggleModule,
+    MatPaginatorModule,
     MatTabsModule,
     HttpClientModule,
     BrowserModule,
@@ -59,10 +60,42 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  providers: [{provide: MatPaginatorIntl}],
+  providers: [{provide: MatPaginatorIntl}, {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+export class Country {
+  constructor(public name: string) {
+  }
+}
+
+export class City {
+  constructor(public name: string,
+              public country: Country) {
+  }
+}
+
+export class Airport {
+  constructor(public city: City,
+              public name: string,
+              public shortName: string) {
+  }
+}
+
+export class Voyage {
+  constructor(public baggagePassed: boolean,
+              public fromDate: string,
+              public fromTime: string,
+              public price: number,
+              public toDate: string,
+              public toTime: string,
+              public from: Airport,
+              public to: Airport) {
+  }
 }

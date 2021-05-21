@@ -23,4 +23,13 @@ export class VoyagesDataService {
     return this.apiService.get('/voyages?numberOfPage=' + numberOfPage +
       '&voyagesOnPage=' + voyagesOnPage)
   }
+
+  getVoyagesByFromCityToCityFromDate(fromCity: string, toCity: string, date: string, voyagesOnPage: number, numberOfPage: number): any {
+    this.voyagesOnPage = voyagesOnPage;
+    this.numberOfPage = numberOfPage;
+
+    return this.apiService.get('/voyages?fromCity=' + fromCity +
+      '&toCity=' + toCity + '&date=' + date + '&numberOfPage=' + numberOfPage +
+      '&voyagesOnPage=' + voyagesOnPage)
+  }
 }

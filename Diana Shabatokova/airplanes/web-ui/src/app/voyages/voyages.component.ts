@@ -1,22 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {PageEvent} from "@angular/material/paginator";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {ApiService} from "../api/api.service";
-import {Airport} from "../airports/airports.component";
 import {VoyagesDataService} from "./voyages.service";
+import {Voyage} from "../app.module";
+import {PageEvent} from "@angular/material/paginator";
 
-export class Voyage {
-  constructor(public baggagePassed: boolean,
-              public fromDate: string,
-              public fromTime: string,
-              public price: number,
-              public toDate: string,
-              public toTime: string,
-              public from: Airport,
-              public to: Airport) {
-  }
-}
 
 @Component({
   selector: 'app-voyages',
@@ -52,7 +41,6 @@ export class VoyagesComponent implements OnInit {
   getVoyages() {
     this.voyagesDataService.getVoyagesFromDB(this.pageSize, this.pageIndex).subscribe(
       (response: any) => {
-        console.log(response);
         this.voyages = response[0];
         this.countOfVoyages = response[1];
         this.countOfPages = response[2];

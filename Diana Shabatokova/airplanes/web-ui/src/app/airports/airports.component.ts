@@ -5,9 +5,19 @@ import {Router} from "@angular/router";
 import {ApiService} from "../api/api.service";
 import {AirportDataService} from "./airports.service";
 
+export class Country{
+  constructor(public name: string) {
+  }
+}
+
+export class City{
+  constructor(public name: string,
+              public country: Country) {
+  }
+}
+
 export class Airport {
-  constructor(public city: string,
-              public country: string,
+  constructor(public city: City,
               public name: string,
               public shortName: string) {
   }
