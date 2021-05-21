@@ -46,6 +46,21 @@ public class VoyageController {
         return result;
     }
 
+    @GetMapping(params = {"fromCity", "toCity", "date", "numberOfPage", "voyagesOnPage"}, produces = "application/json")
+    public ArrayList<Object> getVoyagesByFromCityToCityFromDate(@RequestParam("fromCity") String fromCity,
+                                                                @RequestParam("toCity") String toCity,
+                                                                @RequestParam("date") String targetDateString,
+                                                                @RequestParam("numberOfPage") int numberOfPage,
+                                                                @RequestParam("voyagesOnPage") int voyagesOnPage) {
+        ArrayList result = new ArrayList<>();
+        Page<Voyage> queryResult = voyageService.getVoyagesByFromCityToCityFromDate(fromCity, toCity, targetDateString, numberOfPage, voyagesOnPage);
+        result.add(queryResult.getContent());
+        result.add(queryResult.getTotalElements());
+        result.add(queryResult.getTotalPages());
+
+        return result;
+    }
+
     @PostMapping(consumes = "application/json", produces = "application/json")
     public void addVoyage(@RequestBody Voyage voyage) {
         voyageService.saveVoyage(voyage);
