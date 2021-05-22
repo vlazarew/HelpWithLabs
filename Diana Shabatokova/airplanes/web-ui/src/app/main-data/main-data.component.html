@@ -103,13 +103,11 @@
       <td mat-cell *matCellDef="let element"> {{toDate(element.toTS)}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="price" class="price">
       <th mat-header-cell *matHeaderCellDef>Стоимость поездки</th>
       <td mat-cell *matCellDef="let element"> {{element.price}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="baggagePassed" class="baggagePassed">
       <th mat-header-cell *matHeaderCellDef>Багаж включен</th>
       <td mat-cell *matCellDef="let element"> {{element.baggagePassed}} </td>
@@ -139,7 +137,6 @@
 <div *ngIf="calculatedWays.length > 0 && calculatedWays[0].length > 0">
   <span>Возможные пути:<br></span>
   <div *ngFor="let calculatedPrice of calculatedPrices; let i = index">
-<!--    <div *ngIf="possibleWay.length > 0">-->
       <span>{{i + 1}}. Общая стоимость: {{calculatedPrice.price}}</span>
       <table mat-table [dataSource]="calculatedWays[calculatedPrice.index]" class="mat-elevation-z8">
 
@@ -173,13 +170,11 @@
           <td mat-cell *matCellDef="let element"> {{toDate(element.toTS)}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="price" class="price">
           <th mat-header-cell *matHeaderCellDef>Стоимость поездки</th>
           <td mat-cell *matCellDef="let element"> {{element.price}} </td>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="baggagePassed" class="baggagePassed">
           <th mat-header-cell *matHeaderCellDef>Багаж включен</th>
           <td mat-cell *matCellDef="let element"> {{element.baggagePassed}} </td>
@@ -189,6 +184,5 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
 
       </table>
-<!--    </div>-->
   </div>
 </div>

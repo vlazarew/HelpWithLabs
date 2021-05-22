@@ -4,8 +4,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Entity
 @Data
@@ -32,7 +30,7 @@ public class Airport {
     @Column(name = "short_name")
     String shortName;
 
-    @JoinColumn(name ="city_id")
+    @JoinColumn(name = "city_id")
     @ManyToOne
     City city;
 }

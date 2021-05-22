@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 export const urlDB = 'http://localhost:8080/';

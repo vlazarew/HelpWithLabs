@@ -1,13 +1,7 @@
 package application.controller;
 
-import application.data.model.City;
 import application.data.model.Voyage;
-import application.service.CityService;
 import application.service.VoyageService;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -26,7 +20,6 @@ public class VoyageController {
 
     @Autowired
     VoyageService voyageService;
-
 
 
     @GetMapping(params = {"numberOfPage", "voyagesOnPage"}, produces = "application/json")
