@@ -21,10 +21,10 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column
-    LocalDate creationDate;
-    @Column
-    LocalTime creationTime;
+//    @Column
+//    LocalDate creationDate;
+//    @Column
+//    LocalTime creationTime;
 
     @Column(name = "name")
     String name;

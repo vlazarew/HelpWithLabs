@@ -1,7 +1,13 @@
 package application.controller;
 
+import application.data.model.City;
 import application.data.model.Voyage;
+import application.service.CityService;
 import application.service.VoyageService;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,6 +26,8 @@ public class VoyageController {
 
     @Autowired
     VoyageService voyageService;
+
+
 
     @GetMapping(params = {"numberOfPage", "voyagesOnPage"}, produces = "application/json")
     public ArrayList<Object> getAllVoyages(@RequestParam("numberOfPage") int numberOfPage,
@@ -61,9 +69,9 @@ public class VoyageController {
         return result;
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    public void addVoyage(@RequestBody Voyage voyage) {
-        voyageService.saveVoyage(voyage);
+    @PostMapping(value = "/calculateVoyages", produces = "application/json")
+    public ArrayList<ArrayList<Voyage>> calculateVoyages(@RequestBody String voyages) {
+        return voyageService.getAllPossibleWays(voyages);
     }
 
 }

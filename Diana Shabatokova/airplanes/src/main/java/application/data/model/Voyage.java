@@ -27,19 +27,23 @@ public class Voyage {
     @JoinColumn(name = "from_id")
     Airport from;
 
-    @Column
-    LocalDate fromDate;
-    @Column
-    LocalTime fromTime;
+    Long fromTS;
+
+//    @Column
+//    LocalDate fromDate;
+//    @Column
+//    LocalTime fromTime;
 
     @ManyToOne
     @JoinColumn(name = "to_id")
     Airport to;
 
-    @Column
-    LocalDate toDate;
-    @Column
-    LocalTime toTime;
+//    @Column
+//    LocalDate toDate;
+//    @Column
+//    LocalTime toTime;
+
+    Long toTS;
 
     boolean baggagePassed;
 
