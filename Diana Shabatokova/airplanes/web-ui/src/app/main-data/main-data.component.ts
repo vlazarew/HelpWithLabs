@@ -12,6 +12,17 @@ export interface getModel {
   date: string;
 }
 
+export interface storedRow {
+  cityFrom: string;
+  cityTo: string;
+  voyages: Voyage[]
+}
+
+export interface calculatedPrice {
+  index: number;
+  price: number;
+}
+
 @Component({
   selector: 'app-main-data',
   templateUrl: './main-data.component.html',
@@ -35,6 +46,12 @@ export class MainDataComponent implements OnInit {
   pageSize: number;
   pageIndex: number;
 
+  selectedRows: Voyage[];
+  storedRows: storedRow[];
+  calculatedWays: [Voyage[]];
+  calculatedPrices: calculatedPrice[];
+
+
   constructor(private service: AutoFillerService,
               private fb: FormBuilder,
               private voyageService: VoyagesDataService,
@@ -42,6 +59,10 @@ export class MainDataComponent implements OnInit {
     this.filteredOptionsFrom = [];
     this.filteredOptionsTo = [];
     this.options = [];
+    this.selectedRows = [];
+    this.storedRows = [];
+    this.calculatedWays = [[]];
+    this.calculatedPrices = [];
     this.model = {from: '', date: '', to: ''}
     this.formGroupTo = fb.group({
       toCity: [this.model.to, [Validators.required, Validators.minLength(1)]]
@@ -56,7 +77,7 @@ export class MainDataComponent implements OnInit {
     this.countOfPages = 0;
   }
 
-  displayedColumns: string[] = ['fromCity', 'fromCountry', 'fromDate', 'fromTime', 'toCity', 'toCountry', 'toDate', 'toTime', 'price', 'baggagePassed'];
+  displayedColumns: string[] = ['fromCity', 'fromCountry', 'fromTS', 'toCity', 'toCountry', 'toTS', 'price', 'baggagePassed'];
 
 
   ngOnInit(): void {
@@ -98,6 +119,7 @@ export class MainDataComponent implements OnInit {
       return;
     }
 
+    this.selectedRows = [];
     this.getVoyages();
   }
 
@@ -132,5 +154,48 @@ export class MainDataComponent implements OnInit {
     }
 
     return check;
+  }
+
+  onRowClick(row: Voyage) {
+    let neededIndex = this.selectedRows.indexOf(row);
+    if (neededIndex != -1) {
+      this.selectedRows.splice(neededIndex, 1);
+    } else {
+      this.selectedRows.push(row);
+    }
+  }
+
+  selectNextVoyage() {
+    this.storedRows.push({cityFrom: this.model.from, cityTo: this.model.to, voyages: this.selectedRows})
+    this.selectedRows = []
+    this.model.from = this.model.to
+    this.model.to = ''
+    this.model.date = ''
+    this.foundedVoyages = []
+  }
+
+  calculateVoyages() {
+    this.selectNextVoyage();
+    this.voyageService.calculateVoyages(this.storedRows).subscribe((response: any) => {
+        this.calculatedWays = response;
+        let index = 0;
+        response.forEach((way: any) => {
+          let price = 0;
+
+          way.forEach((voyage: any) => {
+            price += voyage.price
+          })
+          this.calculatedPrices.push({price: price, index: index});
+          index++;
+        })
+
+        this.calculatedPrices.sort((a, b) => a.price > b.price ? 1 : -1);
+        console.log(this.calculatedPrices)
+    }
+    )
+  }
+
+  toDate(timestamp: number) {
+    return new Date(timestamp * 1000).toLocaleString();
   }
 }

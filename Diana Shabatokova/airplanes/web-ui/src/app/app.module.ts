@@ -90,11 +90,9 @@ export class Airport {
 
 export class Voyage {
   constructor(public baggagePassed: boolean,
-              public fromDate: string,
-              public fromTime: string,
+              public fromTS: number,
               public price: number,
-              public toDate: string,
-              public toTime: string,
+              public toTS: number,
               public from: Airport,
               public to: Airport) {
   }

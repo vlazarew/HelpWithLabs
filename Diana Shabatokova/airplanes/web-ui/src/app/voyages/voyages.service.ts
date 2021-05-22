@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../api/api.service';
+import {storedRow} from "../main-data/main-data.component";
+import {Voyage} from "../app.module";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +33,10 @@ export class VoyagesDataService {
     return this.apiService.get('/voyages?fromCity=' + fromCity +
       '&toCity=' + toCity + '&date=' + date + '&numberOfPage=' + numberOfPage +
       '&voyagesOnPage=' + voyagesOnPage)
+  }
+
+  calculateVoyages(storedRows: storedRow[]) {
+    let json = JSON.stringify(storedRows);
+    return this.apiService.post('/voyages/calculateVoyages', json)
   }
 }

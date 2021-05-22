@@ -21,7 +21,7 @@ export class VoyagesComponent implements OnInit {
   pageSize: number;
   pageIndex: number;
 
-  displayedColumns: string[] = ['fromCity', 'fromCountry', 'fromDate', 'fromTime', 'toCity', 'toCountry', 'toDate', 'toTime', 'price', 'baggagePassed'];
+  displayedColumns: string[] = ['fromCity', 'fromCountry', 'fromTS', 'toCity', 'toCountry', 'toTS', 'price', 'baggagePassed'];
 
   constructor(private httpClient: HttpClient,
               private router: Router,
@@ -54,5 +54,9 @@ export class VoyagesComponent implements OnInit {
 
     this.voyagesDataService.getVoyagesFromDB(this.pageSize, this.pageIndex);
     this.getVoyages();
+  }
+
+  toDate(timestamp: number) {
+    return new Date(timestamp * 1000).toLocaleString();
   }
 }

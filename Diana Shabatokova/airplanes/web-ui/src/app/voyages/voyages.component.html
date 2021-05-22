@@ -17,14 +17,9 @@
       <td mat-cell *matCellDef="let element"> {{element.from.city.country.name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="fromDate" class="fromDate">
-      <th mat-header-cell *matHeaderCellDef>Дата отправления</th>
-      <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="fromTime" class="fromTime">
-      <th mat-header-cell *matHeaderCellDef>Время отправления</th>
-      <td mat-cell *matCellDef="let element"> {{element.fromTime}} </td>
+    <ng-container matColumnDef="fromTS" class="fromDate">
+      <th mat-header-cell *matHeaderCellDef>Дата и время отправления</th>
+      <td mat-cell *matCellDef="let element"> {{toDate(element.fromTS)}} </td>
     </ng-container>
 
     <ng-container matColumnDef="toCity" class="toCity">
@@ -37,14 +32,9 @@
       <td mat-cell *matCellDef="let element"> {{element.to.city.country.name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="toDate" class="toDate">
-      <th mat-header-cell *matHeaderCellDef>Дата прибытия</th>
-      <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="toTime" class="toTime">
-      <th mat-header-cell *matHeaderCellDef>Время прибытия</th>
-      <td mat-cell *matCellDef="let element"> {{element.toTime}} </td>
+    <ng-container matColumnDef="toTS" class="toDate">
+      <th mat-header-cell *matHeaderCellDef>Дата и время прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{toDate(element.toTS)}} </td>
     </ng-container>
 
     <!-- Weight Column -->

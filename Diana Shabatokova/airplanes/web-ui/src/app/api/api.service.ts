@@ -1,5 +1,5 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 export const urlDB = 'http://localhost:8080/';
 
@@ -16,8 +16,9 @@ export class ApiService {
     return this.httpClient.get(urlDB + path);
   }
 
-  // post(path: string) {
-  //   return this.httpClient.post(urlDB + path, );
-  // }
+  post(path: string, body: any) {
+    const myHeaders = new HttpHeaders().set('Access-Control-Allow-Origin', '*').set('Content-Type', 'application/json; charset=utf-8');
+    return this.httpClient.post(urlDB + path, body, {headers: myHeaders});
+  }
 
 }
