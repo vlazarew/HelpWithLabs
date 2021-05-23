@@ -1,0 +1,188 @@
+<p>
+  <mat-toolbar color="primary" class="mat-elevation-z23">
+    Поиск рейса
+  </mat-toolbar>
+</p>
+
+<form name="addForm" class="form-group"
+      [ngClass]="{'has-error': ((formGroupFrom.get('fromCity')?.touched ||
+                                   formGroupFrom.get('fromCity')?.dirty) &&
+                                   formGroupFrom.get('fromCity')?.errors) && ((formGroupTo.get('toCity')?.touched ||
+                                   formGroupTo.get('toCity')?.dirty) &&
+                                   formGroupTo.get('toCity')?.errors)}">
+  <mat-form-field [formGroup]="formGroupFrom" class="form first">
+    <mat-label>
+      Город отправления
+    </mat-label>
+    <input formControlName="fromCity" matInput type="text" name="from" [(ngModel)]="model.from"
+           [matAutocomplete]="autoFrom" required/>
+    <span class="help-block"
+          *ngIf="((formGroupFrom.get('fromCity')?.touched ||
+                   formGroupFrom.get('fromCity')?.dirty) &&
+                   formGroupFrom.get('fromCity')?.errors)">
+      <span *ngIf="formGroupFrom.get('fromCity')?.errors?.required">
+        Необходимо заполнить
+      </span>
+    </span>
+    <mat-autocomplete #autoFrom="matAutocomplete">
+      <mat-option *ngFor="let item of filteredOptionsFrom" [value]="item">
+        {{item}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field [formGroup]="formGroupTo" class="form">
+    <mat-label>
+      Город прибытия
+    </mat-label>
+    <input formControlName="toCity" matInput type="text" name="text" [(ngModel)]="model.to" [matAutocomplete]="autoTo"
+           required/>
+    <span class="help-block"
+          *ngIf="((formGroupTo.get('toCity')?.touched ||
+                   formGroupTo.get('toCity')?.dirty) &&
+                   formGroupTo.get('toCity')?.errors)">
+      <span *ngIf="formGroupTo.get('toCity')?.errors?.required">
+        Необходимо заполнить
+      </span>
+    </span>
+    <mat-autocomplete #autoTo="matAutocomplete">
+      <mat-option *ngFor="let itemTo of filteredOptionsTo" [value]="itemTo">
+        {{itemTo}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput [matDatepicker]="picker" placeholder="Дата отправления" name="date" [(ngModel)]="model.date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="getVoyagesByFromToDate()">Найти</button>
+  <div *ngIf="selectedRows.length > 0" class="rightSide">
+    <button mat-raised-button color="primary" (click)="selectNextVoyage()">Выбрать следующий
+      рейс
+    </button>
+    <button mat-raised-button color="primary" (click)="calculateVoyages()">Завершить выбор
+      билетов
+    </button>
+  </div>
+
+</form>
+
+<div *ngIf="foundedVoyages.length > 0">
+  <table mat-table [dataSource]="foundedVoyages" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="fromCity" class="fromCity">
+      <th mat-header-cell *matHeaderCellDef>Город отправления</th>
+      <td mat-cell *matCellDef="let element"> {{element.from.city.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fromCountry" class="fromCountry">
+      <th mat-header-cell *matHeaderCellDef>Страна отправления</th>
+      <td mat-cell *matCellDef="let element"> {{element.from.city.country.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fromTS" class="fromDate">
+      <th mat-header-cell *matHeaderCellDef>Дата и время отправления</th>
+      <td mat-cell *matCellDef="let element"> {{toDate(element.fromTS)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toCity" class="toCity">
+      <th mat-header-cell *matHeaderCellDef>Город прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{element.to.city.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toCountry" class="toCountry">
+      <th mat-header-cell *matHeaderCellDef>Страна прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{element.to.city.country.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="toTS" class="toDate">
+      <th mat-header-cell *matHeaderCellDef>Дата и время прибытия</th>
+      <td mat-cell *matCellDef="let element"> {{toDate(element.toTS)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price" class="price">
+      <th mat-header-cell *matHeaderCellDef>Стоимость поездки</th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="baggagePassed" class="baggagePassed">
+      <th mat-header-cell *matHeaderCellDef>Багаж включен</th>
+      <td mat-cell *matCellDef="let element"> {{element.baggagePassed}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
+
+  </table>
+
+  <mat-paginator #paginator
+                 [length]=countOfVoyages
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="setPageSizeOptions($event)"></mat-paginator>
+</div>
+
+<div *ngIf="selectedRows.length > 0">
+  <span>Выбранные рейсы:<br></span>
+  <div *ngFor="let row of selectedRows; let i = index">
+    <span>{{i + 1}}. Рейс {{row.from.name}} - {{row.to.name}}, дата и  время отправления {{toDate(row.fromTS)}}
+      , стоимость {{row.price}}</span>
+  </div>
+</div>
+
+<div *ngIf="calculatedWays.length > 0 && calculatedWays[0].length > 0">
+  <span>Возможные пути:<br></span>
+  <div *ngFor="let calculatedPrice of calculatedPrices; let i = index">
+      <span>{{i + 1}}. Общая стоимость: {{calculatedPrice.price}}</span>
+      <table mat-table [dataSource]="calculatedWays[calculatedPrice.index]" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="fromCity" class="fromCity">
+          <th mat-header-cell *matHeaderCellDef>Город отправления</th>
+          <td mat-cell *matCellDef="let element"> {{element.from.city.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fromCountry" class="fromCountry">
+          <th mat-header-cell *matHeaderCellDef>Страна отправления</th>
+          <td mat-cell *matCellDef="let element"> {{element.from.city.country.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fromTS" class="fromDate">
+          <th mat-header-cell *matHeaderCellDef>Дата и время отправления</th>
+          <td mat-cell *matCellDef="let element"> {{toDate(element.fromTS)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="toCity" class="toCity">
+          <th mat-header-cell *matHeaderCellDef>Город прибытия</th>
+          <td mat-cell *matCellDef="let element"> {{element.to.city.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="toCountry" class="toCountry">
+          <th mat-header-cell *matHeaderCellDef>Страна прибытия</th>
+          <td mat-cell *matCellDef="let element"> {{element.to.city.country.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="toTS" class="toDate">
+          <th mat-header-cell *matHeaderCellDef>Дата и время прибытия</th>
+          <td mat-cell *matCellDef="let element"> {{toDate(element.toTS)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price" class="price">
+          <th mat-header-cell *matHeaderCellDef>Стоимость поездки</th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="baggagePassed" class="baggagePassed">
+          <th mat-header-cell *matHeaderCellDef>Багаж включен</th>
+          <td mat-cell *matCellDef="let element"> {{element.baggagePassed}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
+
+      </table>
+  </div>
+</div>
