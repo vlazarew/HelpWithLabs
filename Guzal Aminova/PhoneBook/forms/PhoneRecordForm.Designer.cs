@@ -35,11 +35,15 @@ namespace PhoneBook.forms
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxFIO = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxMail = new System.Windows.Forms.TextBox();
+            this.textBoxCompanyName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(152, 101);
+            this.buttonCancel.Location = new System.Drawing.Point(152, 168);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 11;
@@ -49,7 +53,7 @@ namespace PhoneBook.forms
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(12, 101);
+            this.buttonOK.Location = new System.Drawing.Point(12, 168);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 10;
@@ -90,11 +94,47 @@ namespace PhoneBook.forms
             this.textBoxFIO.Size = new System.Drawing.Size(215, 20);
             this.textBoxFIO.TabIndex = 6;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Почта";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Наименование компании";
+            // 
+            // textBoxMail
+            // 
+            this.textBoxMail.Location = new System.Drawing.Point(12, 142);
+            this.textBoxMail.Name = "textBoxMail";
+            this.textBoxMail.Size = new System.Drawing.Size(215, 20);
+            this.textBoxMail.TabIndex = 13;
+            // 
+            // textBoxCompanyName
+            // 
+            this.textBoxCompanyName.Location = new System.Drawing.Point(12, 103);
+            this.textBoxCompanyName.Name = "textBoxCompanyName";
+            this.textBoxCompanyName.Size = new System.Drawing.Size(215, 20);
+            this.textBoxCompanyName.TabIndex = 12;
+            // 
             // PhoneRecordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(239, 139);
+            this.ClientSize = new System.Drawing.Size(239, 198);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxMail);
+            this.Controls.Add(this.textBoxCompanyName);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.label2);
@@ -116,5 +156,9 @@ namespace PhoneBook.forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxPhone;
         private System.Windows.Forms.TextBox textBoxFIO;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxMail;
+        private System.Windows.Forms.TextBox textBoxCompanyName;
     }
 }

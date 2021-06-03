@@ -30,8 +30,6 @@ namespace PhoneBook
         private void InitializeComponent()
         {
             this.dataGridViewPhonebook = new System.Windows.Forms.DataGridView();
-            this.ColumnFIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -40,6 +38,10 @@ namespace PhoneBook
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxFIO = new System.Windows.Forms.TextBox();
+            this.ColumnFIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhonebook)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,10 +50,13 @@ namespace PhoneBook
             this.dataGridViewPhonebook.AllowUserToAddRows = false;
             this.dataGridViewPhonebook.AllowUserToDeleteRows = false;
             this.dataGridViewPhonebook.AllowUserToOrderColumns = true;
+            this.dataGridViewPhonebook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewPhonebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPhonebook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnFIO,
-            this.ColumnPhone});
+            this.ColumnPhone,
+            this.ColumnCompanyName,
+            this.ColumnMail});
             this.dataGridViewPhonebook.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewPhonebook.MultiSelect = false;
             this.dataGridViewPhonebook.Name = "dataGridViewPhonebook";
@@ -59,21 +64,6 @@ namespace PhoneBook
             this.dataGridViewPhonebook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPhonebook.Size = new System.Drawing.Size(450, 337);
             this.dataGridViewPhonebook.TabIndex = 7;
-            // 
-            // ColumnFIO
-            // 
-            this.ColumnFIO.HeaderText = "ФИО";
-            this.ColumnFIO.MinimumWidth = 100;
-            this.ColumnFIO.Name = "ColumnFIO";
-            this.ColumnFIO.ReadOnly = true;
-            this.ColumnFIO.Width = 300;
-            // 
-            // ColumnPhone
-            // 
-            this.ColumnPhone.HeaderText = "Номер телефона";
-            this.ColumnPhone.MinimumWidth = 50;
-            this.ColumnPhone.Name = "ColumnPhone";
-            this.ColumnPhone.ReadOnly = true;
             // 
             // buttonEdit
             // 
@@ -150,6 +140,35 @@ namespace PhoneBook
             this.textBoxFIO.TabIndex = 22;
             this.textBoxFIO.TextChanged += new System.EventHandler(this.textBoxFIO_TextChanged);
             // 
+            // ColumnFIO
+            // 
+            this.ColumnFIO.HeaderText = "ФИО";
+            this.ColumnFIO.MinimumWidth = 100;
+            this.ColumnFIO.Name = "ColumnFIO";
+            this.ColumnFIO.ReadOnly = true;
+            // 
+            // ColumnPhone
+            // 
+            this.ColumnPhone.HeaderText = "Номер телефона";
+            this.ColumnPhone.MinimumWidth = 50;
+            this.ColumnPhone.Name = "ColumnPhone";
+            this.ColumnPhone.ReadOnly = true;
+            this.ColumnPhone.Width = 108;
+            // 
+            // ColumnCompanyName
+            // 
+            this.ColumnCompanyName.HeaderText = "Компания";
+            this.ColumnCompanyName.Name = "ColumnCompanyName";
+            this.ColumnCompanyName.ReadOnly = true;
+            this.ColumnCompanyName.Width = 83;
+            // 
+            // ColumnMail
+            // 
+            this.ColumnMail.HeaderText = "Почта";
+            this.ColumnMail.Name = "ColumnMail";
+            this.ColumnMail.ReadOnly = true;
+            this.ColumnMail.Width = 62;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,8 +194,6 @@ namespace PhoneBook
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewPhonebook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFIO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPhone;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAdd;
@@ -185,6 +202,10 @@ namespace PhoneBook
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.TextBox textBoxFIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompanyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMail;
     }
 }
 

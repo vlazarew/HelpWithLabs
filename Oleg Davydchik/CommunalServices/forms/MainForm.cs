@@ -358,6 +358,9 @@ namespace CommunalServices.forms
                 tabControlAdditionalData.Visible = false;
                 tabPagePayTrack.Visible = false;
                 dataGridViewPayTrack.Visible = false;
+                tabControlMain.TabPages.RemoveAt(1);
+                tabControlMain.TabPages.RemoveAt(1);
+                tabControlMain.TabPages.RemoveAt(1);
             }
         }
 

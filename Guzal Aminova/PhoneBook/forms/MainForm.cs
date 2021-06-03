@@ -32,7 +32,7 @@ namespace PhoneBook
             List<PhoneRegister> phoneRegisters = PhoneBookDAO.getPhoneRegistersByTemplate(textBoxFIO.Text.Trim(), textBoxPhoneNumber.Text.Trim());
             for (int i = 0; i < phoneRegisters.Count; i++)
             {
-                dataGridViewPhonebook.Rows.Add(phoneRegisters[i].FIO, phoneRegisters[i].phone);
+                dataGridViewPhonebook.Rows.Add(phoneRegisters[i].FIO, phoneRegisters[i].phone, phoneRegisters[i].companyName, phoneRegisters[i].mail);
                 dataGridViewPhonebook.Rows[i].Selected = false;
             }
         }

@@ -28,6 +28,8 @@ namespace PhoneBook.forms
             {
                 textBoxFIO.Text = phoneRegister.FIO;
                 textBoxPhone.Text = phoneRegister.phone;
+                textBoxCompanyName.Text = phoneRegister.companyName;
+                textBoxMail.Text = phoneRegister.mail;
             }
         }
 
@@ -51,6 +53,18 @@ namespace PhoneBook.forms
                 return;
             }
 
+            if (textBoxCompanyName.Text.Length <= 0)
+            {
+                MessageBox.Show("Заполните наименование компании");
+                return;
+            }
+
+            if (textBoxMail.Text.Length <= 0)
+            {
+                MessageBox.Show("Заполните почту");
+                return;
+            }
+
             /*Match match = Regex.Match(textBoxPhone.Text.Trim(), @"^\(\d{3}\) \d{3}-\d{4}$");
             if (!match.Success)
             {
@@ -61,7 +75,7 @@ namespace PhoneBook.forms
             // Если у нас добавление, то сохраняем в бд
             if (this.phoneRegister == null)
             {
-                if (!PhoneBookDAO.savePhoneRegister(new PhoneRegister(textBoxFIO.Text.Trim(), textBoxPhone.Text.Trim())))
+                if (!PhoneBookDAO.savePhoneRegister(new PhoneRegister(textBoxFIO.Text.Trim(), textBoxPhone.Text.Trim(), textBoxCompanyName.Text.Trim(), textBoxMail.Text.Trim())))
                 {
                     MessageBox.Show("Ошибка при сохранении номера телефона");
                 }
@@ -71,6 +85,8 @@ namespace PhoneBook.forms
                 // Иначе меняем объект и обновляем его
                 this.phoneRegister.FIO = textBoxFIO.Text.Trim();
                 this.phoneRegister.phone = textBoxPhone.Text.Trim();
+                this.phoneRegister.companyName = textBoxCompanyName.Text.Trim();
+                this.phoneRegister.mail = textBoxMail.Text.Trim();
                 if (!PhoneBookDAO.updatePhoneRegister(this.phoneRegister))
                 {
                     MessageBox.Show("Ошибка при изменении номера телефона");
