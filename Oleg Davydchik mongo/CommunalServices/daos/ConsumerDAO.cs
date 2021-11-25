@@ -15,7 +15,7 @@ namespace CommunalServices.daos
     /// DAO = Data Access Odject
     /// Класс для взаимодействия класса Consumer в коде с ее реализацией в БД
     /// </summary>
-    static class ConsumerDAO
+    public static class ConsumerDAO
     {
         public static IMongoCollection<Consumer> getCollection(MongoClient client)
         {

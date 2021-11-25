@@ -12,7 +12,7 @@ namespace CommunalServices.resolvers
     /// <summary>
     /// Структура для отчета по "Ведомость оплат"
     /// </summary>
-    struct PaymentReport
+    public struct PaymentReport
     {
         // вид услуги
         public string typeOfService { get; set; }
@@ -44,7 +44,7 @@ namespace CommunalServices.resolvers
     /// <summary>
     /// Структура для отчета по "Объемы услуг"
     /// </summary>
-    struct ValueOfServices
+    public struct ValueOfServices
     {
         // вид сервиса
         public string typeOfService { get; set; }
@@ -70,7 +70,7 @@ namespace CommunalServices.resolvers
     /// <summary>
     /// Структура для отчета по "Ведомость должников"
     /// </summary>
-    struct ReportDebtor
+    public struct ReportDebtor
     {
         // вид услуги
         public string typeOfService { get; set; }
@@ -93,13 +93,12 @@ namespace CommunalServices.resolvers
     /// <summary>
     /// Класс для обработки всех отчетов
     /// </summary>
-    class ReportResolver
+    public class ReportResolver
     {
         /// <summary>
         /// Получить отчет "Ведомость оплат"
         /// </summary>
-        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
-        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <param name="externalClient">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
         /// <returns>Отчет "Ведомость оплат"</returns>
         public static List<PaymentReport> getPaymentReport(MongoClient externalClient = null)
         {
@@ -140,8 +139,7 @@ namespace CommunalServices.resolvers
         /// <summary>
         /// Получить отчет "Объемы услуг"
         /// </summary>
-        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
-        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <param name="externalClient">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
         /// <returns>Отчет "Объемы услуг"</returns>
         public static List<ValueOfServices> getValueOfServices(MongoClient externalClient = null)
         {
@@ -178,8 +176,7 @@ namespace CommunalServices.resolvers
         /// <summary>
         /// Получить отчет "Ведомость должников"
         /// </summary>
-        /// <param name="externalConnection">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
-        /// <param name="externalTransaction">Внешняя транзакция, которая будет навешиваться на команду</param>
+        /// <param name="externalClient">Внешнее соединение с БД (необходимо для одной большой транзакции)</param>
         /// <returns>Отчет "Ведомость должников"</returns>
         public static List<ReportDebtor> getReportDebtor(MongoClient externalClient = null)
         {

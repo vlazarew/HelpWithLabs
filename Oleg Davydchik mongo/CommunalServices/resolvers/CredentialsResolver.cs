@@ -12,7 +12,7 @@ namespace CommunalServices.resolvers
     /// <summary>
     /// Обработчик действий с учетными данными
     /// </summary>
-    class CredentialsResolver
+    public class CredentialsResolver
     {
         /// <summary>
         /// Создание учетных данных и регистрация пользователя + адрес + номера телефона
