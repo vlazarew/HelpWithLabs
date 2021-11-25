@@ -103,8 +103,6 @@ namespace CommunalServices.resolvers
         /// <returns>Отчет "Ведомость оплат"</returns>
         public static List<PaymentReport> getPaymentReport(MongoClient externalClient = null)
         {
-            List<PaymentReport> result = new List<PaymentReport>();
-
             // В случае если нет внешнего соединения, сделаем новое локальное
             MongoClient client = externalClient != null ? externalClient : MongoDAO.createConnect();
 
@@ -133,7 +131,7 @@ namespace CommunalServices.resolvers
                 }
                 catch
                 {
-                    return null;
+                    return new List<PaymentReport>();
                 }
             }
         }
@@ -147,8 +145,6 @@ namespace CommunalServices.resolvers
         /// <returns>Отчет "Объемы услуг"</returns>
         public static List<ValueOfServices> getValueOfServices(MongoClient externalClient = null)
         {
-            List<ValueOfServices> result = new List<ValueOfServices>();
-
             // В случае если нет внешнего соединения, сделаем новое локальное
             MongoClient client = externalClient != null ? externalClient : MongoDAO.createConnect();
 
@@ -174,7 +170,7 @@ namespace CommunalServices.resolvers
                 }
                 catch
                 {
-                    return null;
+                    return new List<ValueOfServices>();
                 }
             }
         }
@@ -187,8 +183,6 @@ namespace CommunalServices.resolvers
         /// <returns>Отчет "Ведомость должников"</returns>
         public static List<ReportDebtor> getReportDebtor(MongoClient externalClient = null)
         {
-            List<ReportDebtor> result = new List<ReportDebtor>();
-
             // В случае если нет внешнего соединения, сделаем новое локальное
             MongoClient client = externalClient != null ? externalClient : MongoDAO.createConnect();
 
@@ -212,7 +206,7 @@ namespace CommunalServices.resolvers
                 }
                 catch
                 {
-                    return null;
+                    return new List<ReportDebtor>();
                 }
             }
         }

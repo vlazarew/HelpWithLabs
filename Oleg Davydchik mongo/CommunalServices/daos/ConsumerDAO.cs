@@ -73,7 +73,7 @@ namespace CommunalServices.daos
                 try
                 {
                     var collection = getCollection(client);
-
+                    consumer.id = collection.Find(_ => true).ToList().Count;
                     collection.InsertOne(consumer);
                     // session.CommitTransaction();
                     return true;

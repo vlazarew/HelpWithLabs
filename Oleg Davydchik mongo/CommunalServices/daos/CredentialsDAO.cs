@@ -38,7 +38,7 @@ namespace CommunalServices.daos
                 try
                 {
                     var collection = getCollection(client);
-
+                    credentials.id = collection.Find(_ => true).ToList().Count;
                     collection.InsertOne(credentials);
                     // session.CommitTransaction();
                     return true;

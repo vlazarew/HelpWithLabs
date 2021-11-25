@@ -43,6 +43,7 @@ namespace CommunalServices.daos
                 {
                     var collection = getCollection(client);
 
+                    address.id = collection.Find(_ => true).ToList().Count;
                     collection.InsertOne(address);
                     // session.CommitTransaction();
                     return true;

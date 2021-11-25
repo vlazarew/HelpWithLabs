@@ -120,6 +120,7 @@ namespace CommunalServices.daos
                 try
                 {
                     var collection = getCollection(client);
+                    typeOfService.id = collection.Find(_ => true).ToList().Count;
 
                     collection.InsertOne(typeOfService);
                     // session.CommitTransaction();
